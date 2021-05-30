@@ -25,3 +25,8 @@ header:
   X_CLIENT_NAME: CRM-WEB
   X_COUNTRY_CODE: BD
   X_CLIENT_VERSION: 1.0
+
+#
+#JWT
+#
+JWTSecret: "topSecret51"
