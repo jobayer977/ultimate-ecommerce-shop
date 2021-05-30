@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"start:dev": "npx kill-port 300 && node src/app.ts"
+		"start:dev": "nodemon src/app.ts"
 	},
 	"keywords": [],
 	"author": "",
