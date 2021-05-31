@@ -4,12 +4,12 @@ application:
   project: "ishop"
   organization: "QoveryCommunity"
 databases:
-- type: "POSTGRESQL"
-  name: "ishop"
-  version: "12"
+  - type: "POSTGRESQL"
+    name: "ishop"
+    version: "12"
 routers:
-- name: "main-ishop"
-  routes:
-  - application_name: "ishop"
-    paths:
-    - "/*"
+  - name: "main-ishop"
+    routes:
+      - application_name: "ishop"
+        paths:
+          - "/*"
