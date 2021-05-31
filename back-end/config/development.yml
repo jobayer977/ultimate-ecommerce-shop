@@ -30,3 +30,14 @@ header:
 #JWT
 #
 JWTSecret: "topSecret51"
+saltRound: 10
+
+#
+# Mail Credential
+#
+MAIL_HOST: "smtp.gmail.com"
+MAIL_PORT: 465
+MAIL_SECURE: true
+MAIL_USER: "searchsparrow@gmail.com"
+MAIL_PASSWORD: "ZKZ78S98VK@h1"
+MAIL_FROM: "PSL <JOBAYER@gmail.com>"

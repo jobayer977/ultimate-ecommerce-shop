@@ -1,6 +1,7 @@
 import * as config from "config"
 
-import { User } from "./app/entities/user.entity"
+import { Customer } from "./app/@modules/customer/entities/customer.entity"
+import { User } from "./app/@modules/user/entities/user.entity"
 
 export const ENV = {
 	port: config.server.port,
@@ -11,6 +12,14 @@ export const ENV = {
 	API_VERSION: config.docs.API_VERSION,
 
 	jwtSecret: config.JWTSecret,
+	slatRound: config.saltRound,
+
+	MAIL_HOST: config.MAIL_HOST,
+	MAIL_PORT: config.MAIL_PORT,
+	MAIL_SECURE: config.MAIL_SECURE,
+	MAIL_USER: config.MAIL_USER,
+	MAIL_PASSWORD: config.MAIL_PASSWORD,
+	MAIL_FROM: config.MAIL_FROM,
 }
 export const ormConfig = {
 	type: config.db.type,
@@ -21,5 +30,5 @@ export const ormConfig = {
 	database: config.db.database,
 	synchronize: config.db.synchronize,
 	logging: config.db.logging,
-	entities: [User],
+	entities: [User, Customer],
 }

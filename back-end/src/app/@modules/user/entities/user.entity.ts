@@ -1,10 +1,10 @@
 import { Column, Entity } from "typeorm"
 
-import { BaseEntity } from "../base/base.entity"
+import { BaseEntity } from "../../../@base/base.entity"
 
-@Entity("user")
+@Entity("users")
 export class User extends BaseEntity {
-	@Column({ nullable: true })
+	@Column({ nullable: true, unique: true })
 	phoneNumber?: string
 
 	@Column({ nullable: true })

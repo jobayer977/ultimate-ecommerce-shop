@@ -6,7 +6,7 @@ import {
 
 export abstract class BaseEntity {
 	@PrimaryGeneratedColumn()
-	id?: string
+	id: string
 
 	@CreateDateColumn()
 	createdAt?: Date
