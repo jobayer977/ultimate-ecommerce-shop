@@ -2,11 +2,11 @@ server:
   port: 3000
 db:
   type: "postgres"
-  host: "localhost"
+  host: "ishop-nq28ub3qcdib99ba-svc.qovery.io"
   port: 5432
-  username: "root"
-  password: "root"
-  database: "ishop"
+  username: "postgres"
+  password: "4fPxC3l42JHlQU4b"
+  database: "postgres"
   synchronize: true
   logging: true
 #
