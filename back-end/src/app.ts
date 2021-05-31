@@ -7,7 +7,6 @@ import * as express from "express"
 import { createConnection, useContainer } from "typeorm"
 
 import { AuthChangePasswordController } from "./app/@modules/auth/controller/auth-change-passwordcontroller"
-import { AuthForgotPasswordController } from "./app/@modules/auth/controller/auth-forgot-password.controller"
 import { AuthLoginController } from "./app/@modules/auth/controller/auth-login.controller"
 import { AuthRegisterController } from "./app/@modules/auth/controller/auth-register.controller"
 import { Container } from "typeorm-typedi-extensions"
@@ -30,7 +29,6 @@ const app = createExpressServer({
 		AuthLoginController,
 		AuthRegisterController,
 		AuthChangePasswordController,
-		AuthForgotPasswordController,
 	],
 	validation: { validationError: { target: false } },
 })
