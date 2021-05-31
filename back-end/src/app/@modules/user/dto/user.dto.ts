@@ -1,10 +1,11 @@
-import { IsString } from "class-validator"
+import { IsOptional, IsString } from "class-validator"
 
-export class CreateUserDto {
+export class UserDto {
 	@IsString()
 	phoneNumber?: string
 
 	@IsString()
+	@IsOptional()
 	password?: string
 
 	@IsString()

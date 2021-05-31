@@ -1,5 +1,3 @@
-require("module-alias/register")
-
 import "reflect-metadata"
 
 import * as express from "express"
@@ -10,9 +8,12 @@ import { AuthChangePasswordController } from "./app/@modules/auth/controller/aut
 import { AuthLoginController } from "./app/@modules/auth/controller/auth-login.controller"
 import { AuthRegisterController } from "./app/@modules/auth/controller/auth-register.controller"
 import { Container } from "typeorm-typedi-extensions"
+import { UserController } from "./app/@modules/user/controller/user.controller"
 import { config } from "dotenv"
 import { createExpressServer } from "routing-controllers"
 import { ormConfig } from "./ENV"
+
+require("module-alias/register")
 
 useContainer(Container)
 
@@ -29,6 +30,7 @@ const app = createExpressServer({
 		AuthLoginController,
 		AuthRegisterController,
 		AuthChangePasswordController,
+		UserController,
 	],
 	validation: { validationError: { target: false } },
 })

@@ -22,7 +22,7 @@ export function updateDataPlaceholder(payload: any) {
 	const data = {
 		message: `Update Data Success`,
 		success: true,
-		data: payload.length > 0 ? payload[0] : null,
+		data: payload,
 	}
 
 	return data

@@ -3,7 +3,7 @@ import { NotFoundError } from "routing-controllers"
 import { Service } from "typedi"
 import { InjectRepository } from "typeorm-typedi-extensions"
 import { CustomerRepository } from "../../customer/repository/customer.repository"
-import { CreateUserDto } from "../../user/dto/create-user.dto"
+import { UserDto } from "../../user/dto/user.dto"
 import { User } from "../../user/entities/user.entity"
 import { UserRepository } from "../../user/repository/user.repository"
 import { IFAuthSuccessResponse } from "../interfaces/auth-admin.interface"
@@ -23,7 +23,7 @@ export class AuthRegisterService {
 	) {}
 
 	//! Admin
-	async admin(user: CreateUserDto): Promise<IFAuthSuccessResponse> {
+	async admin(user: UserDto): Promise<IFAuthSuccessResponse> {
 		const { password, phoneNumber } = user
 
 		try {
@@ -55,7 +55,7 @@ export class AuthRegisterService {
 	}
 
 	//! Customer
-	async customer(user: CreateUserDto): Promise<IFAuthSuccessResponse> {
+	async customer(user: UserDto): Promise<IFAuthSuccessResponse> {
 		const { password, phoneNumber } = user
 
 		try {
