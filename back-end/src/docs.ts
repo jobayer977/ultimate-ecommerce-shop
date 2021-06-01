@@ -1,3 +1,5 @@
+import "reflect-metadata"
+
 import { AuthChangePasswordController } from "./app/@modules/auth/controllers/auth-change-passwordcontroller"
 import { AuthLoginController } from "./app/@modules/auth/controllers/auth-login.controller"
 import { AuthRegisterController } from "./app/@modules/auth/controllers/auth-register.controller"
@@ -17,17 +19,18 @@ const schemas: any = validationMetadatasToSchemas({
 	refPointerPrefix: "#/components/schemas/",
 })
 const storage = getMetadataArgsStorage()
+const _controllers = [
+	AuthLoginController,
+	AuthRegisterController,
+	AuthChangePasswordController,
+	UserController,
+	CustomerController,
+	DepartmentController,
+]
 export const spec: any = routingControllersToSpec(
 	storage,
 	{
-		controllers: [
-			AuthLoginController,
-			AuthRegisterController,
-			AuthChangePasswordController,
-			UserController,
-			CustomerController,
-			DepartmentController,
-		],
+		controllers: _controllers,
 
 		routePrefix: ENV.API_PREFIX,
 	},
