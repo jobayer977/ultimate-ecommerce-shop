@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"start:api": "cd back-end && npm install && npm start:prod",
-		"heroku-postbuild": "cd back-end && npm install && npm start:prod"
+		"heroku-postbuild": "cd back-end && npm install && npm start"
 	},
 	"repository": {
 		"type": "git",
