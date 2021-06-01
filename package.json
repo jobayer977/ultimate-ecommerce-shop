@@ -8,8 +8,7 @@
 		"npm": "6.14.13"
 	},
 	"scripts": {
-		"start:api": "cd back-end && npm install && npm start:prod",
-		"heroku-postbuild": "cd back-end && npm install && npm start"
+		"start:api": "cd back-end && npm install && npm run build && npm run start:prod"
 	},
 	"repository": {
 		"type": "git",

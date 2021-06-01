@@ -30,3 +30,4 @@ export const ormConfig = {
 	logging: config.db.logging,
 	entities: [__dirname + "/app/@modules/**/**/*.entity{.ts,.js}"],
 }
+		// "heroku-postbuild": "cd back-end && npm install && npm start"

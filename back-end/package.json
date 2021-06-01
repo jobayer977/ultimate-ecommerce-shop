@@ -2,10 +2,12 @@
 	"name": "back-end",
 	"version": "1.0.0",
 	"description": "",
-	"main": "app.js",
+	"main": "dist/app.js",
 	"scripts": {
 		"start": "node src/app.ts",
-		"start:dev": "nodemon src/app.ts"
+		"start:dev": "nodemon src/app.ts",
+		"start:prod": "node dist/app.js",
+		"build": "tsc"
 	},
 	"keywords": [],
 	"author": "",
