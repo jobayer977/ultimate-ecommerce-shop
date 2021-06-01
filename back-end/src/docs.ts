@@ -3,6 +3,7 @@ import "reflect-metadata"
 import { AuthChangePasswordController } from "./app/@modules/auth/controllers/auth-change-passwordcontroller"
 import { AuthLoginController } from "./app/@modules/auth/controllers/auth-login.controller"
 import { AuthRegisterController } from "./app/@modules/auth/controllers/auth-register.controller"
+import { CategoryController } from "./app/@modules/ecommarce/controllers/category.controller"
 import { CustomerController } from "./app/@modules/customer/controllers/customer.controller"
 import { DepartmentController } from "./app/@modules/ecommarce/controllers/department.controller"
 import { ENV } from "./ENV"
@@ -26,6 +27,7 @@ const _controllers = [
 	UserController,
 	CustomerController,
 	DepartmentController,
+	CategoryController,
 ]
 export const spec: any = routingControllersToSpec(
 	storage,

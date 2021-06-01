@@ -1,0 +1,25 @@
+{
+	"name": "ishop",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"engines": {
+		"node": "v14.17.0",
+		"npm": "6.14.13"
+	},
+	"scripts": {
+		"start:api": "cd back-end && npm install && npm start:prod",
+		"heroku-postbuild": "cd back-end && npm install && npm start:prod"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Jobayerdev/ishop.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Jobayerdev/ishop/issues"
+	},
+	"homepage": "https://github.com/Jobayerdev/ishop#readme"
+}

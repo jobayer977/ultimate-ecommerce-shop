@@ -1,7 +1,7 @@
 import { BadRequestError, NotFoundError } from "routing-controllers"
-import { BaseFilterDto } from "src/app/@base/base-filter.dto"
 import { Service } from "typedi"
 import { InjectRepository } from "typeorm-typedi-extensions"
+import { BaseFilterDto } from "../../../@base/base-filter.dto"
 import {
 	deleteDataPlaceholder,
 	getSingleDataPlaceholder,
