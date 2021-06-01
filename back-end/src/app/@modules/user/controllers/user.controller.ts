@@ -8,7 +8,7 @@ import {
 } from "routing-controllers"
 import { Container } from "typedi"
 import { UserDto } from "../dto/user.dto"
-import { UserService } from "./../services/user.service"
+import { UserService } from "../services/user.service"
 
 @JsonController("user")
 export class UserController {

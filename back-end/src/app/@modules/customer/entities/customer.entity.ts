@@ -1,28 +1,17 @@
-import {
-	Column,
-	CreateDateColumn,
-	Entity,
-	PrimaryGeneratedColumn,
-	UpdateDateColumn,
-} from "typeorm"
+import { Column, Entity } from "typeorm"
 
+import { BaseEntity } from "../../../@base/base.entity"
 import { IsEmail } from "class-validator"
 
 @Entity("customers")
-export class Customer {
-	@PrimaryGeneratedColumn()
-	id?: string | number
-
+export class Customer extends BaseEntity {
 	@Column({ nullable: true })
 	firstName?: string
 
 	@Column({ nullable: true })
 	lastName?: string
 
-	@Column({ nullable: true })
-	slug?: string
-
-	@Column({ nullable: true })
+	@Column({ nullable: true, unique: true })
 	@IsEmail()
 	email?: string
 
@@ -39,17 +28,8 @@ export class Customer {
 	otp?: string
 
 	@Column({ nullable: true })
-	isActive?: boolean
-
-	@Column({ type: "date", nullable: true })
-	dob?: Date
+	dob?: string
 
 	@Column({ nullable: true })
 	gender?: string
-
-	@CreateDateColumn()
-	createdAt?: Date
-
-	@UpdateDateColumn()
-	updatedAt?: Date
 }

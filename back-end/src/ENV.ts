@@ -1,8 +1,5 @@
 import * as config from "config"
 
-import { Customer } from "./app/@modules/customer/entities/customer.entity"
-import { User } from "./app/@modules/user/entities/user.entity"
-
 export const ENV = {
 	port: config.server.port,
 
@@ -10,6 +7,7 @@ export const ENV = {
 	API_TITLE: config.docs.API_TITLE,
 	API_DESC: config.docs.API_DESC,
 	API_VERSION: config.docs.API_VERSION,
+	API_DOCS_URL: config.docs.API_PREFIX + "docs",
 
 	jwtSecret: config.JWTSecret,
 	slatRound: config.saltRound,
@@ -30,5 +28,5 @@ export const ormConfig = {
 	database: config.db.database,
 	synchronize: config.db.synchronize,
 	logging: config.db.logging,
-	entities: [User, Customer],
+	entities: [__dirname + "/app/@modules/**/**/*.entity{.ts,.js}"],
 }

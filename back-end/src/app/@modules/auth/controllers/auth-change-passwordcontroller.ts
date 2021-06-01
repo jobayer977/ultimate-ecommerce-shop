@@ -7,8 +7,8 @@ import {
 	Post,
 } from "routing-controllers"
 import Container from "typedi"
-import { AuthChangePasswordDto } from "./../dto/auth-change-password.dto"
-import { AuthChangePasswordService } from "./../services/auth-change-password.service"
+import { AuthChangePasswordDto } from "../dto/auth-change-password.dto"
+import { AuthChangePasswordService } from "../services/auth-change-password.service"
 
 @JsonController("auth/changePassword")
 export class AuthChangePasswordController {

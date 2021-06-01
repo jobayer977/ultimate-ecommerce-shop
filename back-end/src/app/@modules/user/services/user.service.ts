@@ -14,12 +14,16 @@ export class UserService {
 
 	//!Get One
 	async getOne(id: string) {
-		const user = await this.userRepository.findOne({ id })
-		delete user.password
-		if (!user) {
+		try {
+			const user = await this.userRepository.findOne({ id })
+			delete user.password
+			if (!user) {
+				throw new NotFoundError(`User Not Exist`)
+			}
+			return user
+		} catch (error) {
 			throw new NotFoundError(`User Not Exist`)
 		}
-		return user
 	}
 
 	//!Details

@@ -1,46 +1,89 @@
 import "reflect-metadata"
 
-import * as express from "express"
+import * as jwt from "jsonwebtoken"
+import * as swaggerUiExpress from "swagger-ui-express"
 
-import { createConnection, useContainer } from "typeorm"
+import {
+	Action,
+	UnauthorizedError,
+	createExpressServer,
+} from "routing-controllers"
+import { ENV, ormConfig } from "./ENV"
+import { createConnection, getManager, useContainer } from "typeorm"
 
-import { AuthChangePasswordController } from "./app/@modules/auth/controller/auth-change-passwordcontroller"
-import { AuthLoginController } from "./app/@modules/auth/controller/auth-login.controller"
-import { AuthRegisterController } from "./app/@modules/auth/controller/auth-register.controller"
 import { Container } from "typeorm-typedi-extensions"
-import { UserController } from "./app/@modules/user/controller/user.controller"
-import { config } from "dotenv"
-import { createExpressServer } from "routing-controllers"
-import { ormConfig } from "./ENV"
+import { Customer } from "./app/@modules/customer/entities/customer.entity"
+import { User } from "./app/@modules/user/entities/user.entity"
+import { UserType } from "./app/@enums/userType.enum"
+import { spec } from "./docs"
 
-require("module-alias/register")
+import _ = require("lodash")
 
 useContainer(Container)
 
-//* DATABASE CONNECTION
+//*  Database Connection
 const connectDB = async () => {
 	await createConnection(ormConfig)
 }
 
-//* SERVER INITIALIZED
+//* Auth Role Verify
+const roleVerify = async (roles: string[], token: string) => {
+	const entityManager = getManager()
+	const decodedToken: any = jwt.decode(token)
+
+	// Role wise find DB return true or error exception
+	if (roles.includes(UserType.ADMIN)) {
+		const admin = await entityManager.findOne(User, {
+			id: decodedToken.id,
+		})
+
+		if (_.isEmpty(admin)) throw new UnauthorizedError("UnAuthorized Admin ")
+		return true
+	} else if (roles.includes(UserType.CUSTOMER)) {
+		const customer = await entityManager.findOne(Customer, {
+			id: decodedToken.id,
+		})
+		if (_.isEmpty(customer)) throw new UnauthorizedError("UnAuthorized Admin ")
+		return true
+	}
+}
+
+//*  App Initialized
 const app = createExpressServer({
-	routePrefix: "/api/v1/",
+	routePrefix: ENV.API_PREFIX,
 	development: false,
-	controllers: [
-		AuthLoginController,
-		AuthRegisterController,
-		AuthChangePasswordController,
-		UserController,
-	],
-	validation: { validationError: { target: false } },
+	controllers: [__dirname + "/app/@modules/**/**/*.controller{.ts,.js}"],
+	validation: {
+		validationError: { target: false, value: false },
+	},
+	authorizationChecker: async (action: Action, roles: UserType[]) => {
+		try {
+			const { request } = action
+			//*  Token Verify
+			let token = request.headers.authorization
+			if (!token) throw new UnauthorizedError(`UnAuthorized Token`)
+			token = token.split(" ")[1]
+			let verifiedUser = jwt.verify(token, ENV.jwtSecret)
+			if (!verifiedUser) {
+				throw new UnauthorizedError(`UnAuthorized User`)
+			}
+
+			//*  Role Verify
+			console.log(await roleVerify(roles, token))
+			await roleVerify(roles, token) // Return true or Error exception
+
+			return true
+		} catch (error) {
+			throw new UnauthorizedError(`UnAuthorized Auth`)
+		}
+	},
 })
 
-app.use(express.json())
-config()
+//*  Doc
+app.use(ENV.API_DOCS_URL, swaggerUiExpress.serve, swaggerUiExpress.setup(spec))
 
-const port: Number = Number(process.env.PORT) || 3000
-
-//* Application bootstrap
+//*  Application bootstrap
+const port: Number = Number(process.env.PORT) || ENV.port || 3000
 ;(async () => {
 	await connectDB()
 	await app.listen(port, () => {
