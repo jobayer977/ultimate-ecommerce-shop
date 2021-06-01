@@ -30,6 +30,7 @@ const connectDB = async () => {
 		ssl: {
 			rejectUnauthorized: false,
 		},
+		entities: [__dirname + "/app/@modules/**/**/*.entity{.ts,.js}"],
 	})
 }
 
