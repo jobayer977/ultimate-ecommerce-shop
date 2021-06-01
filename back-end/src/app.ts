@@ -32,6 +32,7 @@ const connectDB = async () => {
 		ssl: {
 			rejectUnauthorized: false,
 		},
+		logging: true,
 		entities: [Customer, User, CategoryEntity, DepartmentEntity],
 	})
 }
