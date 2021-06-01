@@ -6,8 +6,10 @@ var jwt = require("jsonwebtoken");
 var swaggerUiExpress = require("swagger-ui-express");
 var routing_controllers_1 = require("routing-controllers");
 var typeorm_1 = require("typeorm");
+var category_entity_1 = require("./app/@modules/ecommarce/entities/category.entity");
 var typeorm_typedi_extensions_1 = require("typeorm-typedi-extensions");
 var customer_entity_1 = require("./app/@modules/customer/entities/customer.entity");
+var department_entity_1 = require("./app/@modules/ecommarce/entities/department.entity");
 var ENV_1 = require("./ENV");
 var user_entity_1 = require("./app/@modules/user/entities/user.entity");
 var userType_enum_1 = require("./app/@enums/userType.enum");
@@ -26,6 +28,7 @@ var connectDB = function () { return tslib_1.__awaiter(void 0, void 0, void 0, f
                     ssl: {
                         rejectUnauthorized: false,
                     },
+                    entities: [customer_entity_1.Customer, user_entity_1.User, category_entity_1.CategoryEntity, department_entity_1.DepartmentEntity],
                 })];
             case 1:
                 // await createConnection(ormConfig)

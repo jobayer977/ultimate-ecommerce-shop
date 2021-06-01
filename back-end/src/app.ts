@@ -10,8 +10,10 @@ import {
 } from "routing-controllers"
 import { createConnection, getManager, useContainer } from "typeorm"
 
+import { CategoryEntity } from "./app/@modules/ecommarce/entities/category.entity"
 import { Container } from "typeorm-typedi-extensions"
 import { Customer } from "./app/@modules/customer/entities/customer.entity"
+import { DepartmentEntity } from "./app/@modules/ecommarce/entities/department.entity"
 import { ENV } from "./ENV"
 import { User } from "./app/@modules/user/entities/user.entity"
 import { UserType } from "./app/@enums/userType.enum"
@@ -30,7 +32,7 @@ const connectDB = async () => {
 		ssl: {
 			rejectUnauthorized: false,
 		},
-		entities: [__dirname + "/app/@modules/**/**/*.entity{.ts,.js}"],
+		entities: [Customer, User, CategoryEntity, DepartmentEntity],
 	})
 }
 
