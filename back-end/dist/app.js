@@ -23,6 +23,9 @@ var connectDB = function () { return tslib_1.__awaiter(void 0, void 0, void 0, f
             return [4 /*yield*/, typeorm_1.createConnection({
                     type: "postgres",
                     url: "postgres://mvqlsmbjohzuys:5d369bee6d76f3193a990a98ba830ca52d5fbc295953407cb221ab90d2498eb0@ec2-34-193-113-223.compute-1.amazonaws.com:5432/dd0j05ms4ol6dm",
+                    ssl: {
+                        rejectUnauthorized: false,
+                    },
                 })];
             case 1:
                 // await createConnection(ormConfig)
