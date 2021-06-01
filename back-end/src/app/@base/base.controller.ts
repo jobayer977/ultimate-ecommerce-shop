@@ -1,23 +1,10 @@
-import { Delete, Get, Post, Put } from "routing-controllers"
+import "reflect-metadata"
 
-export class BaseController {
+import { Post } from "routing-controllers"
+
+export abstract class BaseController {
 	@Post("/base")
-	createBase() {
+	public createBase() {
 		return "From Base Controller POST "
-	}
-
-	@Get("/base")
-	readBase() {
-		return "From Base Controller Get "
-	}
-
-	@Put("/base")
-	updateBase() {
-		return "From Base Controller update "
-	}
-
-	@Delete("/base")
-	deleteBase() {
-		return "From Base Controller delete "
 	}
 }

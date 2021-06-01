@@ -12,12 +12,12 @@ import { validationMetadatasToSchemas } from "class-validator-jsonschema"
 const { defaultMetadataStorage } = require("class-transformer/cjs/storage")
 
 //* DOCS
-const schemas = validationMetadatasToSchemas({
+const schemas: any = validationMetadatasToSchemas({
 	classTransformerMetadataStorage: defaultMetadataStorage,
 	refPointerPrefix: "#/components/schemas/",
 })
 const storage = getMetadataArgsStorage()
-export const spec = routingControllersToSpec(
+export const spec: any = routingControllersToSpec(
 	storage,
 	{
 		controllers: [

@@ -78,9 +78,13 @@ const app = createExpressServer({
 		}
 	},
 })
-
+console.log(spec)
 //*  Doc
-app.use(ENV.API_DOCS_URL, swaggerUiExpress.serve, swaggerUiExpress.setup(spec))
+app.use(
+	ENV.API_DOCS_URL,
+	swaggerUiExpress.serve,
+	swaggerUiExpress.setup(spec, { explorer: true })
+)
 
 //*  Application bootstrap
 const port: Number = Number(process.env.PORT) || ENV.port || 3000
