@@ -20,5 +20,8 @@
 	"bugs": {
 		"url": "https://github.com/Jobayerdev/ishop/issues"
 	},
-	"homepage": "https://github.com/Jobayerdev/ishop#readme"
+	"homepage": "https://github.com/Jobayerdev/ishop#readme",
+	"dependencies": {
+		"tslib": "^2.2.0"
+	}
 }
