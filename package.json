@@ -8,7 +8,7 @@
 		"npm": "6.14.13"
 	},
 	"scripts": {
-		"start": "cd back-end && npm install && npm run build && npm run start:prod"
+		"start": "cd back-end && npm run start:prod"
 	},
 	"repository": {
 		"type": "git",
