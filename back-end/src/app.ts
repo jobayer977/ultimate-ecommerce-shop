@@ -8,11 +8,11 @@ import {
 	UnauthorizedError,
 	createExpressServer,
 } from "routing-controllers"
-import { ENV, ormConfig } from "./ENV"
 import { createConnection, getManager, useContainer } from "typeorm"
 
 import { Container } from "typeorm-typedi-extensions"
 import { Customer } from "./app/@modules/customer/entities/customer.entity"
+import { ENV } from "./ENV"
 import { User } from "./app/@modules/user/entities/user.entity"
 import { UserType } from "./app/@enums/userType.enum"
 import { spec } from "./docs"
@@ -23,7 +23,11 @@ useContainer(Container)
 
 //*  Database Connection
 const connectDB = async () => {
-	await createConnection(ormConfig)
+	// await createConnection(ormConfig)
+	await createConnection({
+		type: "postgres",
+		url: "postgres://mvqlsmbjohzuys:5d369bee6d76f3193a990a98ba830ca52d5fbc295953407cb221ab90d2498eb0@ec2-34-193-113-223.compute-1.amazonaws.com:5432/dd0j05ms4ol6dm",
+	})
 }
 
 //* Auth Role Verify

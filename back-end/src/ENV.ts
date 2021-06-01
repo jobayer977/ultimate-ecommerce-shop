@@ -17,7 +17,7 @@ export const ENV = {
 	MAIL_PASSWORD: "ZKZ78S98VK@h1",
 	MAIL_FROM: "PSL <JOBAYER@gmail.com>",
 }
-export const ormConfig: any = {
+export const ormConfig = {
 	type: "postgres",
 	host: "localhost",
 	port: 5432,

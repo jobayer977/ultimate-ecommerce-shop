@@ -5,10 +5,10 @@ require("reflect-metadata");
 var jwt = require("jsonwebtoken");
 var swaggerUiExpress = require("swagger-ui-express");
 var routing_controllers_1 = require("routing-controllers");
-var ENV_1 = require("./ENV");
 var typeorm_1 = require("typeorm");
 var typeorm_typedi_extensions_1 = require("typeorm-typedi-extensions");
 var customer_entity_1 = require("./app/@modules/customer/entities/customer.entity");
+var ENV_1 = require("./ENV");
 var user_entity_1 = require("./app/@modules/user/entities/user.entity");
 var userType_enum_1 = require("./app/@enums/userType.enum");
 var docs_1 = require("./docs");
@@ -18,8 +18,14 @@ typeorm_1.useContainer(typeorm_typedi_extensions_1.Container);
 var connectDB = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
     return tslib_1.__generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, typeorm_1.createConnection(ENV_1.ormConfig)];
+            case 0: 
+            // await createConnection(ormConfig)
+            return [4 /*yield*/, typeorm_1.createConnection({
+                    type: "postgres",
+                    url: "postgres://mvqlsmbjohzuys:5d369bee6d76f3193a990a98ba830ca52d5fbc295953407cb221ab90d2498eb0@ec2-34-193-113-223.compute-1.amazonaws.com:5432/dd0j05ms4ol6dm",
+                })];
             case 1:
+                // await createConnection(ormConfig)
                 _a.sent();
                 return [2 /*return*/];
         }
