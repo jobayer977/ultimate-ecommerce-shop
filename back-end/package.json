@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "node src/app.ts",
 		"start:dev": "nodemon src/app.ts",
-		"start:prod": "npm install && node dist/app.js",
+		"start:prod": "npm install && tsc && node dist/app.js",
 		"build": "tsc"
 	},
 	"keywords": [],
