@@ -1,31 +1,40 @@
-export const ENV = {
-	port: 3000,
+import * as path from "path"
 
-	API_PREFIX: "/api/v1/",
-	API_TITLE: "iShop",
-	API_DESC: "iShop Api V1",
-	API_VERSION: 1.0,
+import { config } from "dotenv"
+
+const endRes = config({
+	path: path.join(
+		`${process.cwd()}/config/${process.env.NODE_ENV || "development"}.env`
+	),
+})
+
+export const ENV = {
+	port: process.env.PORT,
+
+	API_PREFIX: process.env.API_PREFIX,
+	API_TITLE: process.env.API_TITLE,
+	API_DESC: process.env.API_DESC,
+	API_VERSION: process.env.API_VERSION,
 	API_DOCS_URL: "/api/v1/" + "docs",
 
-	jwtSecret: "topSecret51",
-	slatRound: 10,
+	jwtSecret: process.env.JWTSecret,
+	slatRound: process.env.saltRound,
 
-	MAIL_HOST: "smtp.gmail.com",
-	MAIL_PORT: 465,
-	MAIL_SECURE: true,
-	MAIL_USER: "searchsparrow@gmail.com",
-	MAIL_PASSWORD: "ZKZ78S98VK@h1",
-	MAIL_FROM: "PSL <JOBAYER@gmail.com>",
+	MAIL_HOST: process.env.MAIL_HOST,
+	MAIL_PORT: process.env.MAIL_PORT,
+	MAIL_SECURE: process.env.MAIL_SECURE,
+	MAIL_USER: process.env.MAIL_USER,
+	MAIL_PASSWORD: process.env.MAIL_PASSWORD,
+	MAIL_FROM: process.env.MAIL_FROM,
 }
-export const ormConfig = {
-	type: "postgres",
-	host: "localhost",
-	port: 5432,
-	username: "root",
-	password: "root",
-	database: "ishop",
-	synchronize: true,
-	logging: false,
+export const ormConfig: any = {
+	type: process.env.DB_TYPE,
+	host: process.env.DB_HOST,
+	port: process.env.DB_PORT,
+	username: process.env.DB_USERNAME,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_DATABASE,
+	synchronize: process.env.DB_SYNCHRONIZE,
+	logging: process.env.DB_LOGGING,
 	entities: [__dirname + "/app/@modules/**/**/*.entity{.ts,.js}"],
 }
-// "heroku-postbuild": "cd back-end && npm install && npm start"

@@ -1,5 +1,4 @@
 import {
-	Authorized,
 	Body,
 	Delete,
 	Get,
@@ -11,7 +10,6 @@ import {
 } from "routing-controllers"
 import { Container } from "typeorm-typedi-extensions"
 import { BaseFilterDto } from "../../../@base/base-filter.dto"
-import { UserType } from "./../../../@enums/userType.enum"
 import { DepartmentDto } from "./../dtos/department.dto"
 import { DepartmentService } from "./../services/department.service"
 
@@ -29,19 +27,19 @@ export class DepartmentController {
 		return this.departmentService.findById(id)
 	}
 
-	@Authorized([UserType.ADMIN])
+	// @Authorized([UserType.ADMIN])
 	@Post("")
 	async create(@Body() departmentDto: DepartmentDto) {
 		return this.departmentService.create(departmentDto)
 	}
 
-	@Authorized([UserType.ADMIN])
+	// @Authorized([UserType.ADMIN])
 	@Put("/:id")
 	async update(@Param("id") id: string, @Body() departmentDto: DepartmentDto) {
 		return this.departmentService.update(id, departmentDto)
 	}
 
-	@Authorized([UserType.ADMIN])
+	// @Authorized([UserType.ADMIN])
 	@Delete("/:id")
 	async delete(@Param("id") id: string) {
 		return this.departmentService.delete(id)

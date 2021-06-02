@@ -14,4 +14,7 @@ export class CategoryDto extends BaseAttributeDto {
 	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
 	image: string
+
+	@IsNotEmpty({ message: `$Property is Required` })
+	department: string
 }

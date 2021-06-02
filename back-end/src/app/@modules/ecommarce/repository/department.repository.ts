@@ -25,7 +25,7 @@ export class DepartmentRepository extends Repository<DepartmentEntity> {
 
 			return paginate(pOption, result)
 		} catch (error) {
-			throw new BadRequestError(error)
+			throw new BadRequestError(error.message)
 		}
 	}
 }

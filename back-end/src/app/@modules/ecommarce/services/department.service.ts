@@ -18,6 +18,11 @@ export class DepartmentService {
 		private departmentRepository: DepartmentRepository
 	) {}
 
+	//! Filter
+	async filter(baseFilterDto: BaseFilterDto) {
+		return this.departmentRepository.filter(baseFilterDto)
+	}
+
 	//!Create
 	async create(departmentDto: DepartmentDto) {
 		try {
@@ -66,9 +71,5 @@ export class DepartmentService {
 		} catch (error) {
 			throw new NotFoundError(`Not Found`)
 		}
-	}
-	//! Filter
-	async filter(baseFilterDto: BaseFilterDto) {
-		return this.departmentRepository.filter(baseFilterDto)
 	}
 }

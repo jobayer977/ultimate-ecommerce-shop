@@ -8,33 +8,39 @@ import {
 	UnauthorizedError,
 	createExpressServer,
 } from "routing-controllers"
+import { ENV, ormConfig } from "./ENV"
 import { createConnection, getManager, useContainer } from "typeorm"
 
 import { CategoryEntity } from "./app/@modules/ecommarce/entities/category.entity"
 import { Container } from "typeorm-typedi-extensions"
 import { Customer } from "./app/@modules/customer/entities/customer.entity"
 import { DepartmentEntity } from "./app/@modules/ecommarce/entities/department.entity"
-import { ENV } from "./ENV"
 import { User } from "./app/@modules/user/entities/user.entity"
 import { UserType } from "./app/@enums/userType.enum"
+import { config } from "dotenv"
 import { spec } from "./docs"
 
 import _ = require("lodash")
+import process = require("process")
 
 useContainer(Container)
 
+config()
 //*  Database Connection
 const connectDB = async () => {
-	// await createConnection(ormConfig)
-	await createConnection({
-		type: "postgres",
-		url: "postgres://mvqlsmbjohzuys:5d369bee6d76f3193a990a98ba830ca52d5fbc295953407cb221ab90d2498eb0@ec2-34-193-113-223.compute-1.amazonaws.com:5432/dd0j05ms4ol6dm",
-		ssl: {
-			rejectUnauthorized: false,
-		},
-		logging: true,
-		entities: [Customer, User, CategoryEntity, DepartmentEntity],
-	})
+	if (process.env.DBATABASE_URL) {
+		await createConnection({
+			type: "postgres",
+			url: "postgres://mvqlsmbjohzuys:5d369bee6d76f3193a990a98ba830ca52d5fbc295953407cb221ab90d2498eb0@ec2-34-193-113-223.compute-1.amazonaws.com:5432/dd0j05ms4ol6dm",
+			ssl: {
+				rejectUnauthorized: false,
+			},
+			logging: true,
+			entities: [Customer, User, CategoryEntity, DepartmentEntity],
+		})
+	} else {
+		await createConnection(ormConfig)
+	}
 }
 
 //* Auth Role Verify
@@ -93,10 +99,10 @@ const app = createExpressServer({
 app.use(ENV.API_DOCS_URL, swaggerUiExpress.serve, swaggerUiExpress.setup(spec))
 
 //*  Application bootstrap
-const port: Number = Number(process.env.PORT) || ENV.port || 3000
+const PORT: any = Number(process.env.PORT) || ENV.port || 3000
 ;(async () => {
 	await connectDB()
-	await app.listen(port, () => {
-		console.log(`Server running on http://localhost:${port}`)
+	await app.listen(PORT, () => {
+		console.log(`Server running on http://localhost:${PORT}`)
 	})
 })()
