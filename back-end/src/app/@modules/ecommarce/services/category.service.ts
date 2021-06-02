@@ -9,19 +9,46 @@ import {
 } from "../../../@utils/responsePlaceholder.util"
 import { CategoryDto } from "../dtos/category.dto"
 import { CategoryRepository } from "../repository/category.repository"
+import { CategoryEntity } from "./../entities/category.entity"
+import { DepartmentRepository } from "./../repository/department.repository"
 
 @Service()
 export class CategoryService {
 	constructor(
 		@InjectRepository()
-		private categoryRepository: CategoryRepository
+		private categoryRepository: CategoryRepository,
+		@InjectRepository()
+		private departmentRepository: DepartmentRepository
 	) {}
 
 	//!Create
-	async create(categoryDto: any) {
-		console.log(categoryDto)
+	async create(categoryDto: CategoryDto) {
+		const {
+			name,
+			slug,
+			image,
+			department,
+			isFeatured,
+			isActive,
+			isPopular,
+			isHot,
+			isNew,
+		} = categoryDto
 		try {
-			const created = await this.categoryRepository.save(categoryDto)
+			const department = await this.departmentRepository.findOne({
+				id: categoryDto.department,
+			})
+			const created = new CategoryEntity()
+			created.name = name
+			created.slug = slug
+			created.image = image
+			created.department = [department]
+			created.isFeatured = isFeatured
+			created.isActive = isActive
+			created.isPopular = isPopular
+			created.isHot = isHot
+			created.isNew = isNew
+			await this.categoryRepository.save(created)
 			return insertDataPlaceholder(created)
 		} catch (error) {
 			throw new BadRequestError(error)
@@ -32,6 +59,7 @@ export class CategoryService {
 	async findById(id: string) {
 		try {
 			const data = await this.categoryRepository.findOne({ id })
+
 			if (!data) {
 				throw new NotFoundError(`Not Found`)
 			}

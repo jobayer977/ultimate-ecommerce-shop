@@ -1,6 +1,7 @@
-import { Column, Entity } from "typeorm"
+import { Column, Entity, JoinColumn, OneToOne } from "typeorm"
 
 import { BaseAttributeEntity } from "./../../../@base/base-attribute.entity"
+import { DepartmentEntity } from "./department.entity"
 
 @Entity("category")
 export class CategoryEntity extends BaseAttributeEntity {
@@ -12,4 +13,8 @@ export class CategoryEntity extends BaseAttributeEntity {
 
 	@Column({ nullable: true })
 	image: string
+
+	@OneToOne(() => DepartmentEntity)
+	@JoinColumn()
+	department: DepartmentEntity[]
 }
