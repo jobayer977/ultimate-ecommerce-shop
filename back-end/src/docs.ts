@@ -5,6 +5,7 @@ import { AuthLoginController } from "./app/@modules/auth/controllers/auth-login.
 import { AuthRegisterController } from "./app/@modules/auth/controllers/auth-register.controller"
 import { CategoryController } from "./app/@modules/ecommarce/controllers/category.controller"
 import { CustomerController } from "./app/@modules/customer/controllers/customer.controller"
+import { DefaultController } from "./app/@modules/default/controllers/exp.controller"
 import { DepartmentController } from "./app/@modules/ecommarce/controllers/department.controller"
 import { ENV } from "./ENV"
 import { UserController } from "./app/@modules/user/controllers/user.controller"
@@ -28,6 +29,7 @@ const _controllers = [
 	CustomerController,
 	DepartmentController,
 	CategoryController,
+	DefaultController,
 ]
 export const spec: any = routingControllersToSpec(
 	storage,

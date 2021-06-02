@@ -9,7 +9,6 @@ import {
 } from "../../../@utils/responsePlaceholder.util"
 import { CategoryDto } from "../dtos/category.dto"
 import { CategoryRepository } from "../repository/category.repository"
-import { CategoryEntity } from "./../entities/category.entity"
 import { DepartmentRepository } from "./../repository/department.repository"
 
 @Service()
@@ -23,32 +22,8 @@ export class CategoryService {
 
 	//!Create
 	async create(categoryDto: CategoryDto) {
-		const {
-			name,
-			slug,
-			image,
-			department,
-			isFeatured,
-			isActive,
-			isPopular,
-			isHot,
-			isNew,
-		} = categoryDto
 		try {
-			const department = await this.departmentRepository.findOne({
-				id: categoryDto.department,
-			})
-			const created = new CategoryEntity()
-			created.name = name
-			created.slug = slug
-			created.image = image
-			created.department = [department]
-			created.isFeatured = isFeatured
-			created.isActive = isActive
-			created.isPopular = isPopular
-			created.isHot = isHot
-			created.isNew = isNew
-			await this.categoryRepository.save(created)
+			const created = await this.categoryRepository.save(categoryDto)
 			return insertDataPlaceholder(created)
 		} catch (error) {
 			throw new BadRequestError(error)
