@@ -1,5 +1,5 @@
 import { NotFoundError } from "routing-controllers"
-import { Profile } from "../entities/Profile.entity"
+import { Photo } from "../entities/Photo.entity"
 import { Service } from "typedi"
 import { User } from "../entities/User.entity"
 import { getManager } from "typeorm"
@@ -12,21 +12,35 @@ export class DefaultService {
 
 	async createUser(data: any) {
 		try {
-			const profile = new Profile()
-			profile.gender = "male"
-			profile.photo = "me.jpg"
-			// await this.entityManager.save(profile)
+			const photo1 = new Photo()
+			photo1.url = "me.jpg"
+			await this.entityManager.save(photo1)
+
+			const photo2 = new Photo()
+			photo2.url = "me-and-bears.jpg"
+			await this.entityManager.save(photo2)
 
 			const user = new User()
-			user.name = "Joe Smith"
-			user.profile = profile
+			user.name = "John"
+			user.photos = [photo1, photo2]
 
-			await this.entityManager.save(user)
-
-			const userRepository = this.entityManager.getRepository(User)
-			return await userRepository.find({ relations: ["profile"] })
+			return await this.entityManager.save(user)
 		} catch (error) {
 			throw new NotFoundError(error.message)
 		}
+	}
+
+	async find() {
+		try {
+			const userRepo = this.entityManager.getRepository(User)
+			const users = await userRepo.find({ relations: ["photos"] })
+
+			// /inverse
+
+			const photoRepository = this.entityManager.getRepository(Photo)
+			const photos = await photoRepository.find({ relations: ["user"] })
+
+			return { photos }
+		} catch (error) {}
 	}
 }

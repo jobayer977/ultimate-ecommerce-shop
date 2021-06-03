@@ -86,7 +86,6 @@ const app = createExpressServer({
 			}
 
 			//*  Role Verify
-			console.log(await roleVerify(roles, token))
 			await roleVerify(roles, token) // Return true or Error exception
 
 			return true

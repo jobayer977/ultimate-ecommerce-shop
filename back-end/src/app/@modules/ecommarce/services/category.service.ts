@@ -6,11 +6,10 @@ import {
 	deleteDataPlaceholder,
 	getSingleDataPlaceholder,
 	insertDataPlaceholder,
+	updateDataPlaceholder,
 } from "../../../@utils/responsePlaceholder.util"
-import { CategoryDto } from "../dtos/category.dto"
 import { CategoryRepository } from "../repository/category.repository"
 import { DepartmentRepository } from "./../repository/department.repository"
-
 @Service()
 export class CategoryService {
 	constructor(
@@ -19,22 +18,22 @@ export class CategoryService {
 		@InjectRepository()
 		private departmentRepository: DepartmentRepository
 	) {}
-
 	//!Create
-	async create(categoryDto: CategoryDto) {
+	async create(categoryDto: any) {
 		try {
-			const created = await this.categoryRepository.save(categoryDto)
-			return insertDataPlaceholder(created)
+			const saveCategory: any = await this.categoryRepository.save(categoryDto)
+			const payload = await this.categoryRepository.findOne(saveCategory.id, {
+				relations: ["department"],
+			})
+			return insertDataPlaceholder(payload)
 		} catch (error) {
 			throw new BadRequestError(error)
 		}
 	}
-
 	//! Get one
 	async findById(id: string) {
 		try {
 			const data = await this.categoryRepository.findOne({ id })
-
 			if (!data) {
 				throw new NotFoundError(`Not Found`)
 			}
@@ -43,21 +42,22 @@ export class CategoryService {
 			throw new NotFoundError(`Not Found`)
 		}
 	}
-
 	//! Update
-	async update(id: string, categoryDto: CategoryDto) {
-		const category = await this.findById(id)
+	async update(id: string, categoryDto: any) {
+		const category: any = await this.findById(id)
 		try {
-			// const updateData = await this.categoryRepository.save({
-			// 	...category,
-			// 	...categoryDto,
-			// })
-			// return updateDataPlaceholder(updateData)
+			await this.categoryRepository.update(category?.data?.id, categoryDto)
+			const payload = await this.categoryRepository.findOne(
+				category?.data?.id,
+				{
+					relations: ["department"],
+				}
+			)
+			return updateDataPlaceholder(payload)
 		} catch (error) {
 			throw new NotFoundError(`Not Found`)
 		}
 	}
-
 	//! Delete
 	async delete(id: string) {
 		const targetData = await this.findById(id)

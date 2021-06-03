@@ -51,13 +51,9 @@ export class AuthLoginService {
 	//! Customer
 	async customer(credential: AuthCredentialDto) {
 		const { password, phoneNumber } = credential
-		console.log(credential)
 		//* Get User From DB
 		const customer = await this.customerRepository.findOne({ phoneNumber })
-		console.log(
-			customer,
-			9999999999999999999999999999999999999999999999999999999999
-		)
+
 		//* Verify User
 		if (_.isEmpty(customer)) {
 			throw new NotFoundError(`User Not Found with ${phoneNumber} number`)

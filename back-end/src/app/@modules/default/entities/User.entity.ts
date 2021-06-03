@@ -1,12 +1,6 @@
-import {
-	Column,
-	Entity,
-	JoinColumn,
-	OneToOne,
-	PrimaryGeneratedColumn,
-} from "typeorm"
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 
-import { Profile } from "./Profile.entity"
+import { Photo } from "./Photo.entity"
 
 @Entity()
 export class User {
@@ -16,7 +10,6 @@ export class User {
 	@Column()
 	name: string
 
-	@OneToOne(() => Profile, (profile) => profile.user, { cascade: ["insert"] })
-	@JoinColumn()
-	profile: Profile
+	@OneToMany(() => Photo, (photo) => photo.user)
+	photos: Photo[]
 }

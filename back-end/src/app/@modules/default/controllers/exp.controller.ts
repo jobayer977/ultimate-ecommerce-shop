@@ -1,5 +1,5 @@
 import "reflect-metadata"
-import { Body, HttpCode, JsonController, Post } from "routing-controllers"
+import { Body, Get, HttpCode, JsonController, Post } from "routing-controllers"
 import { Container } from "typedi"
 import { DefaultService } from "./../services/default.service"
 
@@ -11,5 +11,10 @@ export class DefaultController {
 	@Post("/experiment")
 	async admin(@Body() data: any): Promise<any> {
 		return this.defaultService.createUser(data)
+	}
+
+	@Get("/experiment")
+	async findExperiment() {
+		return this.defaultService.find()
 	}
 }
