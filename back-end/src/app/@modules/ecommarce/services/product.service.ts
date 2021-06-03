@@ -8,32 +8,32 @@ import {
 	insertDataPlaceholder,
 	updateDataPlaceholder,
 } from "../../../@utils/responsePlaceholder.util"
-import { CategoryRepository } from "../repository/category.repository"
-import { DepartmentRepository } from "./../repository/department.repository"
+import { ProductDto } from "./../dtos/product.dto"
+import { ProductRepository } from "./../repository/product.repository"
+
 @Service()
-export class CategoryService {
+export class ProductService {
 	constructor(
 		@InjectRepository()
-		private categoryRepository: CategoryRepository,
-		@InjectRepository()
-		private departmentRepository: DepartmentRepository
+		private productRepository: ProductRepository
 	) {}
-	//!Create
-	async create(categoryDto: any) {
+
+	async create(productDto: ProductDto) {
 		try {
-			const saveCategory: any = await this.categoryRepository.save(categoryDto)
-			const payload = await this.categoryRepository.findOne(saveCategory.id, {
-				relations: ["department"],
+			const product = await this.productRepository.save(productDto)
+			const payload = await this.productRepository.findOne(product.id, {
+				relations: ["brands"],
 			})
 			return insertDataPlaceholder(payload)
 		} catch (error) {
-			throw new BadRequestError(error)
+			throw new BadRequestError(error.message)
 		}
 	}
+
 	//! Get one
 	async findById(id: string) {
 		try {
-			const data = await this.categoryRepository.findOne({ id })
+			const data = await this.productRepository.findOne({ id })
 			if (!data) {
 				throw new NotFoundError(`Not Found`)
 			}
@@ -43,16 +43,11 @@ export class CategoryService {
 		}
 	}
 	//! Update
-	async update(id: string, categoryDto: any) {
-		const category: any = await this.findById(id)
+	async update(id: string, product: any) {
+		const updateData: any = await this.findById(id)
 		try {
-			await this.categoryRepository.update(category?.data?.id, categoryDto)
-			const payload = await this.categoryRepository.findOne(
-				category?.data?.id,
-				{
-					relations: ["department"],
-				}
-			)
+			await this.productRepository.update(updateData?.data?.id, product)
+			const payload = await this.productRepository.findOne(updateData?.data?.id)
 			return updateDataPlaceholder(payload)
 		} catch (error) {
 			throw new NotFoundError(`Not Found`)
@@ -62,7 +57,7 @@ export class CategoryService {
 	async delete(id: string) {
 		const targetData = await this.findById(id)
 		try {
-			await this.categoryRepository.delete(targetData.data?.id)
+			await this.productRepository.delete(targetData.data?.id)
 			return deleteDataPlaceholder(targetData?.data)
 		} catch (error) {
 			throw new NotFoundError(`Not Found`)
@@ -70,6 +65,6 @@ export class CategoryService {
 	}
 	//! Filter
 	async filter(baseFilterDto: BaseFilterDto) {
-		return this.categoryRepository.filter(baseFilterDto)
+		return this.productRepository.filter(baseFilterDto)
 	}
 }

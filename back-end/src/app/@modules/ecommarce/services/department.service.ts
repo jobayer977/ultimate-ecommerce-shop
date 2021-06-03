@@ -1,7 +1,7 @@
 import { BadRequestError, NotFoundError } from "routing-controllers"
 import { Service } from "typedi"
 import { InjectRepository } from "typeorm-typedi-extensions"
-import { BaseFilterDto } from "../../../@base/base-filter.dto"
+import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
 import {
 	deleteDataPlaceholder,
 	getSingleDataPlaceholder,
@@ -19,8 +19,8 @@ export class DepartmentService {
 	) {}
 
 	//! Filter
-	async filter(baseFilterDto: BaseFilterDto) {
-		return this.departmentRepository.filter(baseFilterDto)
+	async filter(baseFilterDto: BaseFilterDto, relations: string[]) {
+		return this.departmentRepository.filter(baseFilterDto, relations)
 	}
 
 	//!Create
@@ -36,9 +36,11 @@ export class DepartmentService {
 	}
 
 	//! Get one
-	async findById(id: string) {
+	async findById(id: string, relations: string[]) {
 		try {
-			const department = await this.departmentRepository.findOne({ id })
+			const department = await this.departmentRepository.findOne(id, {
+				relations: relations,
+			})
 			if (!department) {
 				throw new NotFoundError(`Not Found`)
 			}
@@ -49,11 +51,11 @@ export class DepartmentService {
 	}
 
 	//! Update
-	async update(id: string, departmentDto: DepartmentDto) {
-		const department = await this.findById(id)
+	async update(id: string, departmentDto: DepartmentDto, relations: string[]) {
+		const department = await this.findById(id, relations)
 		try {
 			const updateDepartment = await this.departmentRepository.save({
-				...department,
+				...department.data,
 				...departmentDto,
 			})
 			return updateDataPlaceholder(updateDepartment)
@@ -63,8 +65,8 @@ export class DepartmentService {
 	}
 
 	//! Delete
-	async delete(id: string) {
-		const department = await this.findById(id)
+	async delete(id: string, relations: string[]) {
+		const department = await this.findById(id, relations)
 		try {
 			await this.departmentRepository.delete(department.data?.id)
 			return deleteDataPlaceholder(department?.data)

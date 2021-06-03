@@ -1,6 +1,8 @@
 import { IsNumber, IsOptional } from "class-validator"
 
-export class BaseFilterDto {
+import { BaseAttributeDto } from "./base-attribute.dto"
+
+export class BaseFilterDto extends BaseAttributeDto {
 	@IsOptional()
 	searchTerm: string
 

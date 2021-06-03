@@ -3,25 +3,19 @@ import { paginate, paginationOptions } from "../../../@utils/paginate.util"
 
 import { BadRequestError } from "routing-controllers"
 import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
-import { DepartmentEntity } from "./../entities/department.entity"
+import { BrandsEntity } from "./../entities/brand.entity"
 
-@EntityRepository(DepartmentEntity)
-export class DepartmentRepository extends Repository<DepartmentEntity> {
-	async filter(baseFilterDto: BaseFilterDto, relations: string[]) {
+@EntityRepository(BrandsEntity)
+export class BrandRepository extends Repository<BrandsEntity> {
+	async filter(baseFilterDto: BaseFilterDto) {
 		const { searchTerm, page } = baseFilterDto
 		const pOption: any = paginationOptions(baseFilterDto)
-		const query = this.createQueryBuilder("department").leftJoinAndSelect(
-			"department.categories",
-			"category"
-		)
+		const query = this.createQueryBuilder()
 		try {
 			if (searchTerm) {
-				query.where(
-					`department.name ILIKE :searchTerm OR department.slug ILIKE :searchTerm`,
-					{
-						searchTerm: `%${searchTerm}%`,
-					}
-				)
+				query.where(`name ILIKE :searchTerm OR slug ILIKE :searchTerm`, {
+					searchTerm: `%${searchTerm}%`,
+				})
 			}
 			const result = await query
 				.take(pOption.take)

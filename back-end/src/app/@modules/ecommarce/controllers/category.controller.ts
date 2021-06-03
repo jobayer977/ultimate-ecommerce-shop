@@ -9,7 +9,7 @@ import {
 	QueryParams,
 } from "routing-controllers"
 import Container from "typedi"
-import { BaseFilterDto } from "../../../@base/base-filter.dto"
+import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
 import { CategoryService } from "../services/category.service"
 import { CategoryDto } from "./../dtos/category.dto"
 

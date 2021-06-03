@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne } from "typeorm"
 
-import { BaseAttributeEntity } from "./../../../@base/base-attribute.entity"
+import { BaseAttributeEntity } from "../../../@base/entities/base-attribute.entity"
 import { DepartmentEntity } from "./department.entity"
 
 @Entity("category")
@@ -15,5 +15,8 @@ export class CategoryEntity extends BaseAttributeEntity {
 	image: string
 
 	@ManyToOne((type) => DepartmentEntity, (department) => department.categories)
-	public department?: DepartmentEntity[]
+	department?: DepartmentEntity[]
+
+	// @ManyToOne(() => ProductEntity, (product) => product.category)
+	// product: ProductEntity[]
 }

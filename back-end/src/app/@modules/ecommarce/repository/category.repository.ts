@@ -2,7 +2,7 @@ import { EntityRepository, Repository } from "typeorm"
 import { paginate, paginationOptions } from "../../../@utils/paginate.util"
 
 import { BadRequestError } from "routing-controllers"
-import { BaseFilterDto } from "../../../@base/base-filter.dto"
+import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
 import { CategoryEntity } from "../entities/category.entity"
 
 @EntityRepository(CategoryEntity)

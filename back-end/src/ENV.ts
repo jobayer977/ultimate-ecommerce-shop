@@ -2,7 +2,7 @@ import * as path from "path"
 
 import { config } from "dotenv"
 
-const endRes = config({
+config({
 	path: path.join(
 		`${process.cwd()}/config/${process.env.NODE_ENV || "development"}.env`
 	),
@@ -35,6 +35,7 @@ export const ormConfig: any = {
 	password: process.env.DB_PASSWORD,
 	database: process.env.DB_DATABASE,
 	synchronize: process.env.DB_SYNCHRONIZE,
-	logging: process.env.DB_LOGGING,
+	// logging: process.env.DB_LOGGING,
+	logging: true,
 	entities: [__dirname + "/app/@modules/**/**/*.entity{.ts,.js}"],
 }

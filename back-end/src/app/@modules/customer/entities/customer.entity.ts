@@ -1,6 +1,6 @@
 import { Column, Entity } from "typeorm"
 
-import { BaseEntity } from "../../../@base/base.entity"
+import { BaseEntity } from "../../../@base/entities/base.entity"
 import { IsEmail } from "class-validator"
 
 @Entity("customers")

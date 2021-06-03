@@ -6,10 +6,11 @@ import { Service } from "typedi"
 @Service()
 export class BcryptService {
 	public async hashString(str: string) {
-		return bcryptjs.hash(str, ENV.slatRound)
+		const salt = await bcryptjs.genSalt(Number(ENV.slatRound || 10))
+		return await bcryptjs.hash(str, salt)
 	}
 
-	public async compareHash(str: string, hashString: string) {
-		return bcryptjs.compare(str, hashString)
+	public async compareHash(str: string, hashStr: string) {
+		return await bcryptjs.compare(str, hashStr)
 	}
 }

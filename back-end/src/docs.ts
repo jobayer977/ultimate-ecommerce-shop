@@ -3,11 +3,13 @@ import "reflect-metadata"
 import { AuthChangePasswordController } from "./app/@modules/auth/controllers/auth-change-passwordcontroller"
 import { AuthLoginController } from "./app/@modules/auth/controllers/auth-login.controller"
 import { AuthRegisterController } from "./app/@modules/auth/controllers/auth-register.controller"
+import { BannerController } from "./app/@modules/ecommarce/controllers/banner.controller"
+import { BrandController } from "./app/@modules/ecommarce/controllers/brand.controller"
 import { CategoryController } from "./app/@modules/ecommarce/controllers/category.controller"
 import { CustomerController } from "./app/@modules/customer/controllers/customer.controller"
-import { DefaultController } from "./app/@modules/default/controllers/exp.controller"
 import { DepartmentController } from "./app/@modules/ecommarce/controllers/department.controller"
 import { ENV } from "./ENV"
+import { ProductController } from "./app/@modules/ecommarce/controllers/product.controller"
 import { UserController } from "./app/@modules/user/controllers/user.controller"
 import { getMetadataArgsStorage } from "routing-controllers"
 import { routingControllersToSpec } from "routing-controllers-openapi"
@@ -29,7 +31,9 @@ const _controllers = [
 	CustomerController,
 	DepartmentController,
 	CategoryController,
-	DefaultController,
+	BrandController,
+	BannerController,
+	ProductController,
 ]
 export const spec: any = routingControllersToSpec(
 	storage,
