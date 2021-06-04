@@ -15,32 +15,33 @@ import { ProductService } from "./../services/product.service"
 
 @JsonController("products")
 export class ProductController {
+	private relations = ["brand", "category", "department"]
 	private productService = Container.get(ProductService)
 
 	@Post("")
 	async create(@Body() productDto: ProductDto) {
-		return this.productService.create(productDto)
+		return this.productService.create(productDto, this.relations)
 	}
 
 	@Get("/filter")
 	async filter(@QueryParams() baseFilterDto: BaseFilterDto) {
-		return this.productService.filter(baseFilterDto)
+		return this.productService.filter(baseFilterDto, this.relations)
 	}
 
 	@Get("/:id")
 	async findById(@Param("id") id: string) {
-		return this.productService.findById(id)
+		return this.productService.findById(id, this.relations)
 	}
 
 	// @Authorized([UserType.ADMIN])
 	@Put("/:id")
 	async update(@Param("id") id: string, @Body() productDto: ProductDto) {
-		return this.productService.update(id, productDto)
+		return this.productService.update(id, productDto, this.relations)
 	}
 
 	// @Authorized([UserType.ADMIN])
 	@Delete("/:id")
 	async delete(@Param("id") id: string) {
-		return this.productService.delete(id)
+		return this.productService.delete(id, this.relations)
 	}
 }

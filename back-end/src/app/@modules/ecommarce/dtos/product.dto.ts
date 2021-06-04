@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsString } from "class-validator"
+import { IsBoolean, IsNotEmpty, IsString } from "class-validator"
 
 import { BaseAttributeDto } from "../../../@base/dto/base-attribute.dto"
 
@@ -11,15 +11,15 @@ export class ProductDto extends BaseAttributeDto {
 	@IsNotEmpty({ message: `$Property is Required` })
 	description: string
 
-	@IsString({ message: `$Property is must be string` })
+	@IsBoolean({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
 	isAvailable: boolean
 
-	@IsString({ message: `$Property is must be string` })
+	@IsBoolean({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
 	isNewArrival: boolean
 
-	@IsString({ message: `$Property is must be string` })
+	@IsBoolean({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
 	isTopSelling: boolean
 
@@ -55,18 +55,15 @@ export class ProductDto extends BaseAttributeDto {
 	@IsNotEmpty({ message: `$Property is Required` })
 	stock: string
 
-	@IsOptional()
 	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
-	brand?: any
+	brand?: string
 
-	@IsOptional()
 	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
-	department?: any
+	category?: string
 
-	@IsOptional()
 	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
-	category?: any
+	department?: string
 }

@@ -36,7 +36,9 @@ export class BrandService {
 	//! Get one
 	async findById(id: string) {
 		try {
-			const brand = await this.brandRepository.findOne(id)
+			const brand = await this.brandRepository.findOne(id, {
+				relations: ["products"],
+			})
 			if (!brand) {
 				throw new NotFoundError(`Not Found`)
 			}

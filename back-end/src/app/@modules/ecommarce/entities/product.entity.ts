@@ -1,7 +1,9 @@
-import { Column, Entity, OneToMany } from "typeorm"
+import { Column, Entity, ManyToOne } from "typeorm"
 
 import { BaseAttributeEntity } from "../../../@base/entities/base-attribute.entity"
 import { BrandsEntity } from "./brand.entity"
+import { CategoryEntity } from "./category.entity"
+import { DepartmentEntity } from "./department.entity"
 
 @Entity("products")
 export class ProductEntity extends BaseAttributeEntity {
@@ -11,13 +13,13 @@ export class ProductEntity extends BaseAttributeEntity {
 	@Column({ nullable: true })
 	description: string
 
-	@Column({ nullable: true })
+	@Column({ nullable: true, type: "boolean" })
 	isAvailable: boolean
 
-	@Column({ nullable: true })
+	@Column({ nullable: true, type: "boolean" })
 	isNewArrival: boolean
 
-	@Column({ nullable: true })
+	@Column({ nullable: true, type: "boolean" })
 	isTopSelling: boolean
 
 	@Column({ nullable: true })
@@ -44,12 +46,12 @@ export class ProductEntity extends BaseAttributeEntity {
 	@Column({ nullable: true })
 	stock: string
 
-	@OneToMany((type) => BrandsEntity, (brand) => brand.product)
-	brands: BrandsEntity[]
+	@ManyToOne(() => BrandsEntity, (brand) => brand.products)
+	brand: BrandsEntity[]
 
-	// @OneToMany(() => DepartmentEntity, (department) => department.product)
-	// department: DepartmentEntity[]
+	@ManyToOne(() => CategoryEntity, (category) => category.products)
+	category: BrandsEntity[]
 
-	// @OneToMany(() => CategoryEntity, (category) => category.product)
-	// category: CategoryEntity[]
+	@ManyToOne(() => DepartmentEntity, (department) => department.products)
+	department: DepartmentEntity[]
 }

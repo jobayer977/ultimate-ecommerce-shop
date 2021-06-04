@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne } from "typeorm"
+import { Column, Entity, OneToMany } from "typeorm"
 
 import { BaseAttributeEntity } from "../../../@base/entities/base-attribute.entity"
 import { ProductEntity } from "./product.entity"
@@ -14,6 +14,6 @@ export class BrandsEntity extends BaseAttributeEntity {
 	@Column({ nullable: true })
 	image: string
 
-	@ManyToOne((type) => ProductEntity, (product) => product.brands)
-	product?: ProductEntity[]
+	@OneToMany(() => ProductEntity, (product) => product.brand)
+	products: ProductEntity[]
 }

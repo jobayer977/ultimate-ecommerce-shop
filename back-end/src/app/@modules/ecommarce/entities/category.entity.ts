@@ -1,7 +1,8 @@
-import { Column, Entity, ManyToOne } from "typeorm"
+import { Column, Entity, ManyToOne, OneToMany } from "typeorm"
 
 import { BaseAttributeEntity } from "../../../@base/entities/base-attribute.entity"
 import { DepartmentEntity } from "./department.entity"
+import { ProductEntity } from "./product.entity"
 
 @Entity("category")
 export class CategoryEntity extends BaseAttributeEntity {
@@ -17,6 +18,6 @@ export class CategoryEntity extends BaseAttributeEntity {
 	@ManyToOne((type) => DepartmentEntity, (department) => department.categories)
 	department?: DepartmentEntity[]
 
-	// @ManyToOne(() => ProductEntity, (product) => product.category)
-	// product: ProductEntity[]
+	@OneToMany(() => ProductEntity, (product) => product.category)
+	products: ProductEntity[]
 }

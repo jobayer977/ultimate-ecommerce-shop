@@ -8,43 +8,43 @@ import {
 	insertDataPlaceholder,
 	updateDataPlaceholder,
 } from "../../../@utils/responsePlaceholder.util"
-import { ProductDto } from "./../dtos/product.dto"
 import { ProductRepository } from "./../repository/product.repository"
-
 @Service()
 export class ProductService {
 	constructor(
 		@InjectRepository()
 		private productRepository: ProductRepository
 	) {}
-
-	async create(productDto: ProductDto) {
+	async create(productDto: any, relations: string[]) {
 		try {
 			const product = await this.productRepository.save(productDto)
 			const payload = await this.productRepository.findOne(product.id, {
-				relations: ["brands"],
+				relations,
 			})
 			return insertDataPlaceholder(payload)
 		} catch (error) {
 			throw new BadRequestError(error.message)
 		}
 	}
-
 	//! Get one
-	async findById(id: string) {
+	async findById(id: string, relations: string[]) {
 		try {
 			const data = await this.productRepository.findOne({ id })
+
+			const payload = await this.productRepository.findOne(data.id, {
+				relations,
+			})
 			if (!data) {
 				throw new NotFoundError(`Not Found`)
 			}
-			return getSingleDataPlaceholder(data)
+			return getSingleDataPlaceholder(payload)
 		} catch (error) {
 			throw new NotFoundError(`Not Found`)
 		}
 	}
 	//! Update
-	async update(id: string, product: any) {
-		const updateData: any = await this.findById(id)
+	async update(id: string, product: any, relations: string[]) {
+		const updateData: any = await this.findById(id, relations)
 		try {
 			await this.productRepository.update(updateData?.data?.id, product)
 			const payload = await this.productRepository.findOne(updateData?.data?.id)
@@ -54,8 +54,8 @@ export class ProductService {
 		}
 	}
 	//! Delete
-	async delete(id: string) {
-		const targetData = await this.findById(id)
+	async delete(id: string, relations: string[]) {
+		const targetData = await this.findById(id, relations)
 		try {
 			await this.productRepository.delete(targetData.data?.id)
 			return deleteDataPlaceholder(targetData?.data)
@@ -64,7 +64,7 @@ export class ProductService {
 		}
 	}
 	//! Filter
-	async filter(baseFilterDto: BaseFilterDto) {
-		return this.productRepository.filter(baseFilterDto)
+	async filter(baseFilterDto: BaseFilterDto, relations: string[]) {
+		return this.productRepository.filter(baseFilterDto, relations)
 	}
 }
