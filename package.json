@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"backEnd": "cd back-end && npm run start:prod",
-		"start": "concurrently \"npm run backEnd\""
+		"start": "concurrently \"npm install\" \"npm run backEnd\""
 	},
 	"repository": {
 		"type": "git",
