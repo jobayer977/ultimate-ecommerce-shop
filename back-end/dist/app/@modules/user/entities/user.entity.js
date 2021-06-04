@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 var tslib_1 = require("tslib");
 var typeorm_1 = require("typeorm");
-var base_entity_1 = require("../../../@base/base.entity");
+var base_entity_1 = require("../../../@base/entities/base.entity");
 var User = /** @class */ (function (_super) {
     tslib_1.__extends(User, _super);
     function User() {

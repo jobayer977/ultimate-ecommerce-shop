@@ -3,10 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ormConfig = exports.ENV = void 0;
 var path = require("path");
 var dotenv_1 = require("dotenv");
-var endRes = dotenv_1.config({
-    path: path.join(process.cwd() + "/src/" + (process.env.NODE_ENV || "development") + ".env"),
+dotenv_1.config({
+    path: path.join(process.cwd() + "/" + (process.env.NODE_ENV || "development") + ".env"),
 });
-console.log(endRes);
 exports.ENV = {
     port: process.env.PORT,
     API_PREFIX: process.env.API_PREFIX,
@@ -31,7 +30,8 @@ exports.ormConfig = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     synchronize: process.env.DB_SYNCHRONIZE,
-    logging: process.env.DB_LOGGING,
+    // logging: process.env.DB_LOGGING,
+    logging: true,
     entities: [__dirname + "/app/@modules/**/**/*.entity{.ts,.js}"],
 };
 //# sourceMappingURL=ENV.js.map

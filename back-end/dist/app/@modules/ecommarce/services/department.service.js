@@ -11,6 +11,14 @@ var DepartmentService = /** @class */ (function () {
     function DepartmentService(departmentRepository) {
         this.departmentRepository = departmentRepository;
     }
+    //! Filter
+    DepartmentService.prototype.filter = function (baseFilterDto, relations) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            return tslib_1.__generator(this, function (_a) {
+                return [2 /*return*/, this.departmentRepository.filter(baseFilterDto, relations)];
+            });
+        });
+    };
     //!Create
     DepartmentService.prototype.create = function (departmentDto) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
@@ -32,14 +40,16 @@ var DepartmentService = /** @class */ (function () {
         });
     };
     //! Get one
-    DepartmentService.prototype.findById = function (id) {
+    DepartmentService.prototype.findById = function (id, relations) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             var department, error_2;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.departmentRepository.findOne({ id: id })];
+                        return [4 /*yield*/, this.departmentRepository.findOne(id, {
+                                relations: relations,
+                            })];
                     case 1:
                         department = _a.sent();
                         if (!department) {
@@ -55,18 +65,18 @@ var DepartmentService = /** @class */ (function () {
         });
     };
     //! Update
-    DepartmentService.prototype.update = function (id, departmentDto) {
+    DepartmentService.prototype.update = function (id, departmentDto, relations) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             var department, updateDepartment, error_3;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.findById(id)];
+                    case 0: return [4 /*yield*/, this.findById(id, relations)];
                     case 1:
                         department = _a.sent();
                         _a.label = 2;
                     case 2:
                         _a.trys.push([2, 4, , 5]);
-                        return [4 /*yield*/, this.departmentRepository.save(tslib_1.__assign(tslib_1.__assign({}, department), departmentDto))];
+                        return [4 /*yield*/, this.departmentRepository.save(tslib_1.__assign(tslib_1.__assign({}, department.data), departmentDto))];
                     case 3:
                         updateDepartment = _a.sent();
                         return [2 /*return*/, responsePlaceholder_util_1.updateDataPlaceholder(updateDepartment)];
@@ -79,13 +89,13 @@ var DepartmentService = /** @class */ (function () {
         });
     };
     //! Delete
-    DepartmentService.prototype.delete = function (id) {
+    DepartmentService.prototype.delete = function (id, relations) {
         var _a;
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             var department, error_4;
             return tslib_1.__generator(this, function (_b) {
                 switch (_b.label) {
-                    case 0: return [4 /*yield*/, this.findById(id)];
+                    case 0: return [4 /*yield*/, this.findById(id, relations)];
                     case 1:
                         department = _b.sent();
                         _b.label = 2;
@@ -100,14 +110,6 @@ var DepartmentService = /** @class */ (function () {
                         throw new routing_controllers_1.NotFoundError("Not Found");
                     case 5: return [2 /*return*/];
                 }
-            });
-        });
-    };
-    //! Filter
-    DepartmentService.prototype.filter = function (baseFilterDto) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
-                return [2 /*return*/, this.departmentRepository.filter(baseFilterDto)];
             });
         });
     };

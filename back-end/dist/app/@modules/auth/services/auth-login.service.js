@@ -59,11 +59,11 @@ var AuthLoginService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         password = credential.password, phoneNumber = credential.phoneNumber;
-                        console.log(credential);
-                        return [4 /*yield*/, this.customerRepository.findOne({ phoneNumber: phoneNumber })];
+                        return [4 /*yield*/, this.customerRepository.findOne({ phoneNumber: phoneNumber })
+                            //* Verify User
+                        ];
                     case 1:
                         customer = _a.sent();
-                        console.log(customer, 9999999999999999999999999999999999999999999999999999999999);
                         //* Verify User
                         if (_.isEmpty(customer)) {
                             throw new routing_controllers_1.NotFoundError("User Not Found with " + phoneNumber + " number");

@@ -10,15 +10,25 @@ var BcryptService = /** @class */ (function () {
     }
     BcryptService.prototype.hashString = function (str) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var salt;
             return tslib_1.__generator(this, function (_a) {
-                return [2 /*return*/, bcryptjs.hash(str, ENV_1.ENV.slatRound)];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, bcryptjs.genSalt(Number(ENV_1.ENV.slatRound || 10))];
+                    case 1:
+                        salt = _a.sent();
+                        return [4 /*yield*/, bcryptjs.hash(str, salt)];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };
-    BcryptService.prototype.compareHash = function (str, hashString) {
+    BcryptService.prototype.compareHash = function (str, hashStr) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             return tslib_1.__generator(this, function (_a) {
-                return [2 /*return*/, bcryptjs.compare(str, hashString)];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, bcryptjs.compare(str, hashStr)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DepartmentDto = void 0;
 var tslib_1 = require("tslib");
 var class_validator_1 = require("class-validator");
-var base_attribute_dto_1 = require("./../../../@base/base-attribute.dto");
+var base_attribute_dto_1 = require("../../../@base/dto/base-attribute.dto");
 var DepartmentDto = /** @class */ (function (_super) {
     tslib_1.__extends(DepartmentDto, _super);
     function DepartmentDto() {

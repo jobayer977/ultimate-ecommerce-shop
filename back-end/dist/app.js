@@ -7,10 +7,8 @@ var swaggerUiExpress = require("swagger-ui-express");
 var routing_controllers_1 = require("routing-controllers");
 var ENV_1 = require("./ENV");
 var typeorm_1 = require("typeorm");
-var category_entity_1 = require("./app/@modules/ecommarce/entities/category.entity");
 var typeorm_typedi_extensions_1 = require("typeorm-typedi-extensions");
 var customer_entity_1 = require("./app/@modules/customer/entities/customer.entity");
-var department_entity_1 = require("./app/@modules/ecommarce/entities/department.entity");
 var user_entity_1 = require("./app/@modules/user/entities/user.entity");
 var userType_enum_1 = require("./app/@enums/userType.enum");
 var dotenv_1 = require("dotenv");
@@ -27,12 +25,12 @@ var connectDB = function () { return tslib_1.__awaiter(void 0, void 0, void 0, f
                 if (!process.env.DBATABASE_URL) return [3 /*break*/, 2];
                 return [4 /*yield*/, typeorm_1.createConnection({
                         type: "postgres",
-                        url: "postgres://mvqlsmbjohzuys:5d369bee6d76f3193a990a98ba830ca52d5fbc295953407cb221ab90d2498eb0@ec2-34-193-113-223.compute-1.amazonaws.com:5432/dd0j05ms4ol6dm",
+                        url: "postgres://wenptrva:wbM7upOebqxxBDqT5xZVhBgGcbv2bmJj@queenie.db.elephantsql.com/wenptrva",
                         ssl: {
                             rejectUnauthorized: false,
                         },
                         logging: true,
-                        entities: [customer_entity_1.Customer, user_entity_1.User, category_entity_1.CategoryEntity, department_entity_1.DepartmentEntity],
+                        entities: ENV_1.ormConfig.entities,
                     })];
             case 1:
                 _a.sent();
@@ -85,11 +83,11 @@ var app = routing_controllers_1.createExpressServer({
         validationError: { target: false, value: false },
     },
     authorizationChecker: function (action, roles) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-        var request, token, verifiedUser, _a, _b, error_1;
-        return tslib_1.__generator(this, function (_c) {
-            switch (_c.label) {
+        var request, token, verifiedUser, error_1;
+        return tslib_1.__generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
-                    _c.trys.push([0, 3, , 4]);
+                    _a.trys.push([0, 2, , 3]);
                     request = action.request;
                     token = request.headers.authorization;
                     if (!token)
@@ -100,19 +98,15 @@ var app = routing_controllers_1.createExpressServer({
                         throw new routing_controllers_1.UnauthorizedError("UnAuthorized User");
                     }
                     //*  Role Verify
-                    _b = (_a = console).log;
-                    return [4 /*yield*/, roleVerify(roles, token)];
+                    return [4 /*yield*/, roleVerify(roles, token)]; // Return true or Error exception
                 case 1:
                     //*  Role Verify
-                    _b.apply(_a, [_c.sent()]);
-                    return [4 /*yield*/, roleVerify(roles, token)]; // Return true or Error exception
-                case 2:
-                    _c.sent(); // Return true or Error exception
+                    _a.sent(); // Return true or Error exception
                     return [2 /*return*/, true];
-                case 3:
-                    error_1 = _c.sent();
+                case 2:
+                    error_1 = _a.sent();
                     throw new routing_controllers_1.UnauthorizedError("UnAuthorized Auth");
-                case 4: return [2 /*return*/];
+                case 3: return [2 /*return*/];
             }
         });
     }); },

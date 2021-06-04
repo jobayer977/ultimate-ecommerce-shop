@@ -11,7 +11,7 @@ var DepartmentRepository = /** @class */ (function (_super) {
     function DepartmentRepository() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    DepartmentRepository.prototype.filter = function (baseFilterDto) {
+    DepartmentRepository.prototype.filter = function (baseFilterDto, relations) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             var searchTerm, page, pOption, query, result, error_1;
             return tslib_1.__generator(this, function (_a) {
@@ -19,12 +19,12 @@ var DepartmentRepository = /** @class */ (function (_super) {
                     case 0:
                         searchTerm = baseFilterDto.searchTerm, page = baseFilterDto.page;
                         pOption = paginate_util_1.paginationOptions(baseFilterDto);
-                        query = this.createQueryBuilder();
+                        query = this.createQueryBuilder("department").leftJoinAndSelect("department.categories", "category");
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
                         if (searchTerm) {
-                            query.where("name ILIKE :searchTerm OR slug ILIKE :searchTerm", {
+                            query.where("department.name ILIKE :searchTerm OR department.slug ILIKE :searchTerm", {
                                 searchTerm: "%" + searchTerm + "%",
                             });
                         }
@@ -38,7 +38,7 @@ var DepartmentRepository = /** @class */ (function (_super) {
                         return [2 /*return*/, paginate_util_1.paginate(pOption, result)];
                     case 3:
                         error_1 = _a.sent();
-                        throw new routing_controllers_1.BadRequestError(error_1);
+                        throw new routing_controllers_1.BadRequestError(error_1.message);
                     case 4: return [2 /*return*/];
                 }
             });

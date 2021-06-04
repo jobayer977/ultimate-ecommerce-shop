@@ -4,28 +4,15 @@ exports.DepartmentController = void 0;
 var tslib_1 = require("tslib");
 var routing_controllers_1 = require("routing-controllers");
 var typeorm_typedi_extensions_1 = require("typeorm-typedi-extensions");
-var base_filter_dto_1 = require("../../../@base/base-filter.dto");
-var userType_enum_1 = require("./../../../@enums/userType.enum");
+var base_filter_dto_1 = require("../../../@base/dto/base-filter.dto");
 var department_dto_1 = require("./../dtos/department.dto");
 var department_service_1 = require("./../services/department.service");
 var DepartmentController = /** @class */ (function () {
     function DepartmentController() {
+        this.relations = ["categories"];
         this.departmentService = typeorm_typedi_extensions_1.Container.get(department_service_1.DepartmentService);
     }
-    DepartmentController.prototype.filter = function (baseFilterDto) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
-                return [2 /*return*/, this.departmentService.filter(baseFilterDto)];
-            });
-        });
-    };
-    DepartmentController.prototype.findById = function (id) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
-                return [2 /*return*/, this.departmentService.findById(id)];
-            });
-        });
-    };
+    // @Authorized([UserType.ADMIN])
     DepartmentController.prototype.create = function (departmentDto) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             return tslib_1.__generator(this, function (_a) {
@@ -33,20 +20,43 @@ var DepartmentController = /** @class */ (function () {
             });
         });
     };
+    DepartmentController.prototype.filter = function (baseFilterDto) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            return tslib_1.__generator(this, function (_a) {
+                return [2 /*return*/, this.departmentService.filter(baseFilterDto, this.relations)];
+            });
+        });
+    };
+    DepartmentController.prototype.findById = function (id) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            return tslib_1.__generator(this, function (_a) {
+                return [2 /*return*/, this.departmentService.findById(id, this.relations)];
+            });
+        });
+    };
+    // @Authorized([UserType.ADMIN])
     DepartmentController.prototype.update = function (id, departmentDto) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             return tslib_1.__generator(this, function (_a) {
-                return [2 /*return*/, this.departmentService.update(id, departmentDto)];
+                return [2 /*return*/, this.departmentService.update(id, departmentDto, this.relations)];
             });
         });
     };
+    // @Authorized([UserType.ADMIN])
     DepartmentController.prototype.delete = function (id) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             return tslib_1.__generator(this, function (_a) {
-                return [2 /*return*/, this.departmentService.delete(id)];
+                return [2 /*return*/, this.departmentService.delete(id, this.relations)];
             });
         });
     };
+    tslib_1.__decorate([
+        routing_controllers_1.Post(""),
+        tslib_1.__param(0, routing_controllers_1.Body()),
+        tslib_1.__metadata("design:type", Function),
+        tslib_1.__metadata("design:paramtypes", [department_dto_1.DepartmentDto]),
+        tslib_1.__metadata("design:returntype", Promise)
+    ], DepartmentController.prototype, "create", null);
     tslib_1.__decorate([
         routing_controllers_1.Get("/filter"),
         tslib_1.__param(0, routing_controllers_1.QueryParams()),
@@ -62,15 +72,6 @@ var DepartmentController = /** @class */ (function () {
         tslib_1.__metadata("design:returntype", Promise)
     ], DepartmentController.prototype, "findById", null);
     tslib_1.__decorate([
-        routing_controllers_1.Authorized([userType_enum_1.UserType.ADMIN]),
-        routing_controllers_1.Post(""),
-        tslib_1.__param(0, routing_controllers_1.Body()),
-        tslib_1.__metadata("design:type", Function),
-        tslib_1.__metadata("design:paramtypes", [department_dto_1.DepartmentDto]),
-        tslib_1.__metadata("design:returntype", Promise)
-    ], DepartmentController.prototype, "create", null);
-    tslib_1.__decorate([
-        routing_controllers_1.Authorized([userType_enum_1.UserType.ADMIN]),
         routing_controllers_1.Put("/:id"),
         tslib_1.__param(0, routing_controllers_1.Param("id")), tslib_1.__param(1, routing_controllers_1.Body()),
         tslib_1.__metadata("design:type", Function),
@@ -78,7 +79,6 @@ var DepartmentController = /** @class */ (function () {
         tslib_1.__metadata("design:returntype", Promise)
     ], DepartmentController.prototype, "update", null);
     tslib_1.__decorate([
-        routing_controllers_1.Authorized([userType_enum_1.UserType.ADMIN]),
         routing_controllers_1.Delete("/:id"),
         tslib_1.__param(0, routing_controllers_1.Param("id")),
         tslib_1.__metadata("design:type", Function),

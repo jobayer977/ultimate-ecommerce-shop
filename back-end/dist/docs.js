@@ -5,10 +5,13 @@ require("reflect-metadata");
 var auth_change_passwordcontroller_1 = require("./app/@modules/auth/controllers/auth-change-passwordcontroller");
 var auth_login_controller_1 = require("./app/@modules/auth/controllers/auth-login.controller");
 var auth_register_controller_1 = require("./app/@modules/auth/controllers/auth-register.controller");
+var banner_controller_1 = require("./app/@modules/ecommarce/controllers/banner.controller");
+var brand_controller_1 = require("./app/@modules/ecommarce/controllers/brand.controller");
 var category_controller_1 = require("./app/@modules/ecommarce/controllers/category.controller");
 var customer_controller_1 = require("./app/@modules/customer/controllers/customer.controller");
 var department_controller_1 = require("./app/@modules/ecommarce/controllers/department.controller");
 var ENV_1 = require("./ENV");
+var product_controller_1 = require("./app/@modules/ecommarce/controllers/product.controller");
 var user_controller_1 = require("./app/@modules/user/controllers/user.controller");
 var routing_controllers_1 = require("routing-controllers");
 var routing_controllers_openapi_1 = require("routing-controllers-openapi");
@@ -28,6 +31,9 @@ var _controllers = [
     customer_controller_1.CustomerController,
     department_controller_1.DepartmentController,
     category_controller_1.CategoryController,
+    brand_controller_1.BrandController,
+    banner_controller_1.BannerController,
+    product_controller_1.ProductController,
 ];
 exports.spec = routing_controllers_openapi_1.routingControllersToSpec(storage, {
     controllers: _controllers,
