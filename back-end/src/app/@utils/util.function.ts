@@ -5,3 +5,6 @@ export function generateOtpCode() {
 		return value.toString(8).toUpperCase()
 	})
 }
+export function toBool(value: string): boolean {
+	return value === "true"
+}

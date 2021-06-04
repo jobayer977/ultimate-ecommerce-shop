@@ -1,12 +1,14 @@
 import * as path from "path"
 
 import { config } from "dotenv"
+import { toBool } from "./app/@utils/util.function"
 
 config({
 	path: path.join(
 		`${process.cwd()}/${process.env.NODE_ENV || "development"}.env`
 	),
 })
+
 export const ENV = {
 	port: process.env.PORT,
 
@@ -33,8 +35,10 @@ export const ormConfig: any = {
 	username: process.env.DB_USERNAME,
 	password: process.env.DB_PASSWORD,
 	database: process.env.DB_DATABASE,
-	synchronize: process.env.DB_SYNCHRONIZE,
-	// logging: process.env.DB_LOGGING,
-	logging: true,
+	synchronize: toBool(process.env.DB_SYNCHRONIZE),
+	logging: toBool(process.env.DB_LOGGING),
+	ssl: {
+		rejectUnauthorized: toBool(process.env.REJECT_UNAUTHORIZED),
+	},
 	entities: [__dirname + "/app/@modules/**/**/*.entity{.ts,.js}"],
 }
