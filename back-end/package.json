@@ -6,8 +6,8 @@
 	"scripts": {
 		"start": "node src/app.ts",
 		"start:dev": "NODE_ENV=development nodemon src/app.ts",
-		"start:prod": "npm install && tsc && NODE_ENV=production node dist/app.js",
-		"build": "tsc"
+		"start:prod": "NODE_ENV=production node dist/app.js",
+		"build": "npm install && tsc"
 	},
 	"keywords": [],
 	"author": "",

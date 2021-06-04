@@ -8,8 +8,9 @@
 		"npm": "6.14.13"
 	},
 	"scripts": {
-		"backEnd": "cd back-end && npm run start:prod",
-		"start": "concurrently \"npm install\" \"npm run backEnd\""
+		"core:start": "cd back-end && npm run start:prod",
+		"core:build": "cd back-end && npm run build",
+		"start": "concurrently \"npm run core:build\" \"npm run core:start\""
 	},
 	"repository": {
 		"type": "git",
