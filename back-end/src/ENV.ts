@@ -4,10 +4,9 @@ import { config } from "dotenv"
 
 config({
 	path: path.join(
-		`${process.cwd()}/config/${process.env.NODE_ENV || "development"}.env`
+		`${process.cwd()}/${process.env.NODE_ENV || "development"}.env`
 	),
 })
-
 export const ENV = {
 	port: process.env.PORT,
 
