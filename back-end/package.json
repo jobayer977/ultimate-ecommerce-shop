@@ -7,7 +7,7 @@
 		"start": "node src/app.ts",
 		"start:dev": "NODE_ENV=development nodemon src/app.ts",
 		"start:prod": "NODE_ENV=production node dist/app.js",
-		"build": "npm install && tsc"
+		"build": "tsc"
 	},
 	"keywords": [],
 	"author": "",
