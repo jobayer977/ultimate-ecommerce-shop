@@ -29,7 +29,7 @@ const connectDB = async () => {
 	if (process.env.DBATABASE_URL) {
 		await createConnection({
 			type: "postgres",
-			url: "postgres://wenptrva:wbM7upOebqxxBDqT5xZVhBgGcbv2bmJj@queenie.db.elephantsql.com/wenptrva",
+			url: process.env.DBATABASE_URL,
 			ssl: {
 				rejectUnauthorized: false,
 			},
