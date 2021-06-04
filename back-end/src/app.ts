@@ -26,20 +26,18 @@ useContainer(Container)
 config()
 //*  Database Connection
 const connectDB = async () => {
-	const connectDB = async () => {
-		if (process.env.DBATABASE_URL) {
-			await createConnection({
-				type: "postgres",
-				url: "postgres://mvqlsmbjohzuys:5d369bee6d76f3193a990a98ba830ca52d5fbc295953407cb221ab90d2498eb0@ec2-34-193-113-223.compute-1.amazonaws.com:5432/dd0j05ms4ol6dm",
-				ssl: {
-					rejectUnauthorized: false,
-				},
-				logging: true,
-				entities: ormConfig.entities,
-			})
-		} else {
-			await createConnection(ormConfig)
-		}
+	if (process.env.DBATABASE_URL) {
+		await createConnection({
+			type: "postgres",
+			url: "postgres://wenptrva:wbM7upOebqxxBDqT5xZVhBgGcbv2bmJj@queenie.db.elephantsql.com/wenptrva",
+			ssl: {
+				rejectUnauthorized: false,
+			},
+			logging: true,
+			entities: ormConfig.entities,
+		})
+	} else {
+		await createConnection(ormConfig)
 	}
 }
 
