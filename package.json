@@ -8,7 +8,8 @@
 		"npm": "6.14.13"
 	},
 	"scripts": {
-		"start": "cd back-end && npm run start:prod"
+		"backEnd": "cd back-end && npm run start:prod",
+		"start": "concurrently \"npm run backEnd\""
 	},
 	"repository": {
 		"type": "git",
@@ -22,6 +23,7 @@
 	},
 	"homepage": "https://github.com/Jobayerdev/ishop#readme",
 	"dependencies": {
+		"concurrently": "^6.2.0",
 		"tslib": "^2.2.0"
 	}
 }

@@ -26,19 +26,8 @@ useContainer(Container)
 config()
 //*  Database Connection
 const connectDB = async () => {
-	if (process.env.NODE_ENV === "production") {
-		await createConnection({
-			type: "postgres",
-			url: "postgres://wenptrva:wbM7upOebqxxBDqT5xZVhBgGcbv2bmJj@queenie.db.elephantsql.com/wenptrva",
-			ssl: {
-				rejectUnauthorized: false,
-			},
-			logging: true,
-			entities: ormConfig.entities,
-		})
-	} else {
-		await createConnection(ormConfig)
-	}
+	console.log(ormConfig)
+	await createConnection(ormConfig)
 }
 
 //* Auth Role Verify

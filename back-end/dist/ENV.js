@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ormConfig = exports.ENV = void 0;
 var path = require("path");
 var dotenv_1 = require("dotenv");
+var util_function_1 = require("./app/@utils/util.function");
 dotenv_1.config({
     path: path.join(process.cwd() + "/" + (process.env.NODE_ENV || "development") + ".env"),
 });
@@ -29,9 +30,11 @@ exports.ormConfig = {
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    synchronize: process.env.DB_SYNCHRONIZE,
-    // logging: process.env.DB_LOGGING,
-    logging: true,
+    synchronize: util_function_1.toBool(process.env.DB_SYNCHRONIZE),
+    logging: util_function_1.toBool(process.env.DB_LOGGING),
+    ssl: {
+        rejectUnauthorized: util_function_1.toBool(process.env.REJECT_UNAUTHORIZED),
+    },
     entities: [__dirname + "/app/@modules/**/**/*.entity{.ts,.js}"],
 };
 //# sourceMappingURL=ENV.js.map

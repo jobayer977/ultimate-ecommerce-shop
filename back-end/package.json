@@ -5,8 +5,8 @@
 	"main": "dist/app.js",
 	"scripts": {
 		"start": "node src/app.ts",
-		"start:dev": "nodemon src/app.ts",
-		"start:prod": "npm install && node dist/app.js",
+		"start:dev": "NODE_ENV=development nodemon src/app.ts",
+		"start:prod": "npm install && tsc && NODE_ENV=production node dist/app.js",
 		"build": "tsc"
 	},
 	"keywords": [],

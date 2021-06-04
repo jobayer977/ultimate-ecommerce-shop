@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateOtpCode = void 0;
+exports.toBool = exports.generateOtpCode = void 0;
 function generateOtpCode() {
     return "xxxxx".replace(/[xy]/g, function (char) {
         var randomNumber = (Math.random() * 8) | 0;
@@ -9,4 +9,8 @@ function generateOtpCode() {
     });
 }
 exports.generateOtpCode = generateOtpCode;
+function toBool(value) {
+    return value === "true";
+}
+exports.toBool = toBool;
 //# sourceMappingURL=util.function.js.map
