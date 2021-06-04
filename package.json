@@ -11,7 +11,7 @@
 		"core:install": "cd back-end && npm install",
 		"core:start": "cd back-end && npm run start:prod",
 		"core:build": "cd back-end && npm run build",
-		"start": "concurrently \"npm run core:install\" \"npm run core:build\" \"npm run core:start\""
+		"start": "concurrently  \"npm install\" \"npm run core:install\" \"npm run core:build\" \"npm run core:start\""
 	},
 	"repository": {
 		"type": "git",
