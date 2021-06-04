@@ -14,3 +14,4 @@
 		"lib": ["es2018", "dom"]
 	}
 }
+// "start": "concurrently  \"npm install\" \"npm run core:install\" \"npm run core:build\" \"npm run core:start\""
