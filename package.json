@@ -8,9 +8,9 @@
 		"npm": "6.14.13"
 	},
 	"scripts": {
-		"core:install": "cd back-end && npm install",
-		"core:start": "cd back-end && npm install && npm run start:prod",
-		"core:build": "cd back-end && npm run build",
+		"core:install": "cd core && npm install",
+		"core:start": "cd core && npm install && npm run start:prod",
+		"core:build": "cd core && npm run build",
 		"start": "npm install && npm run core:start"
 	},
 	"repository": {
