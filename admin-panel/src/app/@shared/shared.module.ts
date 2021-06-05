@@ -1,5 +1,6 @@
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 
+import { AntDesignModule } from 'src/app/@core/ant-design.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
     NzMenuModule,
     RouterModule,
     IconsProviderModule,
+    AntDesignModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
 })

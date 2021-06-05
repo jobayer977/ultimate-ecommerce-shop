@@ -44,13 +44,27 @@
   <nz-layout>
     <nz-header>
       <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-          <i
-            class="trigger"
-            nz-icon
-            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-          ></i>
-        </span>
+        <div class="custom-app-header">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i
+              class="trigger"
+              nz-icon
+              [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+          </span>
+          <nz-button-group
+            style="padding-right: 24px"
+            nz-dropdown
+            [nzDropdownMenu]="menu2"
+            nzPlacement="bottomRight"
+            nzTrigger="click"
+          >
+            <button nz-button>Jobayer</button>
+            <button nz-button>
+              <i nz-icon nzType="user"></i>
+            </button>
+          </nz-button-group>
+        </div>
       </div>
     </nz-header>
     <nz-content>
@@ -62,3 +76,11 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
+
+<nz-dropdown-menu #menu2="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>My Account</li>
+    <li nz-menu-item>Security</li>
+    <li nz-menu-item (click)="logout()">Logout</li>
+  </ul>
+</nz-dropdown-menu>

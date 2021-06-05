@@ -78,3 +78,18 @@ nz-content {
   background: #fff;
   height: 100%;
 }
+.custom-app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-app-header {
+  .header-trigger {
+    display: flex;
+  }
+
+  .ant-dropdown-button {
+    padding-right: 24px;
+  }
+}

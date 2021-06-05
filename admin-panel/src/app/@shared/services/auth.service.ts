@@ -24,4 +24,7 @@ export class AuthService {
   isLoggedIn() {
     return Boolean(this.getAuthorizationToken());
   }
+  logout() {
+    window.localStorage.clear();
+  }
 }

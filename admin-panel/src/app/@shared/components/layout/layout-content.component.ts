@@ -1,4 +1,7 @@
+import { AuthService } from 'src/app/@shared/services/auth.service';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { routesConstant } from 'src/app/@constant/routes.constant';
 
 @Component({
   selector: 'app-content-layout',
@@ -8,9 +11,14 @@ import { Component } from '@angular/core';
 export class LayoutContentComponent {
   isCollapsed: any = false;
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   public getRouterOutletState(outlet: any) {
     return outlet.isActivated ? outlet.activatedRoute : '';
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate([routesConstant.adminLogin]);
   }
 }
