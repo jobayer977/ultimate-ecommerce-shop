@@ -15,13 +15,13 @@
       (ngSubmit)="submitForm()"
     >
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your username!">
+        <nz-form-control nzErrorTip="Please input your Phone Number!">
           <nz-input-group nzPrefixIcon="user">
             <input
               type="text"
               nz-input
-              formControlName="userName"
-              placeholder="Username"
+              formControlName="phoneNumber"
+              placeholder="+8801"
             />
           </nz-input-group>
         </nz-form-control>
@@ -49,6 +49,8 @@
         </div>
       </div>
       <button
+        [disabled]="validateForm.status === 'INVALID'"
+        [nzLoading]="isLoading"
         nz-button
         class="login-form-button login-form-margin"
         [nzType]="'primary'"
@@ -56,7 +58,7 @@
         Log in
       </button>
       Or
-      <a [routerLink]="['/auth/admin/register']"> register now! </a>
+      <a [routerLink]="[routesConstant.adminRegister]"> register now! </a>
     </form>
   </div>
 </div>

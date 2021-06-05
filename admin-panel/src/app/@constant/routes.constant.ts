@@ -1,4 +1,5 @@
 export const routesConstant = {
-  adminLogin: '/admin/login',
-  adminRegister: '/admin/register',
+  adminLogin: '/auth/admin/login',
+  adminRegister: '/auth/admin/register',
+  adminDashboard: '/admin',
 };

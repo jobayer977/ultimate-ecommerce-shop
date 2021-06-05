@@ -14,10 +14,10 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [LayoutContentComponent],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     NzLayoutModule,
     NzMenuModule,
     RouterModule,
