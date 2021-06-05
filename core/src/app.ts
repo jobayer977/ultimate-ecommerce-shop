@@ -54,6 +54,7 @@ const roleVerify = async (roles: string[], token: string) => {
 
 //*  App Initialized
 const app = createExpressServer({
+	cors: true,
 	routePrefix: ENV.API_PREFIX,
 	development: false,
 	controllers: [__dirname + "/app/@modules/**/**/*.controller{.ts,.js}"],
