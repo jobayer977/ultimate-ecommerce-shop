@@ -9,9 +9,9 @@
 	},
 	"scripts": {
 		"core:install": "cd back-end && npm install",
-		"core:start": "cd back-end && npm run start:prod",
+		"core:start": "cd back-end && npm install && npm run build && npm run start:prod",
 		"core:build": "cd back-end && npm run build",
-		"start": "npm run core:start"
+		"start": "npm install && npm run core:start"
 	},
 	"repository": {
 		"type": "git",
