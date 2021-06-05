@@ -14,4 +14,9 @@ export class AuthService {
   adminLogin(authCredential: AuthCredential) {
     return this.http.post(`${this.END_POINT}login/admin`, authCredential);
   }
+  filterTest() {
+    return this.http.get(
+      'http://ishopw.herokuapp.com/api/v1/banners/filter?type=SLIDER_CAMPAIGN'
+    );
+  }
 }

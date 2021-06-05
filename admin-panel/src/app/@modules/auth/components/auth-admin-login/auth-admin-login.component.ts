@@ -25,19 +25,22 @@ export class AuthAdminLoginComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    console.log(this.validateForm);
-    this.authService
-      .adminLogin({
-        phoneNumber: '01853753854',
-        password: '123456',
-      })
-      .subscribe(
-        (res: any) => {
-          console.log(res);
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      );
+    // this.authService
+    //   .adminLogin({
+    //     phoneNumber: '01853753854',
+    //     password: '123456',
+    //   })
+    //   .subscribe(
+    //     (res: any) => {
+    //       console.log(res);
+    //     },
+    //     (error: any) => {
+    //       console.log(error);
+    //     }
+    //   );
+
+    this.authService.filterTest().subscribe((res: any) => {
+      console.log(res);
+    });
   }
 }
