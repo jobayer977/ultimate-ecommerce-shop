@@ -63,6 +63,7 @@ var roleVerify = function (roles, token) { return tslib_1.__awaiter(void 0, void
 }); };
 //*  App Initialized
 var app = routing_controllers_1.createExpressServer({
+    cors: true,
     routePrefix: ENV_1.ENV.API_PREFIX,
     development: false,
     controllers: [__dirname + "/app/@modules/**/**/*.controller{.ts,.js}"],
