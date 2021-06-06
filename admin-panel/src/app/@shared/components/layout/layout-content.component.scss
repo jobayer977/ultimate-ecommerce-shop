@@ -13,6 +13,7 @@
   position: relative;
   z-index: 10;
   min-height: 100vh;
+  height: 100%;
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
 }
 
@@ -70,11 +71,11 @@ nz-header {
 }
 
 nz-content {
-  margin: 24px;
+  margin: 15px;
 }
 
 .inner-content {
-  padding: 24px;
+  padding: 20px;
   background: #fff;
   height: 100%;
 }

@@ -1,5 +1,8 @@
+const LAYOUT_PATH = '/content/';
+
 export const routesConstant = {
   adminLogin: '/auth/admin/login',
   adminRegister: '/auth/admin/register',
-  adminDashboard: '/admin',
+  adminDashboard: '/content',
+  userProfile: `${LAYOUT_PATH}users/profile`,
 };

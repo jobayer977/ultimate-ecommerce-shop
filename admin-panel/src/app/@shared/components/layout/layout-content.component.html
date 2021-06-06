@@ -68,6 +68,11 @@
       </div>
     </nz-header>
     <nz-content>
+      <!-- <nz-breadcrumb style="margin-bottom: 18px">
+        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+        <nz-breadcrumb-item>List</nz-breadcrumb-item>
+        <nz-breadcrumb-item>App</nz-breadcrumb-item>
+      </nz-breadcrumb> -->
       <div class="inner-content">
         <main [@fadeInAnimation]="getRouterOutletState(o)">
           <router-outlet #o="outlet"></router-outlet>
@@ -79,7 +84,9 @@
 
 <nz-dropdown-menu #menu2="nzDropdownMenu">
   <ul nz-menu>
-    <li nz-menu-item>My Account</li>
+    <li nz-menu-item routerLinkActive="router-link-active">
+      <a [routerLink]="[routesConstant.userProfile]">My Account</a>
+    </li>
     <li nz-menu-item>Security</li>
     <li nz-menu-item (click)="logout()">Logout</li>
   </ul>

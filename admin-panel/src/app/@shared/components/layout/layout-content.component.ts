@@ -10,6 +10,7 @@ import { routesConstant } from 'src/app/@constant/routes.constant';
 })
 export class LayoutContentComponent {
   isCollapsed: any = false;
+  readonly routesConstant = routesConstant;
 
   constructor(private authService: AuthService, private router: Router) {}
 
