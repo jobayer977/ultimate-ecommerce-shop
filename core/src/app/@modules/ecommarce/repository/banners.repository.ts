@@ -18,7 +18,6 @@ export class BannersRepository extends Repository<BannerEntity> {
 			isHot,
 			isNew,
 		} = bannerFilterDto
-		console.log(bannerFilterDto)
 		const pOption: any = paginationOptions(bannerFilterDto)
 		const query = await this.createQueryBuilder()
 		try {

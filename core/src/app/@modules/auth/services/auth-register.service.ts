@@ -8,6 +8,7 @@ import { User } from "../../user/entities/user.entity"
 import { UserRepository } from "../../user/repository/user.repository"
 import { IFAuthSuccessResponse } from "../interfaces/auth-admin.interface"
 import { Customer } from "./../../customer/entities/customer.entity"
+import { userInfoRepository } from "./../../user/repository/user-profile.repository"
 import { BcryptService } from "./byript.service"
 import { JWTService } from "./jwt.service"
 
@@ -18,6 +19,8 @@ export class AuthRegisterService {
 		private userRepository: UserRepository,
 		@InjectRepository()
 		private customerRepository: CustomerRepository,
+		@InjectRepository()
+		private userProfileRepository: userInfoRepository,
 		private jwtService: JWTService,
 		private bcryptService: BcryptService
 	) {}
@@ -37,10 +40,11 @@ export class AuthRegisterService {
 
 			//* Hash Password
 			const hashPassword = await this.bcryptService.hashString(password)
-
+			const userInfo = await this.userProfileRepository.save({ phoneNumber })
 			const newUser = new User()
 			newUser.phoneNumber = phoneNumber
 			newUser.password = hashPassword
+			newUser.userInfo = userInfo
 			await this.userRepository.save(newUser)
 			const token = await this.jwtService.makeAccessToken({
 				id: newUser?.id,

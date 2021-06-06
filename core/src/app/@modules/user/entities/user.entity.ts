@@ -1,6 +1,7 @@
-import { Column, Entity } from "typeorm"
+import { Column, Entity, JoinColumn, OneToOne } from "typeorm"
 
 import { BaseEntity } from "../../../@base/entities/base.entity"
+import { UserInfo } from "./user-info.entity"
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -10,15 +11,7 @@ export class User extends BaseEntity {
 	@Column({ nullable: true })
 	password?: string
 
-	@Column({ nullable: true })
-	firstName?: string
-
-	@Column({ nullable: true })
-	lastName?: string
-
-	@Column({ nullable: true })
-	gender?: string
-
-	@Column({ nullable: true })
-	email?: string
+	@OneToOne(() => UserInfo, (userInfo) => userInfo.user)
+	@JoinColumn()
+	userInfo: UserInfo
 }

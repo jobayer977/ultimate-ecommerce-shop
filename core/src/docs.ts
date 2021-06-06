@@ -11,12 +11,12 @@ import { DepartmentController } from "./app/@modules/ecommarce/controllers/depar
 import { ENV } from "./ENV"
 import { ProductController } from "./app/@modules/ecommarce/controllers/product.controller"
 import { UserController } from "./app/@modules/user/controllers/user.controller"
+import { UserInfoController } from "./app/@modules/user/controllers/user-info.controller"
 import { getMetadataArgsStorage } from "routing-controllers"
 import { routingControllersToSpec } from "routing-controllers-openapi"
 import { validationMetadatasToSchemas } from "class-validator-jsonschema"
 
 const { defaultMetadataStorage } = require("class-transformer/cjs/storage")
-
 //* DOCS
 const schemas: any = validationMetadatasToSchemas({
 	classTransformerMetadataStorage: defaultMetadataStorage,
@@ -34,6 +34,7 @@ const _controllers = [
 	BrandController,
 	BannerController,
 	ProductController,
+	UserInfoController,
 ]
 export const spec: any = routingControllersToSpec(
 	storage,
@@ -59,3 +60,10 @@ export const spec: any = routingControllersToSpec(
 		},
 	}
 )
+
+// let i = true
+
+// if (i === true) {
+// 	fs.writeFileSync("ishopApi.json", JSON.stringify(spec))
+// 	i = false
+// }

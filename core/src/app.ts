@@ -5,6 +5,7 @@ import * as swaggerUiExpress from "swagger-ui-express"
 
 import {
 	Action,
+	NotFoundError,
 	UnauthorizedError,
 	createExpressServer,
 } from "routing-controllers"
@@ -12,6 +13,7 @@ import { ENV, ormConfig } from "./ENV"
 import { createConnection, getManager, useContainer } from "typeorm"
 
 import { Container } from "typeorm-typedi-extensions"
+import { CustomErroHandler } from "./app/@middlewares/custom-error-handler.middleware"
 import { Customer } from "./app/@modules/customer/entities/customer.entity"
 import { User } from "./app/@modules/user/entities/user.entity"
 import { UserType } from "./app/@enums/userType.enum"
@@ -26,7 +28,6 @@ useContainer(Container)
 config()
 //*  Database Connection
 const connectDB = async () => {
-	console.log(ormConfig)
 	await createConnection(ormConfig)
 }
 
@@ -54,10 +55,15 @@ const roleVerify = async (roles: string[], token: string) => {
 
 //*  App Initialized
 const app = createExpressServer({
+	defaults: {
+		nullResultCode: 404,
+		undefinedResultCode: 204,
+	},
 	cors: true,
 	routePrefix: ENV.API_PREFIX,
 	development: false,
 	controllers: [__dirname + "/app/@modules/**/**/*.controller{.ts,.js}"],
+	middlewares: [CustomErroHandler],
 	validation: {
 		validationError: { target: false, value: false },
 	},
@@ -79,6 +85,24 @@ const app = createExpressServer({
 			return true
 		} catch (error) {
 			throw new UnauthorizedError(`UnAuthorized Auth`)
+		}
+	},
+	currentUserChecker: async (action: Action) => {
+		const entityManager = getManager()
+
+		const { request } = action
+		try {
+			let token = await request.headers.authorization
+			token = token.split(" ")[1]
+
+			const decodedToken: any = jwt.decode(token)
+			const user = await entityManager.findOne(User, {
+				id: decodedToken.id,
+			})
+
+			return user
+		} catch (error) {
+			new NotFoundError("Not Found")
 		}
 	},
 })
