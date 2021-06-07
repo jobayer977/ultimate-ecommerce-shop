@@ -6,7 +6,6 @@ import { AuthRegisterController } from "./app/@modules/auth/controllers/auth-reg
 import { BannerController } from "./app/@modules/ecommarce/controllers/banner.controller"
 import { BrandController } from "./app/@modules/ecommarce/controllers/brand.controller"
 import { CategoryController } from "./app/@modules/ecommarce/controllers/category.controller"
-import { CustomerController } from "./app/@modules/customer/controllers/customer.controller"
 import { DepartmentController } from "./app/@modules/ecommarce/controllers/department.controller"
 import { ENV } from "./ENV"
 import { ProductController } from "./app/@modules/ecommarce/controllers/product.controller"
@@ -28,7 +27,6 @@ const _controllers = [
 	AuthRegisterController,
 	AuthChangePasswordController,
 	UserController,
-	CustomerController,
 	DepartmentController,
 	CategoryController,
 	BrandController,

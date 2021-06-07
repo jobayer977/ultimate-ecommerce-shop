@@ -7,13 +7,12 @@ var routing_controllers_1 = require("routing-controllers");
 var typedi_1 = require("typedi");
 var typeorm_typedi_extensions_1 = require("typeorm-typedi-extensions");
 var responsePlaceholder_util_1 = require("../../../../app/@utils/responsePlaceholder.util");
-var customer_repository_1 = require("../../customer/repository/customer.repository");
+var userType_enum_1 = require("../../user/enums/userType.enum");
 var user_repository_1 = require("./../../user/repository/user.repository");
 var byript_service_1 = require("./byript.service");
 var AuthChangePasswordService = /** @class */ (function () {
-    function AuthChangePasswordService(userRepository, customerRepository, bcryptService) {
+    function AuthChangePasswordService(userRepository, bcryptService) {
         this.userRepository = userRepository;
-        this.customerRepository = customerRepository;
         this.bcryptService = bcryptService;
     }
     //! Admin
@@ -24,7 +23,10 @@ var AuthChangePasswordService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         newPassword = data.newPassword, id = data.id, oldPassword = data.oldPassword;
-                        return [4 /*yield*/, this.userRepository.findOne({ id: id })
+                        return [4 /*yield*/, this.userRepository.findOne({
+                                id: id,
+                                type: userType_enum_1.UserTypes.ADMIN,
+                            })
                             //* Verify
                         ];
                     case 1:
@@ -64,7 +66,10 @@ var AuthChangePasswordService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         newPassword = data.newPassword, id = data.id, oldPassword = data.oldPassword;
-                        return [4 /*yield*/, this.customerRepository.findOne({ id: id })
+                        return [4 /*yield*/, this.userRepository.findOne({
+                                id: id,
+                                type: userType_enum_1.UserTypes.CUSTOMER,
+                            })
                             //* Verify
                         ];
                     case 1:
@@ -85,7 +90,7 @@ var AuthChangePasswordService = /** @class */ (function () {
                     case 3:
                         newHashPassword = _a.sent();
                         //* Update new Password
-                        return [4 /*yield*/, this.customerRepository.update(id, {
+                        return [4 /*yield*/, this.userRepository.update(id, {
                                 password: newHashPassword,
                             })];
                     case 4:
@@ -99,9 +104,7 @@ var AuthChangePasswordService = /** @class */ (function () {
     AuthChangePasswordService = tslib_1.__decorate([
         typedi_1.Service(),
         tslib_1.__param(0, typeorm_typedi_extensions_1.InjectRepository()),
-        tslib_1.__param(1, typeorm_typedi_extensions_1.InjectRepository()),
         tslib_1.__metadata("design:paramtypes", [user_repository_1.UserRepository,
-            customer_repository_1.CustomerRepository,
             byript_service_1.BcryptService])
     ], AuthChangePasswordService);
     return AuthChangePasswordService;

@@ -2,8 +2,8 @@ import * as _ from "lodash"
 import { NotFoundError } from "routing-controllers"
 import { Service } from "typedi"
 import { InjectRepository } from "typeorm-typedi-extensions"
-import { CustomerRepository } from "../../customer/repository/customer.repository"
 import { User } from "../../user/entities/user.entity"
+import { UserTypes } from "../../user/enums/userType.enum"
 import { UserRepository } from "../../user/repository/user.repository"
 import { AuthCredentialDto } from "../dto/auth-credentials.dto"
 import { BcryptService } from "./byript.service"
@@ -13,8 +13,6 @@ export class AuthLoginService {
 	constructor(
 		@InjectRepository()
 		private userRepository: UserRepository,
-		@InjectRepository()
-		private customerRepository: CustomerRepository,
 		private jwtService: JWTService,
 		private bcryptService: BcryptService
 	) {}
@@ -24,7 +22,10 @@ export class AuthLoginService {
 		const { password, phoneNumber } = credential
 
 		//* Get User From DB
-		const user: User = await this.userRepository.findOne({ phoneNumber })
+		const user: User = await this.userRepository.findOne({
+			phoneNumber,
+			type: UserTypes.ADMIN,
+		})
 
 		//* Verify User
 		if (_.isEmpty(user)) {
@@ -51,25 +52,29 @@ export class AuthLoginService {
 	//! Customer
 	async customer(credential: AuthCredentialDto) {
 		const { password, phoneNumber } = credential
+
 		//* Get User From DB
-		const customer = await this.customerRepository.findOne({ phoneNumber })
+		const user: User = await this.userRepository.findOne({
+			phoneNumber,
+			type: UserTypes.CUSTOMER,
+		})
 
 		//* Verify User
-		if (_.isEmpty(customer)) {
+		if (_.isEmpty(user)) {
 			throw new NotFoundError(`User Not Found with ${phoneNumber} number`)
 		}
 
 		//*Verify Password
 		const isPasswordValid = await this.bcryptService.compareHash(
 			password,
-			customer.password
+			user.password
 		)
 		if (isPasswordValid === false) {
 			throw new NotFoundError(`Password Not matched`)
 		}
 
 		//* Generated Access Token
-		const token = await this.jwtService.makeAccessToken({ id: customer.id })
+		const token = await this.jwtService.makeAccessToken({ id: user.id })
 		return {
 			auth: true,
 			token,

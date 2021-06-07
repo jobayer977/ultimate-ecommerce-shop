@@ -1,6 +1,10 @@
+import { NotFoundError } from "routing-controllers"
 import { Service } from "typedi"
 import { InjectRepository } from "typeorm-typedi-extensions"
-import { updateDataPlaceholder } from "../../../@utils/responsePlaceholder.util"
+import {
+	getSingleDataPlaceholder,
+	updateDataPlaceholder,
+} from "../../../@utils/responsePlaceholder.util"
 import { userInfoRepository } from "../repository/user-info.repository"
 import { UserRepository } from "./../repository/user.repository"
 
@@ -13,7 +17,8 @@ export class UserInfoService {
 		private userRepository: UserRepository
 	) {}
 
-	async updateUserInfo(userProfileDto: any) {
+	//! Update current User info
+	async updateCurrentUser(userProfileDto: any) {
 		const { user } = userProfileDto
 		delete userProfileDto?.user
 		try {
@@ -29,7 +34,42 @@ export class UserInfoService {
 			})
 			return updateDataPlaceholder(payload)
 		} catch (error) {
-			throw new Error(error)
+			throw new Error("Not Found")
 		}
 	}
+
+	//! Get Current User info
+	async getCurrentUserInfo(userId: string) {
+		try {
+			const user = await this.userRepository.findOne(userId, {
+				relations: ["userInfo"],
+			})
+			return getSingleDataPlaceholder(user.userInfo)
+		} catch (error) {
+			throw new NotFoundError("Not Found")
+		}
+	}
+
+	// //!Get One
+	// async findById(id: string) {
+	// 	try {
+	// 		const customer = await this.userRepository.findOne({ id })
+	// 		delete customer.password
+	// 		if (!customer) {
+	// 			throw new NotFoundError(`Not Found`)
+	// 		}
+	// 		return getSingleDataPlaceholder(customer)
+	// 	} catch (error) {
+	// 		throw new NotFoundError("Not Found")
+	// 	}
+	// }
+
+	// async updateCustomer(id: string, customerDto: CustomerDto) {
+	// 	const customer = await this.userRepository.findOne({ id })
+	// 	const updated = await this.userRepository.save({
+	// 		...customer,
+	// 		...customerDto,
+	// 	})
+	// 	return updateDataPlaceholder(updated)
+	// }
 }

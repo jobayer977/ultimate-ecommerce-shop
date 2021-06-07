@@ -18,7 +18,6 @@ var BannersRepository = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         searchTerm = bannerFilterDto.searchTerm, page = bannerFilterDto.page, type = bannerFilterDto.type, isFeatured = bannerFilterDto.isFeatured, isActive = bannerFilterDto.isActive, isPopular = bannerFilterDto.isPopular, isHot = bannerFilterDto.isHot, isNew = bannerFilterDto.isNew;
-                        console.log(bannerFilterDto);
                         pOption = paginate_util_1.paginationOptions(bannerFilterDto);
                         return [4 /*yield*/, this.createQueryBuilder()];
                     case 1:

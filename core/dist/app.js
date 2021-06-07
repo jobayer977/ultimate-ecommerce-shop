@@ -8,9 +8,8 @@ var routing_controllers_1 = require("routing-controllers");
 var ENV_1 = require("./ENV");
 var typeorm_1 = require("typeorm");
 var typeorm_typedi_extensions_1 = require("typeorm-typedi-extensions");
-var customer_entity_1 = require("./app/@modules/customer/entities/customer.entity");
+var custom_error_handler_middleware_1 = require("./app/@middlewares/custom-error-handler.middleware");
 var user_entity_1 = require("./app/@modules/user/entities/user.entity");
-var userType_enum_1 = require("./app/@enums/userType.enum");
 var dotenv_1 = require("dotenv");
 var docs_1 = require("./docs");
 var _ = require("lodash");
@@ -21,9 +20,7 @@ dotenv_1.config();
 var connectDB = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
     return tslib_1.__generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                console.log(ENV_1.ormConfig);
-                return [4 /*yield*/, typeorm_1.createConnection(ENV_1.ormConfig)];
+            case 0: return [4 /*yield*/, typeorm_1.createConnection(ENV_1.ormConfig)];
             case 1:
                 _a.sent();
                 return [2 /*return*/];
@@ -32,41 +29,36 @@ var connectDB = function () { return tslib_1.__awaiter(void 0, void 0, void 0, f
 }); };
 //* Auth Role Verify
 var roleVerify = function (roles, token) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-    var entityManager, decodedToken, admin, customer;
+    var entityManager, decodedToken, user;
     return tslib_1.__generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 entityManager = typeorm_1.getManager();
                 decodedToken = jwt.decode(token);
-                if (!roles.includes(userType_enum_1.UserType.ADMIN)) return [3 /*break*/, 2];
+                if (!(_.isEmpty(decodedToken.id) === false)) return [3 /*break*/, 2];
                 return [4 /*yield*/, entityManager.findOne(user_entity_1.User, {
                         id: decodedToken.id,
                     })];
             case 1:
-                admin = _a.sent();
-                if (_.isEmpty(admin))
+                user = _a.sent();
+                if (roles.includes(String(user.type)) === false)
                     throw new routing_controllers_1.UnauthorizedError("UnAuthorized Admin ");
                 return [2 /*return*/, true];
-            case 2:
-                if (!roles.includes(userType_enum_1.UserType.CUSTOMER)) return [3 /*break*/, 4];
-                return [4 /*yield*/, entityManager.findOne(customer_entity_1.Customer, {
-                        id: decodedToken.id,
-                    })];
-            case 3:
-                customer = _a.sent();
-                if (_.isEmpty(customer))
-                    throw new routing_controllers_1.UnauthorizedError("UnAuthorized Admin ");
-                return [2 /*return*/, true];
-            case 4: return [2 /*return*/];
+            case 2: throw new routing_controllers_1.UnauthorizedError("UnAuthorized Admin ");
         }
     });
 }); };
 //*  App Initialized
 var app = routing_controllers_1.createExpressServer({
+    defaults: {
+        nullResultCode: 404,
+        undefinedResultCode: 204,
+    },
     cors: true,
     routePrefix: ENV_1.ENV.API_PREFIX,
     development: false,
     controllers: [__dirname + "/app/@modules/**/**/*.controller{.ts,.js}"],
+    middlewares: [custom_error_handler_middleware_1.CustomErroHandler],
     validation: {
         validationError: { target: false, value: false },
     },
@@ -95,6 +87,35 @@ var app = routing_controllers_1.createExpressServer({
                     error_1 = _a.sent();
                     throw new routing_controllers_1.UnauthorizedError("UnAuthorized Auth");
                 case 3: return [2 /*return*/];
+            }
+        });
+    }); },
+    currentUserChecker: function (action) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+        var entityManager, request, token, decodedToken, user, error_2;
+        return tslib_1.__generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    entityManager = typeorm_1.getManager();
+                    request = action.request;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 4, , 5]);
+                    return [4 /*yield*/, request.headers.authorization];
+                case 2:
+                    token = _a.sent();
+                    token = token.split(" ")[1];
+                    decodedToken = jwt.decode(token);
+                    return [4 /*yield*/, entityManager.findOne(user_entity_1.User, {
+                            id: decodedToken.id,
+                        })];
+                case 3:
+                    user = _a.sent();
+                    return [2 /*return*/, user];
+                case 4:
+                    error_2 = _a.sent();
+                    new routing_controllers_1.NotFoundError("Not Found");
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
             }
         });
     }); },

@@ -14,7 +14,6 @@ import { createConnection, getManager, useContainer } from "typeorm"
 
 import { Container } from "typeorm-typedi-extensions"
 import { CustomErroHandler } from "./app/@middlewares/custom-error-handler.middleware"
-import { Customer } from "./app/@modules/customer/entities/customer.entity"
 import { User } from "./app/@modules/user/entities/user.entity"
 import { UserType } from "./app/@enums/userType.enum"
 import { config } from "dotenv"
@@ -37,19 +36,15 @@ const roleVerify = async (roles: string[], token: string) => {
 	const decodedToken: any = jwt.decode(token)
 
 	// Role wise find DB return true or error exception
-	if (roles.includes(UserType.ADMIN)) {
-		const admin = await entityManager.findOne(User, {
+	if (_.isEmpty(decodedToken.id) === false) {
+		const user = await entityManager.findOne(User, {
 			id: decodedToken.id,
 		})
-
-		if (_.isEmpty(admin)) throw new UnauthorizedError("UnAuthorized Admin ")
+		if (roles.includes(String(user.type)) === false)
+			throw new UnauthorizedError("UnAuthorized Admin ")
 		return true
-	} else if (roles.includes(UserType.CUSTOMER)) {
-		const customer = await entityManager.findOne(Customer, {
-			id: decodedToken.id,
-		})
-		if (_.isEmpty(customer)) throw new UnauthorizedError("UnAuthorized Admin ")
-		return true
+	} else {
+		throw new UnauthorizedError("UnAuthorized Admin ")
 	}
 }
 

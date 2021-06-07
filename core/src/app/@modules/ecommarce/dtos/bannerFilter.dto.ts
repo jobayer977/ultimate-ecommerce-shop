@@ -1,9 +1,9 @@
 import { IsIn, IsNotEmpty } from "class-validator"
 
 import { BannerType } from "../enums/banner.enums"
-import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
+import { BaseAttributeFilterDto } from "../../../@base/dto/base-filter.dto"
 
-export class BannerFilterDto extends BaseFilterDto {
+export class BannerFilterDto extends BaseAttributeFilterDto {
 	@IsNotEmpty({ message: `$Property is Required` })
 	@IsIn([
 		BannerType.SLIDER_CAMPAIGN,

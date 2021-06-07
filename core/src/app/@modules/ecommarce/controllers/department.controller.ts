@@ -9,7 +9,7 @@ import {
 	QueryParams,
 } from "routing-controllers"
 import { Container } from "typeorm-typedi-extensions"
-import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
+import { BaseAttributeFilterDto } from "../../../@base/dto/base-filter.dto"
 import { DepartmentDto } from "./../dtos/department.dto"
 import { DepartmentService } from "./../services/department.service"
 
@@ -25,7 +25,7 @@ export class DepartmentController {
 	}
 
 	@Get("/filter")
-	async filter(@QueryParams() baseFilterDto: BaseFilterDto) {
+	async filter(@QueryParams() baseFilterDto: BaseAttributeFilterDto) {
 		return this.departmentService.filter(baseFilterDto, this.relations)
 	}
 

@@ -9,7 +9,7 @@ import {
 	QueryParams,
 } from "routing-controllers"
 import { Container } from "typedi"
-import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
+import { BaseAttributeFilterDto } from "../../../@base/dto/base-filter.dto"
 import { ProductDto } from "./../dtos/product.dto"
 import { ProductService } from "./../services/product.service"
 
@@ -24,7 +24,7 @@ export class ProductController {
 	}
 
 	@Get("/filter")
-	async filter(@QueryParams() baseFilterDto: BaseFilterDto) {
+	async filter(@QueryParams() baseFilterDto: BaseAttributeFilterDto) {
 		return this.productService.filter(baseFilterDto, this.relations)
 	}
 

@@ -1,22 +1,25 @@
-import { IsOptional, IsString } from "class-validator"
+import {
+	IsIn,
+	IsNotEmpty,
+	IsOptional,
+	IsString,
+	Matches,
+} from "class-validator"
+
+import { BD_PHONE_NUMBER_PATTERN } from "../../../@utils/regex"
+import { UserTypes } from "./../enums/userType.enum"
 
 export class UserDto {
-	@IsString()
+	@IsNotEmpty()
+	@Matches(BD_PHONE_NUMBER_PATTERN, {
+		message: "Phone Number Must be Bangladeshi",
+	})
 	phoneNumber?: string
 
 	@IsString()
 	@IsOptional()
 	password?: string
 
-	@IsString()
-	firstName?: string
-
-	@IsString()
-	lastName?: string
-
-	@IsString()
-	gender?: string
-
-	@IsString()
-	email?: string
+	@IsIn([UserTypes.ADMIN, UserTypes.CUSTOMER, UserTypes.VENDOR])
+	type?: UserTypes
 }

@@ -1,7 +1,7 @@
 import { BadRequestError, NotFoundError } from "routing-controllers"
 import { Service } from "typedi"
 import { InjectRepository } from "typeorm-typedi-extensions"
-import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
+import { BaseAttributeFilterDto } from "../../../@base/dto/base-filter.dto"
 import {
 	deleteDataPlaceholder,
 	getSingleDataPlaceholder,
@@ -19,7 +19,7 @@ export class BrandService {
 	) {}
 
 	//! Filter
-	async filter(baseFilterDto: BaseFilterDto) {
+	async filter(baseFilterDto: BaseAttributeFilterDto) {
 		return this.brandRepository.filter(baseFilterDto)
 	}
 

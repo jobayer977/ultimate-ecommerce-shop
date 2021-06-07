@@ -1,12 +1,12 @@
 import { EntityRepository, ILike, Repository } from "typeorm"
 import { paginate, paginationOptions } from "../../../@utils/paginate.util"
 
-import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
+import { BaseAttributeFilterDto } from "../../../@base/dto/base-filter.dto"
 import { ProductEntity } from "./../entities/product.entity"
 
 @EntityRepository(ProductEntity)
 export class ProductRepository extends Repository<ProductEntity> {
-	async filter(baseFilterDto: BaseFilterDto, relations: string[]) {
+	async filter(baseFilterDto: BaseAttributeFilterDto, relations: string[]) {
 		const { searchTerm, isFeatured, isActive, isHot, isNew, isPopular } =
 			baseFilterDto
 		const pOption: any = paginationOptions(baseFilterDto)

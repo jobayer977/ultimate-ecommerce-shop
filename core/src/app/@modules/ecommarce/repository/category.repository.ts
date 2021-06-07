@@ -2,12 +2,12 @@ import { EntityRepository, Repository } from "typeorm"
 import { paginate, paginationOptions } from "../../../@utils/paginate.util"
 
 import { BadRequestError } from "routing-controllers"
-import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
+import { BaseAttributeFilterDto } from "../../../@base/dto/base-filter.dto"
 import { CategoryEntity } from "../entities/category.entity"
 
 @EntityRepository(CategoryEntity)
 export class CategoryRepository extends Repository<CategoryEntity> {
-	async filter(baseFilterDto: BaseFilterDto) {
+	async filter(baseFilterDto: BaseAttributeFilterDto) {
 		const { searchTerm, page } = baseFilterDto
 		const pOption: any = paginationOptions(baseFilterDto)
 		const query = this.createQueryBuilder()

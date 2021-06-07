@@ -7,7 +7,7 @@ var BaseEntity = /** @class */ (function () {
     function BaseEntity() {
     }
     tslib_1.__decorate([
-        typeorm_1.PrimaryGeneratedColumn(),
+        typeorm_1.PrimaryGeneratedColumn("uuid"),
         tslib_1.__metadata("design:type", String)
     ], BaseEntity.prototype, "id", void 0);
     tslib_1.__decorate([

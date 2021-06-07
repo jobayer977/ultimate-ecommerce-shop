@@ -3,7 +3,7 @@ import { NotFoundError } from "routing-controllers"
 import { Service } from "typedi"
 import { InjectRepository } from "typeorm-typedi-extensions"
 import { successPlaceholder } from "../../../../app/@utils/responsePlaceholder.util"
-import { CustomerRepository } from "../../customer/repository/customer.repository"
+import { UserTypes } from "../../user/enums/userType.enum"
 import { UserRepository } from "./../../user/repository/user.repository"
 import { AuthChangePasswordDto } from "./../dto/auth-change-password.dto"
 import { BcryptService } from "./byript.service"
@@ -13,8 +13,6 @@ export class AuthChangePasswordService {
 	constructor(
 		@InjectRepository()
 		private userRepository: UserRepository,
-		@InjectRepository()
-		private customerRepository: CustomerRepository,
 		private bcryptService: BcryptService
 	) {}
 
@@ -22,7 +20,10 @@ export class AuthChangePasswordService {
 	async admin(data: AuthChangePasswordDto): Promise<any> {
 		const { newPassword, id, oldPassword } = data
 		//*Get User From DB
-		const user = await this.userRepository.findOne({ id })
+		const user = await this.userRepository.findOne({
+			id,
+			type: UserTypes.ADMIN,
+		})
 
 		//* Verify
 		if (_.isEmpty(user)) {
@@ -50,7 +51,10 @@ export class AuthChangePasswordService {
 	async customer(data: AuthChangePasswordDto): Promise<any> {
 		const { newPassword, id, oldPassword } = data
 		//*Get Customer From DB
-		const customer = await this.customerRepository.findOne({ id })
+		const customer = await this.userRepository.findOne({
+			id,
+			type: UserTypes.CUSTOMER,
+		})
 
 		//* Verify
 		if (_.isEmpty(customer)) {
@@ -68,7 +72,7 @@ export class AuthChangePasswordService {
 		const newHashPassword = await this.bcryptService.hashString(newPassword)
 
 		//* Update new Password
-		await this.customerRepository.update(id, {
+		await this.userRepository.update(id, {
 			password: newHashPassword,
 		})
 		return successPlaceholder("Password Change Success")

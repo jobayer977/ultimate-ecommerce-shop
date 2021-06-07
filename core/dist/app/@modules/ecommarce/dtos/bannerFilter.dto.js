@@ -27,6 +27,6 @@ var BannerFilterDto = /** @class */ (function (_super) {
         tslib_1.__metadata("design:type", String)
     ], BannerFilterDto.prototype, "type", void 0);
     return BannerFilterDto;
-}(base_filter_dto_1.BaseFilterDto));
+}(base_filter_dto_1.BaseAttributeFilterDto));
 exports.BannerFilterDto = BannerFilterDto;
 //# sourceMappingURL=bannerFilter.dto.js.map

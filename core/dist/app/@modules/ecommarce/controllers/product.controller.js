@@ -60,7 +60,7 @@ var ProductController = /** @class */ (function () {
         routing_controllers_1.Get("/filter"),
         tslib_1.__param(0, routing_controllers_1.QueryParams()),
         tslib_1.__metadata("design:type", Function),
-        tslib_1.__metadata("design:paramtypes", [base_filter_dto_1.BaseFilterDto]),
+        tslib_1.__metadata("design:paramtypes", [base_filter_dto_1.BaseAttributeFilterDto]),
         tslib_1.__metadata("design:returntype", Promise)
     ], ProductController.prototype, "filter", null);
     tslib_1.__decorate([
