@@ -55,7 +55,7 @@ export class AuthRegisterService {
 				token,
 			}
 		} catch (error) {
-			throw new NotFoundError(`User Already Exist`)
+			throw new NotFoundError(error.message)
 		}
 	}
 
@@ -66,7 +66,7 @@ export class AuthRegisterService {
 		try {
 			//*Get User From DB
 			const user = await this.userRepository.findOne({ phoneNumber })
-
+			console.log(user)
 			//* Verify User
 			if (_.isEmpty(user) === false) {
 				throw new NotFoundError(`User Already Exist with ${phoneNumber} number`)
@@ -89,7 +89,7 @@ export class AuthRegisterService {
 				token,
 			}
 		} catch (error) {
-			throw new NotFoundError(`User Already Exist`)
+			throw new NotFoundError(error)
 		}
 	}
 }

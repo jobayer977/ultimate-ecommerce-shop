@@ -66,7 +66,7 @@ var AuthRegisterService = /** @class */ (function () {
                             }];
                     case 7:
                         error_1 = _a.sent();
-                        throw new routing_controllers_1.NotFoundError("User Already Exist");
+                        throw new routing_controllers_1.NotFoundError(error_1.message);
                     case 8: return [2 /*return*/];
                 }
             });
@@ -83,11 +83,10 @@ var AuthRegisterService = /** @class */ (function () {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 7, , 8]);
-                        return [4 /*yield*/, this.userRepository.findOne({ phoneNumber: phoneNumber })
-                            //* Verify User
-                        ];
+                        return [4 /*yield*/, this.userRepository.findOne({ phoneNumber: phoneNumber })];
                     case 2:
                         user_2 = _a.sent();
+                        console.log(user_2);
                         //* Verify User
                         if (_.isEmpty(user_2) === false) {
                             throw new routing_controllers_1.NotFoundError("User Already Exist with " + phoneNumber + " number");
@@ -117,7 +116,7 @@ var AuthRegisterService = /** @class */ (function () {
                             }];
                     case 7:
                         error_2 = _a.sent();
-                        throw new routing_controllers_1.NotFoundError("User Already Exist");
+                        throw new routing_controllers_1.NotFoundError(error_2);
                     case 8: return [2 /*return*/];
                 }
             });
