@@ -1,7 +1,7 @@
 import { Service } from "typedi"
 import { InjectRepository } from "typeorm-typedi-extensions"
 import { updateDataPlaceholder } from "../../../@utils/responsePlaceholder.util"
-import { userInfoRepository } from "../repository/user-profile.repository"
+import { userInfoRepository } from "../repository/user-info.repository"
 import { UserRepository } from "./../repository/user.repository"
 
 @Service()
