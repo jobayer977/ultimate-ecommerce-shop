@@ -21,31 +21,35 @@ export class AuthLoginService {
 	async admin(credential: AuthCredentialDto) {
 		const { password, phoneNumber } = credential
 
-		//* Get User From DB
-		const user: User = await this.userRepository.findOne({
-			phoneNumber,
-			type: UserTypes.ADMIN,
-		})
+		try {
+			//* Get User From DB
+			const user: any = await this.userRepository.findOne({
+				phoneNumber,
+				type: UserTypes.ADMIN,
+			})
 
-		//* Verify User
-		if (_.isEmpty(user)) {
-			throw new NotFoundError(`User Not Found with ${phoneNumber} number`)
-		}
+			//* Verify User
+			if (_.isEmpty(user)) {
+				throw new NotFoundError(`User Not Found with ${phoneNumber} number`)
+			}
 
-		//*Verify Password
-		const isPasswordValid = await this.bcryptService.compareHash(
-			password,
-			user.password
-		)
-		if (isPasswordValid === false) {
-			throw new NotFoundError(`Password Not matched`)
-		}
+			//*Verify Password
+			const isPasswordValid = await this.bcryptService.compareHash(
+				password,
+				user.password
+			)
+			if (isPasswordValid === false) {
+				throw new NotFoundError(`Password Not matched`)
+			}
 
-		//* Generated Access Token
-		const token = await this.jwtService.makeAccessToken({ id: user.id })
-		return {
-			auth: true,
-			token,
+			//* Generated Access Token
+			const token = await this.jwtService.makeAccessToken({ id: user.id })
+			return {
+				auth: true,
+				token,
+			}
+		} catch (error) {
+			throw new Error(error)
 		}
 	}
 

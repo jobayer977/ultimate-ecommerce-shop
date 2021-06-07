@@ -24,7 +24,6 @@ export class AuthAdminLoginComponent implements OnInit {
     this.validateForm = this.fb.group({
       phoneNumber: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      remember: [true],
     });
   }
   submitForm(): void {

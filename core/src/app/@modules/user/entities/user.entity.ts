@@ -9,7 +9,7 @@ export class User extends BaseEntity {
 	@Column({ nullable: true, unique: true })
 	phoneNumber?: string
 
-	@Column({ nullable: true, select: false })
+	@Column({ nullable: true })
 	password?: string
 
 	@Column({ nullable: true, type: "enum", enum: UserTypes })
