@@ -19,8 +19,8 @@ registerLocaleData(en);
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

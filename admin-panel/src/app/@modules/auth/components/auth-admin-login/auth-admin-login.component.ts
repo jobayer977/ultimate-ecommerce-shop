@@ -24,15 +24,17 @@ export class AuthAdminLoginComponent implements OnInit {
     this.validateForm = this.fb.group({
       phoneNumber: [null, [Validators.required]],
       password: [null, [Validators.required]],
+      remember: [true],
     });
   }
   submitForm(): void {
+    const { phoneNumber, password } = this.validateForm.value;
     this.isLoading = true;
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    this.authService.adminLogin(this.validateForm.value).subscribe(
+    this.authService.adminLogin({ phoneNumber, password }).subscribe(
       (res: any) => {
         if (res?.token?.token.length) {
           this.isLoading = false;

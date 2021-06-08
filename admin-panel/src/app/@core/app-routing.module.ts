@@ -8,7 +8,7 @@ import { NotFoundComponent } from '../@modules/common/components/not-found.compo
 import { content } from './../@shared/routes/routes';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/auth/admin/login' },
+  { path: '', pathMatch: 'full', redirectTo: 'auth/admin/login' },
 
   {
     path: 'auth',
@@ -32,6 +32,9 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
+      anchorScrolling: 'enabled',
+      scrollPositionRestoration: 'enabled',
+      relativeLinkResolution: 'legacy',
     }),
   ],
   exports: [RouterModule],

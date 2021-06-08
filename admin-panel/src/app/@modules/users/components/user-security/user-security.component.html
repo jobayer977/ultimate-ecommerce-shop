@@ -1,0 +1,124 @@
+<div class="user-profile-page-wrapper">
+  <div class="app-page-header">
+    <nz-page-header nzBackIcon [nzGhost]="false">
+      <nz-page-header-title>Security</nz-page-header-title>
+    </nz-page-header>
+  </div>
+  <ng-container>
+    <div nz-row nzGutter="15">
+      <div nz-col nzSpan="12">
+        <h5 nz-typography>
+          <i nz-icon nzType="phone" nzTheme="outline"></i> Change Phone Number
+        </h5>
+        <nz-divider></nz-divider>
+        <form
+          nz-form
+          [formGroup]="changePhoneNumberForm"
+          (ngSubmit)="onSubmitChangePhoneNumber()"
+        >
+          <nz-form-item>
+            <nz-form-label class="lbl-mi-wdth">Current Number</nz-form-label>
+            <nz-form-control>
+              <input
+                nz-input
+                formControlName="currentNumber"
+                placeholder="Old Number"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label class="lbl-mi-wdth">New Number</nz-form-label>
+            <nz-form-control>
+              <input
+                nz-input
+                formControlName="newNumber"
+                placeholder="New Number"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label class="lbl-mi-wdth">Confirm Number</nz-form-label>
+            <nz-form-control>
+              <input
+                nz-input
+                formControlName="confirmNumber"
+                placeholder="Confirm Number"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <div style="float: right">
+            <button
+              nz-button
+              nzType="primary"
+              type="submit"
+              [disabled]="
+                chnPhnLoading || changePhoneNumberForm.status === 'INVALID'
+              "
+              [nzLoading]="chnPhnLoading"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div nz-row nzGutter="15" style="margin-top: 50px">
+      <div nz-col nzSpan="12">
+        <h5 nz-typography>
+          <i nz-icon nzType="security-scan" nzTheme="outline"></i> Change
+          Password
+        </h5>
+        <nz-divider></nz-divider>
+        <form
+          nz-form
+          [formGroup]="changePasswordForm"
+          (ngSubmit)="onSubmitChangePassword()"
+        >
+          <nz-form-item>
+            <nz-form-label class="lbl-mi-wdth">Old Password</nz-form-label>
+            <nz-form-control>
+              <input
+                nz-input
+                formControlName="oldPassword"
+                placeholder="Old Password"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label class="lbl-mi-wdth">New Password</nz-form-label>
+            <nz-form-control>
+              <input
+                nz-input
+                formControlName="newPassword"
+                placeholder="New Password"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label class="lbl-mi-wdth">Confirm Password</nz-form-label>
+            <nz-form-control>
+              <input
+                nz-input
+                formControlName="confirmPassword"
+                placeholder="Confirm Password"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <div style="float: right">
+            <button
+              nz-button
+              nzType="primary"
+              type="submit"
+              [disabled]="
+                chnPssLoading || changePasswordForm.status === 'INVALID'
+              "
+              [nzLoading]="chnPssLoading"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,112 @@
+<div class="user-profile-page-wrapper">
+  <div class="app-page-header">
+    <nz-page-header nzBackIcon [nzGhost]="false">
+      <nz-page-header-title>Update Profile </nz-page-header-title>
+    </nz-page-header>
+  </div>
+  <ng-container>
+    <form nz-form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
+      <div nz-row>
+        <div
+          nz-col
+          nzSpan="12"
+          nzXs="24"
+          nzSm="24"
+          nzMd="24"
+          nzLg="24"
+          nZXl="24"
+          nZXXl="24"
+        >
+          <div nz-row [nzGutter]="16">
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-label class="lbl-mi-wdth">First Name</nz-form-label>
+                <nz-form-control>
+                  <input
+                    nz-input
+                    formControlName="firstName"
+                    placeholder="First Name"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-label class="lbl-mi-wdth">Last Name</nz-form-label>
+                <nz-form-control>
+                  <input
+                    nz-input
+                    formControlName="lastName"
+                    placeholder="Last Name"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-label class="lbl-mi-wdth">Email</nz-form-label>
+                <nz-form-control>
+                  <input
+                    nz-input
+                    type="email"
+                    formControlName="email"
+                    placeholder="Email"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-label class="lbl-mi-wdth">City</nz-form-label>
+                <nz-form-control>
+                  <input nz-input formControlName="city" placeholder="City" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-label class="lbl-mi-wdth">Country</nz-form-label>
+                <nz-form-control>
+                  <input
+                    nz-input
+                    formControlName="country"
+                    placeholder="Country"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="12">
+              <nz-form-item>
+                <nz-form-label class="lbl-mi-wdth">BirthDate</nz-form-label>
+                <nz-form-control>
+                  <nz-date-picker formControlName="birthDate"></nz-date-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="12">
+              <nz-form-item>
+                <nz-form-label class="lbl-mi-wdth">Gender</nz-form-label>
+                <nz-form-control>
+                  <nz-select id="gender" formControlName="gender">
+                    <nz-option nzValue="Male" nzLabel="Male"></nz-option>
+                    <nz-option nzValue="Female" nzLabel="Female"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="float: right">
+        <button
+          nz-button
+          nzType="primary"
+          disabled="{{ userInfoForm.status === 'INVALID' }}"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </ng-container>
+</div>

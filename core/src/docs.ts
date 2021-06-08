@@ -1,6 +1,6 @@
 import "reflect-metadata"
 
-import { AuthChangePasswordController } from "./app/@modules/auth/controllers/auth-change-passwordcontroller"
+import { AuthChangePasswordController } from "./app/@modules/auth/controllers/auth-change-password.controller"
 import { AuthLoginController } from "./app/@modules/auth/controllers/auth-login.controller"
 import { AuthRegisterController } from "./app/@modules/auth/controllers/auth-register.controller"
 import { BannerController } from "./app/@modules/ecommarce/controllers/banner.controller"

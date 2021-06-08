@@ -31,6 +31,11 @@
 	"homepage": "https://github.com/Jobayerdev/ishop#readme",
 	"dependencies": {
 		"concurrently": "^6.2.0",
+		"jwt-decode": "^3.1.2",
+		"moment": "^2.29.1",
 		"tslib": "^2.2.0"
+	},
+	"devDependencies": {
+		"@types/moment": "^2.13.0"
 	}
 }
