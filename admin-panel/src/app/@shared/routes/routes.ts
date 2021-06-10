@@ -11,4 +11,11 @@ export const content: Routes = [
     loadChildren: () =>
       import('../../@modules/users/users.module').then((m) => m.UsersModule),
   },
+  {
+    path: 'department',
+    loadChildren: () =>
+      import('../../@modules/departments/departments.module').then(
+        (m) => m.DepartmentModule
+      ),
+  },
 ];

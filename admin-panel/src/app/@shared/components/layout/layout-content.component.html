@@ -19,23 +19,44 @@
       nzMode="inline"
       [nzInlineCollapsed]="isCollapsed"
     >
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+      <li nz-menu-item>
+        <i nz-icon nzType="dashboard"></i>
+        <span>Dashboard</span>
+      </li>
+      <li nz-submenu nzTitle="User List" nzIcon="user">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
+            <a [routerLink]="[routesConstant.admins]">Admins</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/auth-admin-register">Monitor</a>
+            <a [routerLink]="[routesConstant.customers]">Customers</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
+          <li
+            nz-menu-item
+            nzMatchRouter
+            [routerLink]="[routesConstant.vendors]"
+          >
+            <a>Vendors</a>
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+      <li nz-submenu nzTitle="Settings" nzIcon="setting">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+            <a [routerLink]="[routesConstant.department]">Departments</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="[routesConstant.customers]">Categories</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="[routesConstant.customers]">Banners</a>
+          </li>
+          <li
+            nz-menu-item
+            nzMatchRouter
+            [routerLink]="[routesConstant.vendors]"
+          >
+            <a>Brands</a>
           </li>
         </ul>
       </li>
@@ -85,7 +106,7 @@
 <nz-dropdown-menu #menu2="nzDropdownMenu">
   <ul nz-menu>
     <li nz-menu-item routerLinkActive="router-link-active">
-      <a [routerLink]="[routesConstant.userProfile]">My Account</a>
+      <a [routerLink]="[routesConstant.userProfile]">My Account </a>
     </li>
     <li nz-menu-item>
       <a [routerLink]="[routesConstant.userSecurity]">Security</a>

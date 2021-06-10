@@ -6,3 +6,18 @@
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.153);
+  background-color: #f5f5f5;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f5f5f5;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #2b282897;
+  border: 2px solid #555555;
+}

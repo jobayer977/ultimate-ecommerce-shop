@@ -1,0 +1,55 @@
+<nz-page-header nzBackIcon [nzGhost]="false">
+  <nz-page-header-title>Customers Users</nz-page-header-title>
+  <nz-page-header-subtitle>Customers Users lists. </nz-page-header-subtitle>
+  <nz-page-header-extra>
+    <nz-input-group nzSize="large" nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input
+        type="text"
+        (keyup)="onChangeSearch($event)"
+        nz-input
+        placeholder="Search..."
+      />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch>Search</button>
+    </ng-template>
+  </nz-page-header-extra>
+</nz-page-header>
+<ng-container>
+  <nz-table
+    #basicTable
+    [nzData]="users.data"
+    [nzBordered]="true"
+    [nzFrontPagination]="false"
+    nzShowPagination
+    [nzTotal]="users.total"
+    [nzPageSize]="users.take"
+    [nzLoading]="loading"
+    (nzPageIndexChange)="onChangePage($event)"
+  >
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Gender</th>
+        <th>BirthDate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.phoneNumber || "N/A" }}</td>
+        <td>
+          {{ data.userInfo.firstName }} {{ data.userInfo.lastName || "N/A" }}
+        </td>
+        <td>{{ data.userInfo.email || "N/A" }}</td>
+        <td>{{ data.userInfo.city || "N/A" }}</td>
+        <td>{{ data.userInfo.country || "N/A" }}</td>
+        <td>{{ data.userInfo.gender || "N/A" }}</td>
+        <td>{{ data.userInfo.birthDate || "N/A" | date }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</ng-container>

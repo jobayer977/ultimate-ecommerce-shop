@@ -1,0 +1,83 @@
+<nz-page-header nzBackIcon [nzGhost]="false">
+  <nz-page-header-title>Departments</nz-page-header-title>
+  <nz-page-header-extra>
+    <nz-input-group nzSize="large" nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input
+        type="text"
+        (keyup)="onChangeSearch($event)"
+        nz-input
+        placeholder="Search..."
+      />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch>Search</button>
+    </ng-template>
+  </nz-page-header-extra>
+</nz-page-header>
+<ng-container>
+  <button
+    nz-button
+    nzType="primary"
+    style="margin-bottom: 15px"
+    (click)="showModal()"
+  >
+    <i nz-icon nzType="edit" nzTheme="outline"></i>Create
+  </button>
+  <nz-table
+    #basicTable
+    [nzData]="departments.data"
+    [nzBordered]="true"
+    [nzFrontPagination]="false"
+    nzShowPagination
+    [nzTotal]="departments?.total"
+    [nzPageSize]="departments?.take"
+    [nzLoading]="loading"
+    (nzPageIndexChange)="onChangePage($event)"
+  >
+    <thead>
+      <tr>
+        <th style="width: 60px">Image</th>
+        <th>Name</th>
+        <th style="text-align: right">CreatedAt</th>
+        <th style="text-align: right">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td><img style="height: 45px" [src]="data.image || 'N/A'" alt="" /></td>
+        <td>{{ data.name || "N/A" }}</td>
+        <td style="text-align: right; width: 200px">
+          {{ data.createdAt || "N/A" | date }}
+        </td>
+        <td style="text-align: right; width: 200px">
+          <button
+            nz-button
+            nzType="primary"
+            style="margin-right: 15px"
+            nzShape="circle"
+          >
+            <i nz-icon nzType="edit" nzTheme="outline"></i>
+          </button>
+          <button nz-button nzType="danger" nzShape="circle">
+            <i nz-icon nzType="delete" nzTheme="outline"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</ng-container>
+
+<!-- Create Department -->
+
+<nz-modal
+  [(nzVisible)]="createModalShow"
+  nzTitle="Create Department"
+  (nzOnCancel)="showModal()"
+>
+  <ng-container *nzModalContent>
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </ng-container>
+</nz-modal>
+<!-- Create Department -->

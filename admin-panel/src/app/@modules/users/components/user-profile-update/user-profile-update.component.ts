@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { BaseResponse } from 'src/app/@shared/interfaces/base.interface';
+import { IFBaseResponse } from 'src/app/@shared/interfaces/base.interface';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { UserInfoService } from './../../../../@shared/services/userInfo.service';
@@ -47,16 +47,18 @@ export class UserProfileUpdateComponent implements OnInit {
 
   //* Get loggedIn user info
   private getUserInfo() {
-    this.userInfoService.getCurrentUserInfo().subscribe((res: BaseResponse) => {
-      this.userInfoForm.patchValue({
-        firstName: res.data.firstName,
-        lastName: res.data.lastName,
-        email: res.data.email,
-        city: res.data.city,
-        country: res.data.country,
-        birthDate: res.data.birthDate,
-        gender: res.data.gender,
+    this.userInfoService
+      .getCurrentUserInfo()
+      .subscribe((res: IFBaseResponse) => {
+        this.userInfoForm.patchValue({
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          email: res.data.email,
+          city: res.data.city,
+          country: res.data.country,
+          birthDate: res.data.birthDate,
+          gender: res.data.gender,
+        });
       });
-    });
   }
 }

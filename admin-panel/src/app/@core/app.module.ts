@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthorizationInterceptor } from '../@shared/interceptor/authorization.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from './../@modules/common/common.module';
 import { FormsModule } from '@angular/forms';
 import { IconsProviderModule } from './icons-provider.module';
 import { NgModule } from '@angular/core';
@@ -21,12 +20,11 @@ registerLocaleData(en);
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     IconsProviderModule,
-    CommonModule,
     SharedModule,
+    AppRoutingModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

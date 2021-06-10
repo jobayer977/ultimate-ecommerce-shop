@@ -1,5 +1,9 @@
+import {
+  IFChangePhoneNumber,
+  IFFilterUser,
+} from '../interfaces/user.interface';
+
 import { HttpClient } from '@angular/common/http';
-import { IFChangePhoneNumber } from '../interfaces/user.interface';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -11,5 +15,14 @@ export class UserService {
 
   changePhoneNumber(payload: IFChangePhoneNumber) {
     return this.http.put(`${this.END_POINT}changePhoneNumber`, payload);
+  }
+
+  filter(option: IFFilterUser) {
+    console.log(option);
+    return this.http.get(
+      `${this.END_POINT}filter?searchTerm=${option.searchTerm || ''}&page=${
+        option.page || ''
+      }&take=${option.take || ''}&type=${option.type || ''}`
+    );
   }
 }
