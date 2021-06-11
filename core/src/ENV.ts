@@ -11,6 +11,7 @@ config({
 
 export const ENV = {
 	port: process.env.PORT,
+	UPLOAD_BASE_PUBLIC_PATH: process.env.UPLOAD_BASE_PUBLIC_PATH,
 
 	API_PREFIX: process.env.API_PREFIX,
 	API_TITLE: process.env.API_TITLE,

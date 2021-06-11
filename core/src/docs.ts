@@ -11,6 +11,7 @@ import { ENV } from "./ENV"
 import { ProductController } from "./app/@modules/ecommarce/controllers/product.controller"
 import { UserController } from "./app/@modules/user/controllers/user.controller"
 import { UserInfoController } from "./app/@modules/user/controllers/user-info.controller"
+import { UtilsController } from "./app/@modules/utils/controllers/util.controller"
 import { getMetadataArgsStorage } from "routing-controllers"
 import { routingControllersToSpec } from "routing-controllers-openapi"
 import { validationMetadatasToSchemas } from "class-validator-jsonschema"
@@ -33,6 +34,7 @@ const _controllers = [
 	BannerController,
 	ProductController,
 	UserInfoController,
+	UtilsController,
 ]
 export const spec: any = routingControllersToSpec(
 	storage,
@@ -60,7 +62,6 @@ export const spec: any = routingControllersToSpec(
 )
 
 // let i = true
-
 // if (i === true) {
 // 	fs.writeFileSync("ishopApi.json", JSON.stringify(spec))
 // 	i = false

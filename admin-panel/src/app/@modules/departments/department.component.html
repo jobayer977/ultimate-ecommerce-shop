@@ -16,10 +16,10 @@
 </nz-page-header>
 <ng-container>
   <button
+    (click)="isOpenCreateDepartmentPopup = true"
     nz-button
     nzType="primary"
     style="margin-bottom: 15px"
-    (click)="showModal()"
   >
     <i nz-icon nzType="edit" nzTheme="outline"></i>Create
   </button>
@@ -50,17 +50,21 @@
           {{ data.createdAt || "N/A" | date }}
         </td>
         <td style="text-align: right; width: 200px">
-          <button
-            nz-button
-            nzType="primary"
-            style="margin-right: 15px"
-            nzShape="circle"
+          <!-- Update Department -->
+          <app-update-department
+            (onUpdated)="updateDataSuccess($event)"
+            [data]="data"
           >
-            <i nz-icon nzType="edit" nzTheme="outline"></i>
-          </button>
-          <button nz-button nzType="danger" nzShape="circle">
-            <i nz-icon nzType="delete" nzTheme="outline"></i>
-          </button>
+          </app-update-department>
+          <a
+            nz-popconfirm
+            nzPopconfirmTitle="Are you sure delete this?"
+            nzPopconfirmPlacement="top"
+            (nzOnConfirm)="onDeleteDepartment(data.id)"
+          >
+            <button nz-button nzType="danger" nzShape="circle">
+              <i nz-icon nzType="delete" nzTheme="outline"></i></button
+          ></a>
         </td>
       </tr>
     </tbody>
@@ -68,16 +72,8 @@
 </ng-container>
 
 <!-- Create Department -->
-
-<nz-modal
-  [(nzVisible)]="createModalShow"
-  nzTitle="Create Department"
-  (nzOnCancel)="showModal()"
->
-  <ng-container *nzModalContent>
-    <p>Content one</p>
-    <p>Content two</p>
-    <p>Content three</p>
-  </ng-container>
-</nz-modal>
-<!-- Create Department -->
+<app-create-department
+  [isOpen]="isOpenCreateDepartmentPopup"
+  (onClose)="onCloseCreatePopup()"
+  (onCreateSuccess)="onCreateSuccess($event)"
+></app-create-department>

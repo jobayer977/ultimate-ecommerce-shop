@@ -12,4 +12,7 @@ export const routesConstant = {
   userSecurity: `${LAYOUT_PATH}users/security`,
 
   department: `${LAYOUT_PATH}department`,
+
+  category: `${LAYOUT_PATH}category`,
+  categoryList: `${LAYOUT_PATH}category/list`,
 };

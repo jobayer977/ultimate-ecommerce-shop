@@ -21,6 +21,7 @@ export class DepartmentController {
 	// @Authorized([UserType.ADMIN])
 	@Post("")
 	async create(@Body() departmentDto: DepartmentDto) {
+		console.log(departmentDto)
 		return this.departmentService.create(departmentDto)
 	}
 

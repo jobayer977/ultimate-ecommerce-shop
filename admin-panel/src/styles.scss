@@ -21,3 +21,16 @@
   background-color: #2b282897;
   border: 2px solid #555555;
 }
+label {
+  font-size: 14px;
+  padding: 5px 0;
+  display: block;
+}
+.attribute-checkbox-lists {
+  list-style: none;
+  padding: 15px 0 !important;
+}
+
+.attribute-checkbox-lists li {
+  margin: 5px 0;
+}

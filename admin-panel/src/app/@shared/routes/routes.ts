@@ -18,4 +18,11 @@ export const content: Routes = [
         (m) => m.DepartmentModule
       ),
   },
+  {
+    path: 'category',
+    loadChildren: () =>
+      import('../../@modules/category/category.module').then(
+        (m) => m.CategoryModule
+      ),
+  },
 ];

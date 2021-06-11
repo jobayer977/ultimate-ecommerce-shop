@@ -1,3 +1,5 @@
+import { diskStorage } from "multer"
+
 export function generateOtpCode() {
 	return "xxxxx".replace(/[xy]/g, function (char) {
 		const randomNumber = (Math.random() * 8) | 0
@@ -7,4 +9,15 @@ export function generateOtpCode() {
 }
 export function toBool(value: string): boolean {
 	return value === "true"
+}
+
+export const storageOptions = diskStorage({
+	destination: "./uploads",
+	filename: (req: any, file: any, callback) => {
+		callback(null, generateFilename(file))
+	},
+})
+
+function generateFilename(file: any) {
+	return `${Date.now()}.jpg`
 }

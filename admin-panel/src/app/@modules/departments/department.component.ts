@@ -5,22 +5,17 @@ import {
 } from './../../@shared/interfaces/base.interface';
 
 import { DepartmentService } from './../../@shared/services/department.service';
+import { IFBaseResponse } from 'src/app/@shared/interfaces/base.interface';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   templateUrl: './department.component.html',
 })
 export class DepartmentComponent implements OnInit {
-  createModalShow = false;
-  loading = false;
-  departments: any = {
-    data: [],
-    page: 0,
-    take: 0,
-    total: 0,
-  };
-
-  constructor(private departmentService: DepartmentService) {}
-
+  constructor(
+    private departmentService: DepartmentService,
+    private nzNotificationService: NzNotificationService
+  ) {}
   ngOnInit(): void {
     this.fetchDepartments({
       page: 1,
@@ -29,6 +24,13 @@ export class DepartmentComponent implements OnInit {
   }
 
   //* Fetch departments
+  loading = false;
+  departments: any = {
+    data: [],
+    page: 0,
+    take: 0,
+    total: 0,
+  };
   private fetchDepartments(option: IFBaseAttributeFilterQuery) {
     this.loading = true;
     this.departmentService
@@ -45,14 +47,41 @@ export class DepartmentComponent implements OnInit {
   }
   onChangeSearch(e: any) {
     this.fetchDepartments({
-      page: Number(this.departments?.page),
+      page: this.departments?.page,
       take: 10,
       searchTerm: e?.target?.value,
     });
   }
 
   //* Create Department
-  showModal(): void {
-    this.createModalShow = !this.createModalShow;
+  isOpenCreateDepartmentPopup = false;
+  onCloseCreatePopup() {
+    this.isOpenCreateDepartmentPopup = false;
+  }
+
+  onCreateSuccess(department: any) {
+    this.departments.data = [department, ...this.departments.data];
+  }
+
+  //* Delete Department
+  onDeleteDepartment(id: string) {
+    this.departmentService.delete(id).subscribe((res: IFBaseResponse) => {
+      this.departments.data = this.departments.data.filter(
+        (x: any) => x.id !== id
+      );
+      this.nzNotificationService.success('Deleted', '');
+    });
+  }
+
+  //* Update success
+  updateDataSuccess(updatedData: any) {
+    const _departments = this.departments.data;
+    const fIdx = _departments.findIndex((x: any) => x.id === updatedData.id);
+    _departments[fIdx] = updatedData;
+    this.departments = {
+      ...this.departments,
+      data: [..._departments],
+    };
+    console.log(_departments);
   }
 }

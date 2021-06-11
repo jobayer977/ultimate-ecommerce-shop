@@ -1,5 +1,6 @@
 import "reflect-metadata"
 
+import * as express from "express"
 import * as jwt from "jsonwebtoken"
 import * as swaggerUiExpress from "swagger-ui-express"
 
@@ -7,7 +8,7 @@ import {
 	Action,
 	NotFoundError,
 	UnauthorizedError,
-	createExpressServer,
+	useExpressServer,
 } from "routing-controllers"
 import { ENV, ormConfig } from "./ENV"
 import { createConnection, getManager, useContainer } from "typeorm"
@@ -21,6 +22,9 @@ import { spec } from "./docs"
 
 import _ = require("lodash")
 import process = require("process")
+import path = require("path")
+
+const expressApp = express()
 
 useContainer(Container)
 
@@ -50,7 +54,7 @@ const roleVerify = async (roles: string[], token: string) => {
 }
 
 //*  App Initialized
-const app = createExpressServer({
+const app = useExpressServer(expressApp, {
 	defaults: {
 		nullResultCode: 404,
 		undefinedResultCode: 204,
@@ -104,6 +108,9 @@ const app = createExpressServer({
 })
 //*  Doc
 app.use(ENV.API_DOCS_URL, swaggerUiExpress.serve, swaggerUiExpress.setup(spec))
+
+//* Serve media static path
+app.use("/uploads", express.static("uploads"))
 
 //*  Application bootstrap
 const PORT: any = Number(process.env.PORT) || ENV.port || 3000

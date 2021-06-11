@@ -1,7 +1,7 @@
 export interface IFBaseMetaSchema {
   id?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt?: string;
+  updatedAt?: string;
 }
 export interface IFBaseMetaAttribute {
   isFeatured?: boolean;
