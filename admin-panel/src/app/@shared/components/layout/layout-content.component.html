@@ -19,11 +19,54 @@
       nzMode="inline"
       [nzInlineCollapsed]="isCollapsed"
     >
-      <li nz-menu-item>
-        <i nz-icon nzType="dashboard"></i>
+      <li nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="rise"></i>
         <span>Dashboard</span>
       </li>
-      <li nz-submenu nzTitle="User List" nzIcon="user">
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="[routesConstant.admins]">
+          <i nz-icon nzType="wifi" nzTheme="outline"></i>
+          <span>Admins</span></a
+        >
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="[routesConstant.customers]">
+          <i nz-icon nzType="usergroup-add" nzTheme="outline"></i>
+          <span>Customers</span></a
+        >
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="[routesConstant.vendors]">
+          <i nz-icon nzType="user-switch" nzTheme="outline"></i>
+          <span>Vendors</span></a
+        >
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="[routesConstant.department]">
+          <i nz-icon nzType="send" nzTheme="outline"></i>
+          <span>Department</span></a
+        >
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="[routesConstant.categoryList]">
+          <i nz-icon nzType="select" nzTheme="outline"></i>
+          <span>Categories</span></a
+        >
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="[routesConstant.bannerList]">
+          <i nz-icon nzType="number" nzTheme="outline"></i>
+          <span>Banners</span></a
+        >
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="[routesConstant.brandList]">
+          <i nz-icon nzType="idcard" nzTheme="outline"></i>
+          <span>Brands</span></a
+        >
+      </li>
+
+      <!-- <li nz-submenu nzTitle="User List" nzIcon="user">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a [routerLink]="[routesConstant.admins]">Admins</a>
@@ -39,29 +82,23 @@
             <a>Vendors</a>
           </li>
         </ul>
-      </li>
+      </li> -->
       <li nz-submenu nzTitle="Settings" nzIcon="setting">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a [routerLink]="[routesConstant.department]">Departments</a>
+            <a>Shipping Charge</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a [routerLink]="[routesConstant.categoryList]">Categories</a>
+            <a>Delivery Timing</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a [routerLink]="[routesConstant.bannerList]">Banners</a>
-          </li>
-          <li
-            nz-menu-item
-            nzMatchRouter
-            [routerLink]="[routesConstant.brandList]"
-          >
-            <a>Brands</a>
+            <a>Payment Methods</a>
           </li>
         </ul>
       </li>
     </ul>
   </nz-sider>
+
   <nz-layout>
     <nz-header>
       <div class="app-header">
