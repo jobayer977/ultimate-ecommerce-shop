@@ -15,6 +15,14 @@
   </nz-page-header-extra>
 </nz-page-header>
 <ng-container>
+  <button
+    (click)="onOpenCreateModal()"
+    nz-button
+    nzType="primary"
+    style="margin-bottom: 15px"
+  >
+    <i nz-icon nzType="edit" nzTheme="outline"></i>Create
+  </button>
   <nz-table
     #basicTable
     [nzData]="categories.data"
@@ -42,10 +50,12 @@
           {{ data.createdAt || "N/A" | date }}
         </td>
         <td style="text-align: right; width: 200px">
+          <app-category-update [data]="data"></app-category-update>
           <a
             nz-popconfirm
             nzPopconfirmTitle="Are you sure delete this?"
             nzPopconfirmPlacement="top"
+            (nzOnConfirm)="onDelete(data.id)"
           >
             <button nz-button nzType="danger" nzShape="circle">
               <i nz-icon nzType="delete" nzTheme="outline"></i></button
@@ -55,3 +65,8 @@
     </tbody>
   </nz-table>
 </ng-container>
+
+<app-create-category
+  (onClose)="onCloseCreateModal()"
+  [isOpen]="isOpenCreateModal"
+></app-create-category>

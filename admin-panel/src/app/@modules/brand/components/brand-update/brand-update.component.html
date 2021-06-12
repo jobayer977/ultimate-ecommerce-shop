@@ -1,0 +1,42 @@
+<!-- Create Department -->
+<nz-modal
+  [(nzVisible)]="isOpen"
+  (nzOnCancel)="onClose.emit()"
+  (nzOnOk)="onSubmit()"
+  nzTitle="Update Brand"
+>
+  <ng-container *nzModalContent>
+    <form [formGroup]="brandForm">
+      <nz-upload
+        [nzAction]="imageUploadEndPoint"
+        nzName="image"
+        nzListType="picture-card"
+        [nzShowUploadList]="false"
+        (nzChange)="onChangeImageUpload($event)"
+      >
+        <ng-container *ngIf="!imageUrl">
+          <i
+            class="upload-icon"
+            nz-icon
+            [nzType]="imageUploadLoading ? 'loading' : 'plus'"
+          ></i>
+          <div class="ant-upload-text">Upload</div>
+        </ng-container>
+        <img *ngIf="imageUrl" [src]="imageUrl" style="width: 100%" />
+      </nz-upload>
+      <label>Name</label>
+      <input type="text" formControlName="name" nz-input placeholder="name" />
+      <ul class="attribute-checkbox-lists">
+        <li>
+          <label formControlName="isFeatured" nz-checkbox>isFeatured</label>
+        </li>
+        <li><label formControlName="isActive" nz-checkbox>isActive</label></li>
+        <li>
+          <label formControlName="isPopular" nz-checkbox>isPopular</label>
+        </li>
+        <li><label formControlName="isHot" nz-checkbox>isHot</label></li>
+        <li><label formControlName="isNew" nz-checkbox>isNew</label></li>
+      </ul>
+    </form>
+  </ng-container>
+</nz-modal>

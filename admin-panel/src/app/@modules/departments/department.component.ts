@@ -82,6 +82,5 @@ export class DepartmentComponent implements OnInit {
       ...this.departments,
       data: [..._departments],
     };
-    console.log(_departments);
   }
 }

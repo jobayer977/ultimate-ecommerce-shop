@@ -33,7 +33,10 @@ export class CategoryService {
 	//! Get one
 	async findById(id: string) {
 		try {
-			const data = await this.categoryRepository.findOne({ id })
+			const data = await this.categoryRepository.findOne(
+				{ id },
+				{ relations: ["department"] }
+			)
 			if (!data) {
 				throw new NotFoundError(`Not Found`)
 			}
@@ -55,7 +58,7 @@ export class CategoryService {
 			)
 			return updateDataPlaceholder(payload)
 		} catch (error) {
-			throw new NotFoundError(`Not Found`)
+			throw new NotFoundError(error)
 		}
 	}
 	//! Delete

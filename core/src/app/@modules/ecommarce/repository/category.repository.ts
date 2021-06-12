@@ -10,12 +10,18 @@ export class CategoryRepository extends Repository<CategoryEntity> {
 	async filter(baseFilterDto: BaseAttributeFilterDto) {
 		const { searchTerm, page } = baseFilterDto
 		const pOption: any = paginationOptions(baseFilterDto)
-		const query = this.createQueryBuilder()
+		const query = this.createQueryBuilder("category").leftJoinAndSelect(
+			"category.department",
+			"department"
+		)
 		try {
 			if (searchTerm) {
-				query.where(`name ILIKE :searchTerm OR slug ILIKE :searchTerm`, {
-					searchTerm: `%${searchTerm}%`,
-				})
+				query.where(
+					`category.name ILIKE :searchTerm OR category.slug ILIKE :searchTerm`,
+					{
+						searchTerm: `%${searchTerm}%`,
+					}
+				)
 			}
 			const result = await query
 				.take(pOption.take)

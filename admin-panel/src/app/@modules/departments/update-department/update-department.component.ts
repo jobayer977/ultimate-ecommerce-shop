@@ -79,7 +79,6 @@ export class UpdateDepartment implements OnInit {
             this.onUpdated.emit(res.data);
           },
           (err: any) => {
-            console.log(err);
             this.notificationService.error(err.error.message, '');
           }
         );

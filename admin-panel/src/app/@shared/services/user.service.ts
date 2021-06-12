@@ -18,7 +18,6 @@ export class UserService {
   }
 
   filter(option: IFFilterUser) {
-    console.log(option);
     return this.http.get(
       `${this.END_POINT}filter?searchTerm=${option.searchTerm || ''}&page=${
         option.page || ''

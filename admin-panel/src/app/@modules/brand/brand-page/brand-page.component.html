@@ -1,0 +1,49 @@
+<nz-page-header nzBackIcon [nzGhost]="false">
+  <nz-page-header-title>Brands</nz-page-header-title>
+  <nz-page-header-extra>
+    <nz-input-group nzSize="large" nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input
+        type="text"
+        (keyup)="onChangeSearch($event)"
+        nz-input
+        placeholder="Search..."
+      />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch>Search</button>
+    </ng-template>
+  </nz-page-header-extra>
+</nz-page-header>
+<ng-container>
+  <button
+    nz-button
+    nzType="primary"
+    (click)="onOpenCreateModal()"
+    style="margin-bottom: 15px; display: block"
+  >
+    <i nz-icon nzType="edit" nzTheme="outline"></i>Create
+  </button>
+  <div nz-row [nzGutter]="16">
+    <div
+      *ngFor="let data of banners.data"
+      nz-col
+      nzSpan="6"
+      style="margin-bottom: 16px"
+    >
+      <app-brand-item [data]="data"></app-brand-item>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: flex-end">
+    <nz-pagination
+      [nzPageIndex]="banners.page"
+      [nzTotal]="banners.total"
+      [nzPageSize]="banners.take"
+      (nzPageIndexChange)="onChangePage($event)"
+    ></nz-pagination>
+  </div>
+</ng-container>
+
+<app-brand-create
+  [isOpen]="isCreateModalOpen"
+  (onClose)="onCloseCreateModal()"
+></app-brand-create>

@@ -1,0 +1,42 @@
+<nz-card
+  [nzCover]="coverTemplate"
+  [nzActions]="[actionSetting, actionEdit, actionEllipsis]"
+>
+  <nz-card-meta
+    nzTitle="{{ banner.title }}"
+    nzDescription="{{ banner.type }}"
+    [nzAvatar]="avatarTemplate"
+  ></nz-card-meta>
+</nz-card>
+<ng-template #avatarTemplate> </ng-template>
+<ng-template #coverTemplate>
+  <img
+    style="height: 165px; width: 100%; object-fit: cover"
+    alt="example"
+    src="{{ banner.image }}"
+  />
+</ng-template>
+<ng-template #actionSetting>
+  <a href="{{ banner.url }}">
+    <i nz-icon nzType="link" nzTheme="outline"></i
+  ></a>
+</ng-template>
+<ng-template #actionEdit>
+  <i nz-icon (click)="onOpenUpdateModal()" nzType="edit"></i>
+</ng-template>
+<ng-template #actionEllipsis>
+  <a
+    nz-popconfirm
+    nzPopconfirmTitle="Are you sure delete this?"
+    nzPopconfirmPlacement="top"
+    (nzOnConfirm)="onDelete(banner.id)"
+  >
+    <i nz-icon nzType="delete" nzTheme="outline"></i
+  ></a>
+</ng-template>
+
+<app-banner-update
+  [isOpen]="isUpdateModalOpen"
+  (onClose)="onCloseUpdateModal()"
+  [data]="banner"
+></app-banner-update>

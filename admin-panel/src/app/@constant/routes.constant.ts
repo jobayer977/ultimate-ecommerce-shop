@@ -15,4 +15,7 @@ export const routesConstant = {
 
   category: `${LAYOUT_PATH}category`,
   categoryList: `${LAYOUT_PATH}category/list`,
+
+  bannerList: `${LAYOUT_PATH}banner/list`,
+  brandList: `${LAYOUT_PATH}brand/list`,
 };

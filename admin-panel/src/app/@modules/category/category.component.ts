@@ -1,22 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  IFBaseFilterQuery,
+  IFBaseFilterResponse,
+} from './../../@shared/interfaces/base.interface';
 
+import { CategoryQuery } from '../../@shared/stores/categories/category.query';
 import { CategoryService } from './../../@shared/services/category.service';
-import { IFBaseAttributeFilterQuery } from './../../@shared/interfaces/base.interface';
 
 @Component({
   templateUrl: './category.component.html',
 })
 export class CategoryComponent implements OnInit {
-  constructor(private categoryService: CategoryService) {}
+  constructor(
+    private categoryService: CategoryService,
+    private categoryQuery: CategoryQuery
+  ) {}
 
-  ngOnInit(): void {
-    this.filterCategories({
-      page: 1,
-      take: 10,
+  ngOnInit() {
+    this.filterData({ page: 1, take: 10 });
+    this.categoryQuery.select().subscribe((response: IFBaseFilterResponse) => {
+      this.categories = response;
     });
   }
 
-  //* Filter Categories
+  //* Filter
   filterLoading = false;
   categories: any = {
     data: [],
@@ -24,23 +31,33 @@ export class CategoryComponent implements OnInit {
     take: 0,
     total: 0,
   };
-
-  filterCategories(option: IFBaseAttributeFilterQuery) {
+  async filterData(option: IFBaseFilterQuery) {
     this.filterLoading = true;
-    this.categoryService.filter(option).subscribe((res: any) => {
-      this.filterLoading = false;
-      this.categories = res;
-    });
+    await this.categoryService.filter(option).toPromise();
+    this.filterLoading = false;
   }
-
   onChangePage(page: number) {
-    this.filterCategories({ page, take: 10 });
+    this.filterData({ page, take: 10 });
   }
   onChangeSearch(e: any) {
-    this.filterCategories({
+    this.filterData({
       page: this.categories?.page,
       take: 10,
       searchTerm: e?.target?.value,
     });
+  }
+
+  //* Create
+  isOpenCreateModal = false;
+  onCloseCreateModal() {
+    this.isOpenCreateModal = false;
+  }
+  onOpenCreateModal() {
+    this.isOpenCreateModal = true;
+  }
+
+  //* Delete
+  onDelete(id: string) {
+    this.categoryService.delete(id).toPromise();
   }
 }

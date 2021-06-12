@@ -7,9 +7,7 @@ export class BrandDto extends BaseAttributeDto {
 	@IsNotEmpty({ message: `$Property is Required` })
 	name: string
 
-	@IsString({ message: `$Property is must be string` })
-	@IsNotEmpty({ message: `$Property is Required` })
-	slug: string
+	slug?: string
 
 	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
