@@ -28,7 +28,7 @@ export class ProductRepository extends Repository<ProductEntity> {
 		}
 		if (String(searchTerm).length > 0) {
 			const payload = await this.findAndCount({
-				// relations,
+				relations,
 				order: {
 					updatedAt: "DESC",
 				},
@@ -39,7 +39,7 @@ export class ProductRepository extends Repository<ProductEntity> {
 			return paginate(baseFilterDto, payload)
 		} else {
 			const payload = await this.findAndCount({
-				// relations,
+				relations,
 				order: {
 					updatedAt: "DESC",
 				},

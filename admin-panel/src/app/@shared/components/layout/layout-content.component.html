@@ -24,6 +24,12 @@
         <span>Dashboard</span>
       </li>
       <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="[routesConstant.productsList]">
+          <i nz-icon nzType="code-sandbox" nzTheme="outline"></i>
+          <span>Products</span></a
+        >
+      </li>
+      <li nz-menu-item nzMatchRouter>
         <a [routerLink]="[routesConstant.admins]">
           <i nz-icon nzType="wifi" nzTheme="outline"></i>
           <span>Admins</span></a

@@ -1,0 +1,38 @@
+<nz-card [nzCover]="coverTemplate" [nzActions]="[actionEdit, actionEllipsis]">
+  <nz-card-meta
+    nzTitle="{{ data.name }}"
+    [nzAvatar]="avatarTemplate"
+    nzDescription="{{ data.mrp }}.TK"
+  >
+  </nz-card-meta>
+</nz-card>
+
+<ng-template #avatarTemplate> </ng-template>
+<ng-template #coverTemplate>
+  <img
+    style="height: 165px; width: 100%; object-fit: cover"
+    alt="example"
+    src="{{ data.productImages }}"
+  />
+</ng-template>
+
+<ng-template #actionEdit>
+  <i nz-icon (click)="onOpenUpdateModal()" nzType="edit"></i>
+</ng-template>
+<ng-template #actionEllipsis>
+  <a
+    nz-popconfirm
+    nzPopconfirmTitle="Are you sure delete this?"
+    nzPopconfirmPlacement="top"
+    (nzOnConfirm)="onDelete(data.id)"
+  >
+    <i nz-icon nzType="delete" nzTheme="outline"></i
+  ></a>
+</ng-template>
+
+<app-product-update
+  [isOpen]="isUpdateModalOpen"
+  [data]="data"
+  (onClose)="onCloseUpdateModal()"
+>
+</app-product-update>

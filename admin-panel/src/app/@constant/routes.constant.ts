@@ -18,4 +18,5 @@ export const routesConstant = {
 
   bannerList: `${LAYOUT_PATH}banner/list`,
   brandList: `${LAYOUT_PATH}brand/list`,
+  productsList: `${LAYOUT_PATH}products/list`,
 };

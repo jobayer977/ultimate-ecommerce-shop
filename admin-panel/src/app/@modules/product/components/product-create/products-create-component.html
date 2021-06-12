@@ -1,0 +1,190 @@
+<nz-drawer
+  [nzClosable]="true"
+  [nzVisible]="isOpen"
+  nzPlacement="right"
+  nzTitle="Create Product"
+  (nzOnClose)="onClose.emit()"
+  [nzWidth]="720"
+  [nzBodyStyle]="{ overflow: 'auto' }"
+  [nzFooter]="footerTpl"
+>
+  <ng-container *nzDrawerContent>
+    <form [formGroup]="productForm">
+      <nz-upload
+        [nzAction]="imageUploadEndPoint"
+        nzName="image"
+        nzListType="picture-card"
+        [nzShowUploadList]="false"
+        (nzChange)="onChangeImageUpload($event)"
+      >
+        <ng-container *ngIf="!imageUrl">
+          <i
+            class="upload-icon"
+            nz-icon
+            [nzType]="imageUploadLoading ? 'loading' : 'plus'"
+          ></i>
+          <div class="ant-upload-text">Upload</div>
+        </ng-container>
+        <img *ngIf="imageUrl" [src]="imageUrl" style="width: 100%" />
+      </nz-upload>
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col nzSpan="12">
+          <label>Name</label>
+          <input
+            type="text"
+            formControlName="name"
+            nz-input
+            placeholder="name"
+          />
+        </div>
+        <div nz-col nzSpan="12">
+          <label>Description</label>
+          <input
+            type="text"
+            formControlName="description"
+            nz-input
+            placeholder="description"
+          />
+        </div>
+        <div nz-col nzSpan="24">
+          <label>Specification</label>
+          <nz-form-item>
+            <nz-form-control>
+              <nz-textarea-count [nzMaxCharacterCount]="1000">
+                <textarea
+                  rows="4"
+                  formControlName="specification"
+                  nz-input
+                ></textarea>
+              </nz-textarea-count>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div nz-col nzSpan="8">
+          <label>Department</label>
+          <nz-select
+            style="width: 100%"
+            (nzScrollToBottom)="loadMoreDepartment()"
+            nzPlaceHolder="Select Department"
+            nzAllowClear
+            formControlName="department"
+            [nzDropdownRender]="renderTemplate"
+          >
+            <nz-option
+              *ngFor="let o of departmentOptionList"
+              [nzValue]="o?.id"
+              [nzLabel]="o?.name"
+            ></nz-option>
+          </nz-select>
+        </div>
+        <div nz-col nzSpan="8">
+          <label>Category</label>
+          <nz-select
+            style="width: 100%"
+            (nzScrollToBottom)="loadMoreCategory()"
+            nzPlaceHolder="Select category"
+            nzAllowClear
+            formControlName="category"
+            [nzDropdownRender]="renderTemplate"
+          >
+            <nz-option
+              *ngFor="let o of categoryOptionList"
+              [nzValue]="o?.id"
+              [nzLabel]="o?.name"
+            ></nz-option>
+          </nz-select>
+        </div>
+        <div nz-col nzSpan="8">
+          <label>Brand</label>
+          <nz-select
+            style="width: 100%"
+            (nzScrollToBottom)="loadMoreBrands()"
+            nzPlaceHolder="Select brand"
+            nzAllowClear
+            formControlName="brand"
+            [nzDropdownRender]="renderTemplate"
+          >
+            <nz-option
+              *ngFor="let o of brandOptionList"
+              [nzValue]="o?.id"
+              [nzLabel]="o?.name"
+            ></nz-option>
+          </nz-select>
+        </div>
+        <div nz-col nzSpan="5">
+          <label>Stock</label>
+          <input
+            type="number"
+            formControlName="stock"
+            nz-input
+            placeholder="Stock"
+          />
+        </div>
+        <div nz-col nzSpan="5">
+          <label>MRP</label>
+          <input
+            type="number"
+            formControlName="mrp"
+            nz-input
+            placeholder="MRP"
+          />
+        </div>
+        <div nz-col nzSpan="5">
+          <label>Vat+</label>
+          <input
+            type="number"
+            formControlName="mrpVat"
+            nz-input
+            placeholder="Vat"
+          />
+        </div>
+        <div nz-col nzSpan="9">
+          <label>Product Code</label>
+          <input
+            type="number"
+            formControlName="productCode"
+            nz-input
+            placeholder="Product Code"
+          />
+        </div>
+      </div>
+
+      <ul class="attribute-checkbox-lists" nz-row [nzGutter]="16">
+        <li>
+          <label formControlName="isTopSelling" nz-checkbox>Top Selling</label>
+        </li>
+        <li>
+          <label formControlName="isNewArrival" nz-checkbox>New Arrival</label>
+        </li>
+        <li>
+          <label formControlName="isAvailable" nz-checkbox>Available</label>
+        </li>
+        <li>
+          <label formControlName="isFeatured" nz-checkbox>Featured</label>
+        </li>
+        <li><label formControlName="isActive" nz-checkbox>Active</label></li>
+        <li>
+          <label formControlName="isPopular" nz-checkbox>Popular</label>
+        </li>
+        <li><label formControlName="isHot" nz-checkbox>Hot</label></li>
+        <li><label formControlName="isNew" nz-checkbox>New</label></li>
+      </ul>
+    </form>
+  </ng-container>
+
+  <ng-template #footerTpl>
+    <div style="float: right">
+      <button nz-button style="margin-right: 8px" (click)="onClose.emit()">
+        Cancel
+      </button>
+      <button nz-button nzType="primary" (click)="onSubmitCreate()">
+        Submit
+      </button>
+    </div>
+  </ng-template>
+</nz-drawer>
+<ng-template #renderTemplate>
+  <nz-spin *ngIf="isLoading"></nz-spin>
+</ng-template>

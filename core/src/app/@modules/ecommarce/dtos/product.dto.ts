@@ -23,25 +23,17 @@ export class ProductDto extends BaseAttributeDto {
 	@IsNotEmpty({ message: `$Property is Required` })
 	isTopSelling: boolean
 
-	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
-	mrp: string
+	mrp: number
 
-	@IsString({ message: `$Property is must be string` })
-	@IsNotEmpty({ message: `$Property is Required` })
-	mrpExclVat: string
+	mrpExclVat?: number
 
-	@IsString({ message: `$Property is must be string` })
-	@IsNotEmpty({ message: `$Property is Required` })
-	mrpInclVat: string
+	mrpInclVat?: number
 
-	@IsString({ message: `$Property is must be string` })
-	@IsNotEmpty({ message: `$Property is Required` })
-	mrpVat: string
+	mrpVat?: number
 
-	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
-	productCode: string
+	productCode: string | number
 
 	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
@@ -51,9 +43,8 @@ export class ProductDto extends BaseAttributeDto {
 	@IsNotEmpty({ message: `$Property is Required` })
 	specification: string
 
-	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })
-	stock: string
+	stock: number
 
 	@IsString({ message: `$Property is must be string` })
 	@IsNotEmpty({ message: `$Property is Required` })

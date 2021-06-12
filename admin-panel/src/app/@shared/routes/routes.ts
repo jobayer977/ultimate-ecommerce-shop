@@ -35,4 +35,11 @@ export const content: Routes = [
     loadChildren: () =>
       import('../../@modules/brand/brand.module').then((m) => m.BrandModule),
   },
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('../../@modules/product/product.module').then(
+        (m) => m.ProductModule
+      ),
+  },
 ];
