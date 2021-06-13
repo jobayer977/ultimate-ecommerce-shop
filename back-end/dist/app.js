@@ -15,9 +15,19 @@ var dotenv_1 = require("dotenv");
 var docs_1 = require("./docs");
 var _ = require("lodash");
 var process = require("process");
+var cloudinary = require("cloudinary").v2;
 var expressApp = express();
 typeorm_1.useContainer(typeorm_typedi_extensions_1.Container);
 dotenv_1.config();
+//*Cloudinary
+cloudinary.config({
+    cloud_name: ENV_1.ENV.CN_CLOUD_NAME,
+    api_key: ENV_1.ENV.CN_API_KEY,
+    api_secret: ENV_1.ENV.CN_API_SECRET,
+    enhance_image_tag: ENV_1.ENV.CN_ENHANCE_IMAGE_TAG,
+    static_file_support: ENV_1.ENV.CN_STATIC_FILE_SUPPORT,
+});
+console.log(ENV_1.ENV);
 //*  Database Connection
 var connectDB = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
     return tslib_1.__generator(this, function (_a) {
