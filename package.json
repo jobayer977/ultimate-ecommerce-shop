@@ -8,7 +8,7 @@
 		"npm": "6.14.13"
 	},
 	"scripts": {
-		"start": "npm install && npm run back-end:start",
+		"start": "npm install && npm run backEnd:start",
 		"backEnd:start": "cd back-end && npm install && npm run start:prod",
 		"backEnd:install": "cd back-end && npm install",
 		"backEnd:build": "cd back-end && npm run build",
