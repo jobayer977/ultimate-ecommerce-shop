@@ -14,7 +14,7 @@
 		"core:build": "cd core && npm run build",
 		"core:dev": "cd core &&  npm run start:dev",
 		"core:prod": "cd core &&  npm run start:prod",
-		"adminPanel:start": "cd admin-panel && npm run start",
+		"admin:start": "cd admin-panel && npm run start",
 		"boot:dev": "concurrently   \"npx kill-port 3000\" \"npm run core:dev\" \"npm run adminPanel:start\"",
 		"boot:prod": "concurrently   \"npx kill-port 3000\" \"npm run core:prod\" \"npm run adminPanel:start\""
 	},
