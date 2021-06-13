@@ -11,7 +11,11 @@ export class AuthLoginController {
 	@HttpCode(201)
 	@Post("/admin")
 	async admin(@Body() user: AuthCredentialDto) {
-		return await this.authLoginService.admin(user)
+		try {
+			return await this.authLoginService.admin(user)
+		} catch (error) {
+			throw new Error(error)
+		}
 	}
 	@HttpCode(201)
 	@Post("/customer")

@@ -16,6 +16,7 @@ var DepartmentController = /** @class */ (function () {
     DepartmentController.prototype.create = function (departmentDto) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             return tslib_1.__generator(this, function (_a) {
+                console.log(departmentDto);
                 return [2 /*return*/, this.departmentService.create(departmentDto)];
             });
         });

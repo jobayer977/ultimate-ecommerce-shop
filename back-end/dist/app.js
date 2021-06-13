@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 require("reflect-metadata");
+var express = require("express");
 var jwt = require("jsonwebtoken");
 var swaggerUiExpress = require("swagger-ui-express");
 var routing_controllers_1 = require("routing-controllers");
@@ -14,6 +15,7 @@ var dotenv_1 = require("dotenv");
 var docs_1 = require("./docs");
 var _ = require("lodash");
 var process = require("process");
+var expressApp = express();
 typeorm_1.useContainer(typeorm_typedi_extensions_1.Container);
 dotenv_1.config();
 //*  Database Connection
@@ -51,7 +53,7 @@ var roleVerify = function (roles, token) { return tslib_1.__awaiter(void 0, void
     });
 }); };
 //*  App Initialized
-var app = routing_controllers_1.createExpressServer({
+var app = routing_controllers_1.useExpressServer(expressApp, {
     defaults: {
         nullResultCode: 404,
         undefinedResultCode: 204,
@@ -124,6 +126,8 @@ var app = routing_controllers_1.createExpressServer({
 });
 //*  Doc
 app.use(ENV_1.ENV.API_DOCS_URL, swaggerUiExpress.serve, swaggerUiExpress.setup(docs_1.spec));
+//* Serve media static path
+app.use("/uploads", express.static("uploads"));
 //*  Application bootstrap
 var PORT = Number(process.env.PORT) || ENV_1.ENV.port || 3000;
 (function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {

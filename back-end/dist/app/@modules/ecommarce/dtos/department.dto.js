@@ -15,8 +15,7 @@ var DepartmentDto = /** @class */ (function (_super) {
         tslib_1.__metadata("design:type", String)
     ], DepartmentDto.prototype, "name", void 0);
     tslib_1.__decorate([
-        class_validator_1.IsString({ message: "$Property is must be string" }),
-        class_validator_1.IsNotEmpty({ message: "$Property is Required" }),
+        class_validator_1.IsOptional(),
         tslib_1.__metadata("design:type", String)
     ], DepartmentDto.prototype, "slug", void 0);
     tslib_1.__decorate([

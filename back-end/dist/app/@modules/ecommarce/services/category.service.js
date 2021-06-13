@@ -46,7 +46,7 @@ var CategoryService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.categoryRepository.findOne({ id: id })];
+                        return [4 /*yield*/, this.categoryRepository.findOne({ id: id }, { relations: ["department"] })];
                     case 1:
                         data = _a.sent();
                         if (!data) {
@@ -85,7 +85,7 @@ var CategoryService = /** @class */ (function () {
                         return [2 /*return*/, responsePlaceholder_util_1.updateDataPlaceholder(payload)];
                     case 5:
                         error_3 = _c.sent();
-                        throw new routing_controllers_1.NotFoundError("Not Found");
+                        throw new routing_controllers_1.NotFoundError(error_3);
                     case 6: return [2 /*return*/];
                 }
             });

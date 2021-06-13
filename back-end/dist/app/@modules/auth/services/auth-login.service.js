@@ -19,36 +19,44 @@ var AuthLoginService = /** @class */ (function () {
     //! Admin
     AuthLoginService.prototype.admin = function (credential) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var password, phoneNumber, user, isPasswordValid, token;
+            var password, phoneNumber, user, isPasswordValid, token, error_1;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         password = credential.password, phoneNumber = credential.phoneNumber;
+                        console.log(credential);
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 5, , 6]);
                         return [4 /*yield*/, this.userRepository.findOne({
                                 phoneNumber: phoneNumber,
                                 type: userType_enum_1.UserTypes.ADMIN,
                             })
                             //* Verify User
                         ];
-                    case 1:
+                    case 2:
                         user = _a.sent();
                         //* Verify User
                         if (_.isEmpty(user)) {
                             throw new routing_controllers_1.NotFoundError("User Not Found with " + phoneNumber + " number");
                         }
                         return [4 /*yield*/, this.bcryptService.compareHash(password, user.password)];
-                    case 2:
+                    case 3:
                         isPasswordValid = _a.sent();
                         if (isPasswordValid === false) {
                             throw new routing_controllers_1.NotFoundError("Password Not matched");
                         }
                         return [4 /*yield*/, this.jwtService.makeAccessToken({ id: user.id })];
-                    case 3:
+                    case 4:
                         token = _a.sent();
                         return [2 /*return*/, {
                                 auth: true,
                                 token: token,
                             }];
+                    case 5:
+                        error_1 = _a.sent();
+                        throw new Error(error_1);
+                    case 6: return [2 /*return*/];
                 }
             });
         });

@@ -36,7 +36,7 @@ var ProductRepository = /** @class */ (function (_super) {
                         }
                         if (!(String(searchTerm).length > 0)) return [3 /*break*/, 2];
                         return [4 /*yield*/, this.findAndCount({
-                                // relations,
+                                relations: relations,
                                 order: {
                                     updatedAt: "DESC",
                                 },
@@ -48,7 +48,7 @@ var ProductRepository = /** @class */ (function (_super) {
                         payload = _a.sent();
                         return [2 /*return*/, paginate_util_1.paginate(baseFilterDto, payload)];
                     case 2: return [4 /*yield*/, this.findAndCount({
-                            // relations,
+                            relations: relations,
                             order: {
                                 updatedAt: "DESC",
                             },

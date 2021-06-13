@@ -13,10 +13,17 @@ var AuthLoginController = /** @class */ (function () {
     }
     AuthLoginController.prototype.admin = function (user) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var error_1;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.authLoginService.admin(user)];
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.authLoginService.admin(user)];
                     case 1: return [2 /*return*/, _a.sent()];
+                    case 2:
+                        error_1 = _a.sent();
+                        throw new Error(error_1);
+                    case 3: return [2 /*return*/];
                 }
             });
         });

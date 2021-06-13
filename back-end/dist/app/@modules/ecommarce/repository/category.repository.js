@@ -19,12 +19,12 @@ var CategoryRepository = /** @class */ (function (_super) {
                     case 0:
                         searchTerm = baseFilterDto.searchTerm, page = baseFilterDto.page;
                         pOption = paginate_util_1.paginationOptions(baseFilterDto);
-                        query = this.createQueryBuilder();
+                        query = this.createQueryBuilder("category").leftJoinAndSelect("category.department", "department");
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
                         if (searchTerm) {
-                            query.where("name ILIKE :searchTerm OR slug ILIKE :searchTerm", {
+                            query.where("category.name ILIKE :searchTerm OR category.slug ILIKE :searchTerm", {
                                 searchTerm: "%" + searchTerm + "%",
                             });
                         }

@@ -16,7 +16,7 @@ var User = /** @class */ (function (_super) {
         tslib_1.__metadata("design:type", String)
     ], User.prototype, "phoneNumber", void 0);
     tslib_1.__decorate([
-        typeorm_1.Column({ nullable: true, select: false }),
+        typeorm_1.Column({ nullable: true }),
         tslib_1.__metadata("design:type", String)
     ], User.prototype, "password", void 0);
     tslib_1.__decorate([

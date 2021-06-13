@@ -18,11 +18,6 @@ var BrandDto = /** @class */ (function (_super) {
         class_validator_1.IsString({ message: "$Property is must be string" }),
         class_validator_1.IsNotEmpty({ message: "$Property is Required" }),
         tslib_1.__metadata("design:type", String)
-    ], BrandDto.prototype, "slug", void 0);
-    tslib_1.__decorate([
-        class_validator_1.IsString({ message: "$Property is must be string" }),
-        class_validator_1.IsNotEmpty({ message: "$Property is Required" }),
-        tslib_1.__metadata("design:type", String)
     ], BrandDto.prototype, "image", void 0);
     return BrandDto;
 }(base_attribute_dto_1.BaseAttributeDto));

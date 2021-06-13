@@ -20,14 +20,13 @@ export class AuthLoginService {
 	//! Admin
 	async admin(credential: AuthCredentialDto) {
 		const { password, phoneNumber } = credential
-
+		console.log(credential)
 		try {
 			//* Get User From DB
 			const user: any = await this.userRepository.findOne({
 				phoneNumber,
 				type: UserTypes.ADMIN,
 			})
-
 			//* Verify User
 			if (_.isEmpty(user)) {
 				throw new NotFoundError(`User Not Found with ${phoneNumber} number`)

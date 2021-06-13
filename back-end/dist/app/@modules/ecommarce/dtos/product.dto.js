@@ -35,29 +35,12 @@ var ProductDto = /** @class */ (function (_super) {
         tslib_1.__metadata("design:type", Boolean)
     ], ProductDto.prototype, "isTopSelling", void 0);
     tslib_1.__decorate([
-        class_validator_1.IsString({ message: "$Property is must be string" }),
         class_validator_1.IsNotEmpty({ message: "$Property is Required" }),
-        tslib_1.__metadata("design:type", String)
+        tslib_1.__metadata("design:type", Number)
     ], ProductDto.prototype, "mrp", void 0);
     tslib_1.__decorate([
-        class_validator_1.IsString({ message: "$Property is must be string" }),
         class_validator_1.IsNotEmpty({ message: "$Property is Required" }),
-        tslib_1.__metadata("design:type", String)
-    ], ProductDto.prototype, "mrpExclVat", void 0);
-    tslib_1.__decorate([
-        class_validator_1.IsString({ message: "$Property is must be string" }),
-        class_validator_1.IsNotEmpty({ message: "$Property is Required" }),
-        tslib_1.__metadata("design:type", String)
-    ], ProductDto.prototype, "mrpInclVat", void 0);
-    tslib_1.__decorate([
-        class_validator_1.IsString({ message: "$Property is must be string" }),
-        class_validator_1.IsNotEmpty({ message: "$Property is Required" }),
-        tslib_1.__metadata("design:type", String)
-    ], ProductDto.prototype, "mrpVat", void 0);
-    tslib_1.__decorate([
-        class_validator_1.IsString({ message: "$Property is must be string" }),
-        class_validator_1.IsNotEmpty({ message: "$Property is Required" }),
-        tslib_1.__metadata("design:type", String)
+        tslib_1.__metadata("design:type", Object)
     ], ProductDto.prototype, "productCode", void 0);
     tslib_1.__decorate([
         class_validator_1.IsString({ message: "$Property is must be string" }),
@@ -70,9 +53,8 @@ var ProductDto = /** @class */ (function (_super) {
         tslib_1.__metadata("design:type", String)
     ], ProductDto.prototype, "specification", void 0);
     tslib_1.__decorate([
-        class_validator_1.IsString({ message: "$Property is must be string" }),
         class_validator_1.IsNotEmpty({ message: "$Property is Required" }),
-        tslib_1.__metadata("design:type", String)
+        tslib_1.__metadata("design:type", Number)
     ], ProductDto.prototype, "stock", void 0);
     tslib_1.__decorate([
         class_validator_1.IsString({ message: "$Property is must be string" }),
