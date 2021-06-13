@@ -28,6 +28,12 @@ export const ENV = {
 	MAIL_USER: process.env.MAIL_USER,
 	MAIL_PASSWORD: process.env.MAIL_PASSWORD,
 	MAIL_FROM: process.env.MAIL_FROM,
+
+	CN_CLOUD_NAME: process.env.CN_CLOUD_NAME,
+	CN_API_KEY: process.env.CN_API_KEY,
+	CN_API_SECRET: process.env.CN_API_SECRET,
+	CN_ENHANCE_IMAGE_TAG: toBool(process.env.CN_ENHANCE_IMAGE_TAG),
+	CN_STATIC_FILE_SUPPORT: toBool(process.env.CN_STATIC_FILE_SUPPORT),
 }
 export const ormConfig: any = {
 	type: process.env.DB_TYPE,

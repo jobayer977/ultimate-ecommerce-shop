@@ -23,12 +23,24 @@ import { spec } from "./docs"
 import _ = require("lodash")
 import process = require("process")
 import path = require("path")
-
+const cloudinary = require("cloudinary").v2
 const expressApp = express()
 
 useContainer(Container)
 
 config()
+
+//*Cloudinary
+cloudinary.config({
+	cloud_name: ENV.CN_CLOUD_NAME,
+	api_key: ENV.CN_API_KEY,
+	api_secret: ENV.CN_API_SECRET,
+	enhance_image_tag: ENV.CN_ENHANCE_IMAGE_TAG,
+	static_file_support: ENV.CN_STATIC_FILE_SUPPORT,
+})
+
+console.log(ENV)
+
 //*  Database Connection
 const connectDB = async () => {
 	console.log(ormConfig)
