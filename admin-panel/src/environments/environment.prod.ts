@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_ENDPOINT: 'http://localhost:3000/api/v1/',
+  API_ENDPOINT: 'https://ishopw.herokuapp.com/api/v1/',
 };
