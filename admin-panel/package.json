@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "NODE_ENV=production ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -19,7 +19,6 @@
     "@angular/platform-browser-dynamic": "~12.0.3",
     "@angular/router": "~12.0.3",
     "@datorama/akita": "^6.2.0",
-    "jwt-decode": "^3.1.2",
     "ng-zorro-antd": "^11.4.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
