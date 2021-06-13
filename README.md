@@ -7,11 +7,11 @@ AngularJS-powered HTML5 Markdown editor.
 
 ## LIVE LINKS
 
-| Panel          | README                                           |
-| -------------- | ------------------------------------------------ |
-| SwaggerAPI Doc | [https://ishopw.herokuapp.com/api/v1/docs][pldb] |
-| Admin Panel    | [https://admin-ishop.vercel.app][plgh]           |
-| Web Panel      | [https://web-ishop.vercel.app][plgd]             |
+| Panel          | README                                     |
+| -------------- | ------------------------------------------ |
+| SwaggerAPI Doc | [https://ishopw.herokuapp.com/api/v1/docs] |
+| Admin Panel    | [https://admin-ishop.vercel.app]           |
+| Web Panel      | [https://web-ishop.vercel.app]             |
 
 - Type some Markdown on the left
 - See HTML in the right
