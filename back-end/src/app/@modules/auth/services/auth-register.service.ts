@@ -41,11 +41,13 @@ export class AuthRegisterService {
 			//* Hash Password
 			const hashPassword = await this.bcryptService.hashString(password)
 			const userInfo = await this.userProfileRepository.save({ phoneNumber })
+
 			const newUser = new User()
 			newUser.phoneNumber = phoneNumber
 			newUser.password = hashPassword
 			newUser.userInfo = userInfo
 			newUser.type = UserTypes.ADMIN
+
 			await this.userRepository.save(newUser)
 			const token = await this.jwtService.makeAccessToken({
 				id: newUser?.id,
