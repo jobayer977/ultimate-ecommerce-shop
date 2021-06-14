@@ -64,12 +64,12 @@ const AppFooterComponent = () => {
 					<div className="ruby-container">
 						<div
 							className="followup-wrapper"
-							style={{ backgroundImage: `url(./img/footer-bg.jpg)` }}>
+							style={{ backgroundImage: `url(./img/page-banner.jpg)` }}>
 							<div className="row">
 								<div className="col-lg-12 text-center">
 									<div className="follow-content-wrap">
 										<a href="index.html" className="logo">
-											<img src="./img/logo.png" alt="logo" />
+											<img src="./img/logo-r.png" alt="logo" />
 										</a>
 										<p>
 											Eodem modo typi, qui nunc nobis videntur parum clari,

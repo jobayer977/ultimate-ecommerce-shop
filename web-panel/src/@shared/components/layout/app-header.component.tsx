@@ -8,7 +8,7 @@ const AppHeaderComponent = () => {
 						<a href="index.html" className="logo-area">
 							<img
 								style={{ height: 50 }}
-								src="./img/logo-icon.png"
+								src="./img/logo.jpg"
 								alt="Logo"
 								className="img-fluid"
 							/>

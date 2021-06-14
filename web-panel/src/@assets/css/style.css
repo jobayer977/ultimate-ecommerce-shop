@@ -1734,7 +1734,7 @@ address b {
 }
 
 #banner-area #banner-carousel .single-carousel-wrap:after {
-	background-color: rgba(244, 245, 247, 0.7);
+	/*! background-color: rgba(244, 245, 247, 0.7); */
 	content: "";
 	position: absolute;
 	left: 0;
@@ -2151,7 +2151,7 @@ address b {
 /*== Products Style Start ==*/
 .products-wrapper .single-product-item {
 	background-color: #f4f5f7;
-	padding: 30px;
+	padding: 10px;
 	-webkit-transition: all 0.4s ease-out;
 	-moz-transition: all 0.4s ease-out;
 	-o-transition: all 0.4s ease-out;
@@ -2733,8 +2733,10 @@ address b {
 }
 
 .single-cat-item .category-thumb {
+	height: 220px;
 	position: relative;
 	overflow: hidden;
+	border: 1px solid #dddddda3;
 }
 
 .single-cat-item .category-thumb img {
@@ -2742,6 +2744,9 @@ address b {
 	-moz-transition: all 0.4s ease-out;
 	-o-transition: all 0.4s ease-out;
 	transition: all 0.4s ease-out;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }
 
 .single-cat-item .category-thumb .category-name {
@@ -3540,9 +3545,9 @@ address b {
 }
 
 #category-feature-product .single-featured-product {
-	margin-top: 30px;
 	position: relative;
 	overflow: hidden;
+	height: 230px;
 }
 
 #category-feature-product .single-featured-product:hover:after {
@@ -3587,6 +3592,9 @@ address b {
 	-moz-transition: all 0.4s ease-out;
 	-o-transition: all 0.4s ease-out;
 	transition: all 0.4s ease-out;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }
 
 /*== Home 6 Categories Products Area End ==*/
@@ -5762,4 +5770,41 @@ fieldset legend {
 header#header-area {
 	border-bottom: 1px solid #ddd;
 	padding: 9px 0;
+}
+.ant-page-header {
+	border-bottom: 1px solid #ddd;
+}
+.border-section {
+	border: 1px solid #ddd;
+	margin: 25px 0;
+}
+.logo-itm-bx {
+	margin: 0px;
+	border: 1px solid #c7bcbc63;
+	height: 250px;
+	cursor: pointer;
+	box-shadow: 0 0 10px #ddddddab;
+}
+
+.logo-itm-bx .ant-card-cover {
+	height: 180px;
+	padding: 2px;
+}
+
+.logo-itm-bx .ant-card-cover img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+.logo-itm-bx:hover {
+	box-shadow: 0 0 10px #dddddd5c;
+}
+.ant-btn-primary {
+	background: #3ba66c !important;
+	border: 1px solid #3ba66c !important;
+}
+
+.ant-btn-primary:hover {
+	background: #3ba66c !important;
+	border: 1px solid #3ba66c !important;
 }
