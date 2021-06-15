@@ -73,6 +73,7 @@ export async function getStaticProps(context: any) {
 		props: {
 			product: await fetchProduct?.data?.data,
 		},
+		revalidate: 14400,
 	}
 }
 export default ProductSinglePage

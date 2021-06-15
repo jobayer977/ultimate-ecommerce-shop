@@ -69,7 +69,7 @@ export async function getStaticProps(context: any) {
 			threeFirstBannerResponse: fetchThreeFirstBanners.data,
 			brandsResponse: fetchBrands.data,
 		},
-		revalidate: 10,
+		revalidate: 14400,
 	}
 }
 
