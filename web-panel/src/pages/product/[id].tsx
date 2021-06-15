@@ -70,9 +70,17 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
 export async function getStaticProps(context: any) {
 	const { id } = context.params
 	const fetchProduct = await ProductsService.findById(id)
-	if (!(await fetchProduct.data?.data)) {
+	if (!fetchProduct.data?.data) {
 		return {
-			notfound: true,
+			notFound: true,
+		}
+	}
+	if (!fetchProduct.data?.data) {
+		return {
+			redirect: {
+				destination: "/",
+				permanent: false,
+			},
 		}
 	}
 	return {
