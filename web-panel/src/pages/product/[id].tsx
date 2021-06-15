@@ -1,4 +1,5 @@
 import AppLayoutComponent from "@shared/components/layout/app-layout.component"
+import { GetStaticPaths } from "next"
 import { IFProduct } from "@shared/interfaces/product.interface"
 import { ProductsService } from "@shared/services/products.service"
 import React from "react"
@@ -63,7 +64,21 @@ const ProductSinglePage: React.FC<IFProps> = ({ product }) => {
 	)
 }
 
-export async function getServerSideProps(context: any) {
+export const getStaticPaths: GetStaticPaths = async () => {
+	const fetchProducts = await ProductsService.filter({
+		page: 1,
+		take: 12,
+	})
+	const ids = await fetchProducts?.data?.data.map((pd: any) => pd.id)
+
+	const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
+	console.log(ids)
+	return {
+		paths: paths,
+		fallback: false,
+	}
+}
+export async function getStaticProps(context: any) {
 	const { id } = context.params
 
 	const fetchProduct = await ProductsService.findById(id)
