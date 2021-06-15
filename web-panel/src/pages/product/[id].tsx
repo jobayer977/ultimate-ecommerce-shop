@@ -71,6 +71,11 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
 export async function getStaticProps(context: any) {
 	const { id } = context.params
 	const fetchProduct = await ProductsService.findById(id)
+	if (!fetchProduct) {
+		return {
+			notFound: true,
+		}
+	}
 	return {
 		props: {
 			product: await fetchProduct?.data?.data,
