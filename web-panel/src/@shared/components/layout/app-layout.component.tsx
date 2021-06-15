@@ -9,7 +9,7 @@ const AppLayoutComponent: React.FC<IFProps> = ({ children }) => {
 	return (
 		<>
 			<AppHeaderComponent />
-			{children}
+			<main style={{ paddingTop: 69 }}>{children}</main>
 			<AppFooterComponent />
 		</>
 	)

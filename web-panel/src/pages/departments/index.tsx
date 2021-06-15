@@ -23,7 +23,6 @@ interface IFProps {
 	departmentsResponse: BaseFilterResponse
 }
 const Departments: React.FC<IFProps> = ({ departmentsResponse }) => {
-	console.log(departmentsResponse)
 	return (
 		<AppLayoutComponent>
 			<div className="ruby-container" style={{ paddingBottom: 90 }}>
@@ -35,7 +34,16 @@ const Departments: React.FC<IFProps> = ({ departmentsResponse }) => {
 				<Row gutter={16}>
 					{departmentsResponse?.data?.map((x: IFDepartment) => (
 						<Col span={4} key={x.id} style={{ marginBottom: 16 }}>
-							<WideCardComponent image={x?.image} title={x.name} />
+							<WideCardComponent
+								link={{
+									pathname: routeConstant.departmentsId,
+									query: {
+										id: x.id,
+									},
+								}}
+								image={x?.image}
+								title={x.name}
+							/>
 						</Col>
 					))}
 				</Row>

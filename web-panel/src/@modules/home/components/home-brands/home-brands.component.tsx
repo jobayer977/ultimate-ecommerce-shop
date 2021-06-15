@@ -3,6 +3,8 @@ import React, { useEffect } from "react"
 
 import { IFBrand } from "@shared/interfaces/brand.interface"
 import Image from "next/image"
+import Link from "next/link"
+import { routeConstant } from "@shared/constant/routes.constant"
 import { useRouter } from "next/router"
 
 interface IFProps {
@@ -51,19 +53,29 @@ const HomeBrandsComponent: React.FC<IFProps> = ({ brands }) => {
 				<Row gutter={16} style={{ padding: 10, paddingBottom: 0 }}>
 					{brands?.map((brand: IFBrand) => (
 						<Col span={4} key={brand?.id}>
-							<Card
-								className="logo-itm-bx"
-								style={{ marginBottom: 16 }}
-								cover={
-									<Image
-										src={String(brand?.image)}
-										alt="Picture of the author"
-										width={500}
-										height={500}
-									/>
-								}>
-								<Meta title={brand?.name} />
-							</Card>
+							<Link
+								href={{
+									pathname: routeConstant.brandId,
+									query: {
+										id: brand.id,
+									},
+								}}>
+								<a>
+									<Card
+										className="logo-itm-bx"
+										style={{ marginBottom: 16 }}
+										cover={
+											<Image
+												src={String(brand?.image)}
+												alt="Picture of the author"
+												width={500}
+												height={500}
+											/>
+										}>
+										<Meta title={brand?.name} />
+									</Card>
+								</a>
+							</Link>
 						</Col>
 					))}
 				</Row>

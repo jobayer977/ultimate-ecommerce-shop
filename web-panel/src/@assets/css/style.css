@@ -5811,6 +5811,15 @@ header#header-area {
 .inner-page-header {
 	padding-top: 50px !important;
 	padding-bottom: 50px !important;
-	border-bottom: 1px solid #f4f5f7;
+	border-bottom: 1px solid #f4f5f700;
 	padding-left: 0;
+}
+header#header-area {
+	border-bottom: 1px solid #ddd;
+	padding: 9px 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 8;
 }
