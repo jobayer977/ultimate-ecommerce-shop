@@ -4,6 +4,7 @@ import { BannerType } from "@shared/enums"
 import { BaseFilterResponse } from "@shared/interfaces/base.interface"
 import { BrandService } from "@shared/services/brand.service"
 import { DepartmentService } from "@shared/services/departments.service"
+import { GetStaticProps } from "next"
 import HomeBannerComponent from "@modules/home/components/home-banner/home-banner.component"
 import HomeBrandsComponent from "@modules/home/components/home-brands/home-brands.component"
 import HomeDepartmentsComponent from "@modules/home/components/home-departments/home-departments.component"
@@ -37,7 +38,7 @@ const IndexPageComponent: React.FC<IFProps> = ({
 	)
 }
 
-export async function getStaticProps(context: any) {
+export const getStaticProps: GetStaticProps = async () => {
 	const fetchSliderHomePageBanners = await BannerService.filter({
 		page: 1,
 		take: 10,
