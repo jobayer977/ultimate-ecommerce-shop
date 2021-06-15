@@ -4,6 +4,7 @@ import { IFProduct } from "@shared/interfaces/product.interface"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
+import { routeConstant } from "@shared/constant/routes.constant"
 
 const { Meta } = Card
 
@@ -12,7 +13,13 @@ interface IFProps {
 }
 const ProductComponent: React.FC<IFProps> = ({ product }) => {
 	return (
-		<Link href={`/product/${product.id}`}>
+		<Link
+			href={{
+				pathname: routeConstant.product,
+				query: {
+					id: product?.id,
+				},
+			}}>
 			<a>
 				<Card
 					style={{ cursor: "pointer" }}

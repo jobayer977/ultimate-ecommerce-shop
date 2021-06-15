@@ -1,6 +1,6 @@
 export const routeConstant = {
 	root: "/",
-	product: "/product",
+	product: "/product/[id]",
 }
 
 export const normalizeImagePath = (url: string) => {

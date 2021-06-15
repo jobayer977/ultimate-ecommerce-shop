@@ -5,13 +5,34 @@ import { BaseFilterResponse } from "@shared/interfaces/base.interface"
 import { BrandService } from "@shared/services/brand.service"
 import { DepartmentService } from "@shared/services/departments.service"
 import { GetStaticProps } from "next"
-import HomeBannerComponent from "@modules/home/components/home-banner/home-banner.component"
-import HomeBrandsComponent from "@modules/home/components/home-brands/home-brands.component"
-import HomeDepartmentsComponent from "@modules/home/components/home-departments/home-departments.component"
-import HomeProductsComponent from "@modules/home/components/home-products/home-products.component"
-import HomeThreeBannerComponent from "@modules/home/components/home-three-banner/home-three-banner.component"
 import { ProductsService } from "@shared/services/products.service"
 import React from "react"
+import dynamic from "next/dynamic"
+
+const HomeBrandsComponent = dynamic(
+	() => import("@modules/home/components/home-brands/home-brands.component")
+)
+const HomeDepartmentsComponent = dynamic(
+	() =>
+		import(
+			"@modules/home/components/home-departments/home-departments.component"
+		)
+)
+const HomeProductsComponent = dynamic(
+	() =>
+		import("@modules/home/components/home-products/home-products.component"),
+	{ loading: () => <h1>...</h1> }
+)
+
+const HomeBannerComponent = dynamic(
+	() => import("@modules/home/components/home-banner/home-banner.component")
+)
+const HomeThreeBannerComponent = dynamic(
+	() =>
+		import(
+			"@modules/home/components/home-three-banner/home-three-banner.component"
+		)
+)
 interface IFProps {
 	bannersResponse: BaseFilterResponse
 	productsResponse: BaseFilterResponse
