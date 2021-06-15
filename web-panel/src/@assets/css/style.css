@@ -5808,3 +5808,9 @@ header#header-area {
 	background: #3ba66c !important;
 	border: 1px solid #3ba66c !important;
 }
+.inner-page-header {
+	padding-top: 50px !important;
+	padding-bottom: 50px !important;
+	border-bottom: 1px solid #f4f5f7;
+	padding-left: 0;
+}

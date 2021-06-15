@@ -1,5 +1,8 @@
 export const routeConstant = {
 	root: "/",
+	departments: "/departments",
+	brands: "/brands",
+	productList: "/product",
 	product: "/product/[id]",
 }
 

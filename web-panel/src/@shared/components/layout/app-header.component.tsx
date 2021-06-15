@@ -48,25 +48,15 @@ const AppHeaderComponent = () => {
 											</li>
 										</ul> */}
 									</li>
-									<li className="dropdown-show">
-										<Link href={routeConstant.root}>
-											<a>Shop By Category</a>
-										</Link>
-									</li>
 
 									<li className="dropdown-show">
-										<Link href={routeConstant.root}>
+										<Link href={routeConstant.departments}>
 											<a>Shop By Departments</a>
 										</Link>
 									</li>
 									<li className="dropdown-show">
-										<Link href={routeConstant.root}>
+										<Link href={routeConstant.brands}>
 											<a>Shop By Brand</a>
-										</Link>
-									</li>
-									<li className="dropdown-show">
-										<Link href={routeConstant.root}>
-											<a>Offer</a>
 										</Link>
 									</li>
 								</ul>

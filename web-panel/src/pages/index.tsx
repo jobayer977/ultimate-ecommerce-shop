@@ -3,11 +3,14 @@ import { BannerService } from "@shared/services/banners.service"
 import { BannerType } from "@shared/enums"
 import { BaseFilterResponse } from "@shared/interfaces/base.interface"
 import { BrandService } from "@shared/services/brand.service"
+import { Button } from "antd"
 import { DepartmentService } from "@shared/services/departments.service"
 import { GetStaticProps } from "next"
+import Link from "next/link"
 import { ProductsService } from "@shared/services/products.service"
 import React from "react"
 import dynamic from "next/dynamic"
+import { routeConstant } from "@shared/constant/routes.constant"
 
 const HomeBrandsComponent = dynamic(
 	() => import("@modules/home/components/home-brands/home-brands.component")
@@ -55,6 +58,15 @@ const IndexPageComponent: React.FC<IFProps> = ({
 			<HomeBrandsComponent brands={brandsResponse?.data} />
 			<HomeDepartmentsComponent departments={departmentsResponse.data} />
 			<HomeProductsComponent products={productsResponse.data} />
+			<div
+				className="d-flex justify-content-center"
+				style={{ marginBottom: 50 }}>
+				<Link href={routeConstant.productList}>
+					<Button size="large" type="primary">
+						View All
+					</Button>
+				</Link>
+			</div>
 		</AppLayoutComponent>
 	)
 }
