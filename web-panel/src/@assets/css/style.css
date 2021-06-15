@@ -266,7 +266,7 @@ button.btn:active {
 
 .btn-add-to-cart {
 	background-color: transparent;
-	border: 2px solid #929292;
+	border: 1px solid #929292 !important;
 	-webkit-border-radius: 50px;
 	-moz-border-radius: 50px;
 	border-radius: 50px;
@@ -280,7 +280,7 @@ button.btn:active {
 
 .btn-add-to-cart:hover {
 	background-color: #d82e2e;
-	border-color: #d82e2e;
+	border-color: #d82e2e !important;
 	color: #fff;
 }
 
@@ -3913,7 +3913,7 @@ address b {
 	}
 }
 
-.single-product-page-content .product-details h2 a {
+.single-product-page-content .product-details h2 {
 	color: #d82e2e;
 	text-transform: uppercase;
 }

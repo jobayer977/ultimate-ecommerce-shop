@@ -25,7 +25,7 @@ const IndexPageComponent: React.FC<IFProps> = ({
 	threeFirstBannerResponse,
 	brandsResponse,
 }) => {
-	console.log(productsResponse)
+	productsResponse
 	return (
 		<AppLayoutComponent>
 			<HomeBannerComponent banners={bannersResponse.data} />
@@ -37,7 +37,7 @@ const IndexPageComponent: React.FC<IFProps> = ({
 	)
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(context: any) {
 	const fetchSliderHomePageBanners = await BannerService.filter({
 		page: 1,
 		take: 10,

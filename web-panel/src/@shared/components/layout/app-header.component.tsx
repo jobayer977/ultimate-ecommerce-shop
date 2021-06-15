@@ -1,18 +1,22 @@
+import Link from "next/link"
 import React from "react"
+import { routeConstant } from "@shared/constant/routes.constant"
 const AppHeaderComponent = () => {
 	return (
 		<header id="header-area" className="header__3">
 			<div className="ruby-container">
 				<div className="row">
 					<div className="col-3 col-lg-1 col-xl-2 m-auto">
-						<a href="index.html" className="logo-area">
-							<img
-								style={{ height: 50 }}
-								src="./img/logo.jpg"
-								alt="Logo"
-								className="img-fluid"
-							/>
-						</a>
+						<Link href={routeConstant.root}>
+							<a className="logo-area">
+								<img
+									style={{ height: 50 }}
+									src="/img/logo.jpg"
+									alt="Logo"
+									className="img-fluid"
+								/>
+							</a>
+						</Link>
 					</div>
 
 					<div className="col-3 col-lg-9 col-xl-8 m-auto">

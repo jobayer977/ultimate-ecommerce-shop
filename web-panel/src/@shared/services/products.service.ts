@@ -11,4 +11,7 @@ export const ProductsService = {
 			}&take=${option.take || ""}`
 		)
 	},
+	findById(id: string) {
+		return CoreAxiosInstance.get(`${END_POINT}${id}`)
+	},
 }

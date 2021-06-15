@@ -11,7 +11,7 @@ const AppFooterComponent = () => {
 								<div className="col-lg-3 col-md-6">
 									<div className="single-callto-action d-flex">
 										<figure className="callto-thumb">
-											<img src="./img/air-plane.png" alt="WorldWide Shipping" />
+											<img src="/img/air-plane.png" alt="WorldWide Shipping" />
 										</figure>
 										<div className="callto-info">
 											<h2>Free Shipping Worldwide</h2>
@@ -23,7 +23,7 @@ const AppFooterComponent = () => {
 								<div className="col-lg-3 col-md-6">
 									<div className="single-callto-action d-flex">
 										<figure className="callto-thumb">
-											<img src="./img/support.png" alt="Support" />
+											<img src="/img/support.png" alt="Support" />
 										</figure>
 										<div className="callto-info">
 											<h2>24/7 CUSTOMER SERVICE</h2>
@@ -35,7 +35,7 @@ const AppFooterComponent = () => {
 								<div className="col-lg-3 col-md-6">
 									<div className="single-callto-action d-flex">
 										<figure className="callto-thumb">
-											<img src="./img/money-back.png" alt="Money Back" />
+											<img src="/img/money-back.png" alt="Money Back" />
 										</figure>
 										<div className="callto-info">
 											<h2>MONEY BACK Guarantee!</h2>
@@ -47,7 +47,7 @@ const AppFooterComponent = () => {
 								<div className="col-lg-3 col-md-6">
 									<div className="single-callto-action d-flex">
 										<figure className="callto-thumb">
-											<img src="./img/cog.png" alt="Guide" />
+											<img src="/img/cog.png" alt="Guide" />
 										</figure>
 										<div className="callto-info">
 											<h2>SHOPPING GUIDE</h2>
@@ -64,12 +64,12 @@ const AppFooterComponent = () => {
 					<div className="ruby-container">
 						<div
 							className="followup-wrapper"
-							style={{ backgroundImage: `url(./img/page-banner.jpg)` }}>
+							style={{ backgroundImage: `url(/img/page-banner.jpg)` }}>
 							<div className="row">
 								<div className="col-lg-12 text-center">
 									<div className="follow-content-wrap">
 										<a href="index.html" className="logo">
-											<img src="./img/logo-r.png" alt="logo" />
+											<img src="/img/logo-r.png" alt="logo" />
 										</a>
 										<p>
 											Eodem modo typi, qui nunc nobis videntur parum clari,
@@ -95,7 +95,7 @@ const AppFooterComponent = () => {
 										</div>
 
 										<a href="#">
-											<img src="./img/payment.png" alt="Payment Method" />
+											<img src="/img/payment.png" alt="Payment Method" />
 										</a>
 									</div>
 								</div>
