@@ -1,4 +1,5 @@
 import AppLayoutComponent from "@shared/components/layout/app-layout.component"
+import { GetStaticPathsContext } from "next"
 import { IFProduct } from "@shared/interfaces/product.interface"
 import { ProductsService } from "@shared/services/products.service"
 import React from "react"
@@ -63,7 +64,8 @@ const ProductSinglePage: React.FC<IFProps> = ({ product }) => {
 		</AppLayoutComponent>
 	)
 }
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }: GetStaticPathsContext) {
+	console.log(locales)
 	return { paths: [], fallback: true }
 }
 export async function getStaticProps(context: any) {
@@ -73,7 +75,7 @@ export async function getStaticProps(context: any) {
 		props: {
 			product: await fetchProduct?.data?.data,
 		},
-		revalidate: 14400,
+		revalidate: 1,
 	}
 }
 export default ProductSinglePage
