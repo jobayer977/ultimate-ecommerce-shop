@@ -1,4 +1,5 @@
 import { IFBanner } from "@shared/interfaces/banner.interface"
+import Image from "next/image"
 import React from "react"
 
 interface IFProps {
@@ -13,10 +14,11 @@ const HomeThreeBannerComponent: React.FC<IFProps> = ({ banners }) => {
 						<div className="col-lg-4" key={String(banner?.id)}>
 							<div className="single-featured-product">
 								<a href="#">
-									<img
+									<Image
 										src={String(banner?.image)}
-										alt="Products"
-										className="img-fluid"
+										alt="Picture of the author"
+										width={500}
+										height={310}
 									/>
 								</a>
 							</div>

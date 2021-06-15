@@ -1,9 +1,11 @@
 import AppLayoutComponent from "@shared/components/layout/app-layout.component"
 import { GetStaticPathsContext } from "next"
 import { IFProduct } from "@shared/interfaces/product.interface"
+import Image from "next/image"
 import { ProductsService } from "@shared/services/products.service"
 import React from "react"
 import { useRouter } from "next/dist/client/router"
+
 interface IFProps {
 	product: IFProduct
 }
@@ -17,18 +19,19 @@ const ProductSinglePage: React.FC<IFProps> = ({ product }) => {
 			) : (
 				<div id="page-content-wrapper" className="p-9">
 					<div className="ruby-container">
-						<div className="row">
+						<div className="row ">
 							<div className="col-lg-12">
 								<div className="single-product-page-content">
-									<div className="row">
+									<div className="row align-items-center">
 										<div className="col-lg-5">
 											<div className="product-thumbnail-wrap">
 												<div className="product-thumb-carousel">
 													<div className="single-thumb-item">
-														<img
-															className="img-fluid"
+														<Image
 															src={String(product?.productImages)}
-															alt="Product"
+															alt="Picture of the author"
+															width={500}
+															height={500}
 														/>
 													</div>
 												</div>

@@ -1,6 +1,7 @@
 import { Card, Col, PageHeader, Row } from "antd"
 
 import { IFBrand } from "@shared/interfaces/brand.interface"
+import Image from "next/image"
 import React from "react"
 
 interface IFProps {
@@ -20,7 +21,14 @@ const HomeBrandsComponent: React.FC<IFProps> = ({ brands }) => {
 								className="logo-itm-bx"
 								key={String(brand.id)}
 								style={{ marginBottom: 16 }}
-								cover={<img alt="example" src={brand?.image} />}>
+								cover={
+									<Image
+										src={String(brand?.image)}
+										alt="Picture of the author"
+										width={500}
+										height={500}
+									/>
+								}>
 								<Meta title={brand?.name} />
 							</Card>
 						</Col>
@@ -34,3 +42,6 @@ const HomeBrandsComponent: React.FC<IFProps> = ({ brands }) => {
 export default HomeBrandsComponent
 
 const { Meta } = Card
+{
+	/* <img alt="example" src={brand?.image} /> */
+}

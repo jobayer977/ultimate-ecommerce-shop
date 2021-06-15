@@ -1,4 +1,5 @@
 import { IFDepartment } from "@shared/interfaces/department.interface"
+import Image from "next/image"
 import React from "react"
 
 interface IFProps {
@@ -18,10 +19,16 @@ const HomeDepartmentsComponent: React.FC<IFProps> = ({ departments }) => {
 											<div className="single-cat-item">
 												<figure className="category-thumb">
 													<a href="#">
-														<img
+														{/* <img
 															src={x.image}
 															alt="Men Category"
 															className="img-fluid"
+														/> */}
+														<Image
+															src={String(x.image)}
+															alt="Picture of the author"
+															width={500}
+															height={500}
 														/>
 													</a>
 
