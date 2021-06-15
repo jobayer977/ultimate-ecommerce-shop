@@ -65,8 +65,7 @@ const ProductSinglePage: React.FC<IFProps> = ({ product }) => {
 	)
 }
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-	console.log(locales)
-	return { paths: [], fallback: false }
+	return { paths: [], fallback: true }
 }
 export async function getStaticProps(context: any) {
 	const { id } = context.params
