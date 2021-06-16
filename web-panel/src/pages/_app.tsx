@@ -1,7 +1,11 @@
 import "@assets/css/app.scss"
 
+import { persistor, store } from "src/@config/redux/store"
+
 import type { AppProps } from "next/app"
 import Head from "next/head"
+import { PersistGate } from "redux-persist/integration/react"
+import { Provider } from "react-redux"
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -26,7 +30,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 					href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
 				/>
 			</Head>
-			<Component {...pageProps} />
+
+			<Provider store={store}>
+				<PersistGate persistor={persistor}>
+					<Component {...pageProps} />
+				</PersistGate>
+			</Provider>
 		</>
 	)
 }

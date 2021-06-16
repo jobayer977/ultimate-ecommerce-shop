@@ -1,5 +1,9 @@
 export const routeConstant = {
 	root: "/",
+	cart: "/cart",
+	myAccount: "/user/myAccount",
+	authLogin: "/auth/login",
+	authRegister: "/auth/register",
 	departments: "/departments",
 	departmentsId: "/departments/[id]",
 	brands: "/brands",

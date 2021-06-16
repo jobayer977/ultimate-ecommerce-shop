@@ -20,7 +20,7 @@ a {
 
 a:hover,
 a:focus {
-	color: #d82e2e;
+	color: #3ba66c;
 	outline: none;
 	text-decoration: none;
 }
@@ -204,7 +204,7 @@ button.btn:active {
 }
 
 .owl-carousel .owl-nav button:hover {
-	background-color: #d82e2e !important;
+	background-color: #3ba66c !important;
 	color: #fff;
 }
 
@@ -213,7 +213,7 @@ button.btn:active {
 }
 
 .owl-carousel .owl-dots button.active span {
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 }
 
 .owl-carousel .owl-dots button span {
@@ -251,7 +251,7 @@ button.btn:active {
 .btn-long-arrow:hover,
 .btn-long-arrow:focus,
 .btn-long-arrow:active {
-	color: #d82e2e;
+	color: #3ba66c;
 	outline: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
@@ -279,8 +279,8 @@ button.btn:active {
 }
 
 .btn-add-to-cart:hover {
-	background-color: #d82e2e;
-	border-color: #d82e2e !important;
+	background-color: #3ba66c;
+	border-color: #3ba66c !important;
 	color: #fff;
 }
 
@@ -306,8 +306,8 @@ button.btn:active {
 }
 
 .btn-login:hover {
-	background-color: #d82e2e;
-	border-color: #d82e2e;
+	background-color: #3ba66c;
+	border-color: #3ba66c;
 	color: #fff;
 }
 
@@ -316,7 +316,7 @@ button.btn:active {
 	line-height: 1.5;
 	letter-spacing: 0.3em;
 	text-transform: uppercase;
-	color: #d82e2e;
+	color: #3ba66c;
 	font-family: "Montserrat";
 	position: relative;
 	display: inline-block;
@@ -345,13 +345,13 @@ button.btn:active {
 }
 
 .tooltip .tooltip-inner {
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 	font-size: 1.3rem;
 	line-height: 1.5;
 }
 
 .tooltip .arrow:before {
-	border-left-color: #d82e2e !important;
+	border-left-color: #3ba66c !important;
 }
 
 #new-products-area,
@@ -392,7 +392,7 @@ button.btn:active {
 .scrolltotop:hover,
 .scrolltotop:active,
 .scrolltotop:focus {
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 	color: #fff;
 	-webkit-transition: all 0.4s ease-out;
 	-moz-transition: all 0.4s ease-out;
@@ -455,7 +455,7 @@ button.btn:active {
 .breadcrumb li a:active,
 .breadcrumb li a:focus,
 .breadcrumb li a.active {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .breadcrumb li a.active {
@@ -482,7 +482,7 @@ button.btn:active {
 }
 
 .sidebar-list li a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 	padding-left: 4px;
 }
 
@@ -534,8 +534,8 @@ button.btn:active {
 .page-pagination .pagination li a:hover,
 .page-pagination .pagination li a:focus,
 .page-pagination .pagination li a.current {
-	background-color: #d82e2e;
-	outline-color: #d82e2e;
+	background-color: #3ba66c;
+	outline-color: #3ba66c;
 	color: #fff;
 }
 
@@ -595,7 +595,7 @@ button.btn:active {
 .custom-checkbox .custom-control-label a:hover,
 .custom-radio label a:hover,
 .custom-radio .custom-control-label a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .custom-checkbox input,
@@ -626,8 +626,8 @@ button.btn:active {
 .custom-radio input:checked label:before,
 .custom-radio .custom-control-input:checked ~ .custom-control-label:before,
 .custom-radio .custom-control-input:checked label:before {
-	background-color: #d82e2e;
-	border-color: #d82e2e;
+	background-color: #3ba66c;
+	border-color: #3ba66c;
 }
 
 .custom-radio label:before,
@@ -652,14 +652,14 @@ button.btn:active {
 .table-responsive::-webkit-scrollbar-thumb {
 	border-radius: 0;
 	border: 0;
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 }
 
 .table-responsive::-webkit-scrollbar {
 	-webkit-appearance: none;
 	width: 15px;
 	height: 10px;
-	background-color: rgba(216, 46, 46, 0.3);
+	background-color: #3ba66c;
 }
 
 blockquote,
@@ -804,7 +804,7 @@ address b {
 	line-height: 16px;
 	-webkit-clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
 	clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
-	right: -24px;
+	left: -24px;
 	top: 50%;
 	-webkit-transform: translate(0, -50%);
 	-moz-transform: translate(0, -50%);
@@ -823,7 +823,7 @@ address b {
 }
 
 #header-area .header-right-meta ul li a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #header-area .site-settings {
@@ -983,7 +983,7 @@ address b {
 }
 
 #header-area .mini-cart .single-cart-item .product-details h2 a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #header-area .mini-cart .single-cart-item .product-details span {
@@ -994,7 +994,7 @@ address b {
 }
 
 #header-area .mini-cart .single-cart-item .product-details span.price {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #header-area .mini-cart .single-cart-item .product-details .multiplication {
@@ -1039,7 +1039,7 @@ address b {
 }
 
 #header-area.header__2 .header-right-meta ul li a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #header-area.header__2 .slicknav_menu .slicknav_btn .slicknav_icon-bar {
@@ -1061,7 +1061,7 @@ address b {
 }
 
 #header-area.header__3 #mainmenu > ul > li > a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #header-area.header__3 .header-right-meta ul li.shop-cart a .count {
@@ -1074,7 +1074,7 @@ address b {
 }
 
 #header-area.header__3 .header-right-meta ul li a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #header-area.header__3 .slicknav_menu .slicknav_btn .slicknav_icon-bar {
@@ -1101,7 +1101,7 @@ address b {
 
 #mainmenu ul li:hover a,
 #mainmenu ul li.current a {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #mainmenu ul li.dropdown-show:after {
@@ -1138,7 +1138,7 @@ address b {
 }
 
 #mainmenu ul li.dropdown-show:hover:after {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #mainmenu ul li.dropdown-show:hover > .dropdown-nav {
@@ -1207,7 +1207,7 @@ address b {
 }
 
 #mainmenu ul li .dropdown-nav li:hover a {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #mainmenu ul li .dropdown-nav li:hover .sub-dropdown li a {
@@ -1226,7 +1226,7 @@ address b {
 }
 
 #mainmenu ul li .dropdown-nav li a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #mainmenu ul li .dropdown-nav li a:after {
@@ -1239,7 +1239,7 @@ address b {
 }
 
 #mainmenu ul li .dropdown-nav li .sub-dropdown li a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #mainmenu .mega-menu-wrap {
@@ -1316,7 +1316,7 @@ address b {
 }
 
 #mainmenu .mega-menu-wrap .mega-menu-item ul li a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #mainmenu .mega-menu-wrap .mega-menu-item ul li a:after {
@@ -1556,7 +1556,7 @@ address b {
 
 .modal-close:hover,
 .menu-close:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 /*== Search Box Style ==*/
@@ -1594,7 +1594,7 @@ address b {
 }
 
 .search-box-area .search-box-form form input:focus {
-	border-bottom-color: #d82e2e;
+	border-bottom-color: #3ba66c;
 }
 
 .search-box-area .search-box-form form button {
@@ -1615,7 +1615,7 @@ address b {
 }
 
 .search-box-area .search-box-form form button:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #quickView .modal-dialog {
@@ -1623,7 +1623,7 @@ address b {
 }
 
 #quickView .modal-dialog .close {
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
@@ -1756,7 +1756,7 @@ address b {
 	line-height: 1.5;
 	font-family: "Montserrat";
 	text-transform: uppercase;
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #banner-area #banner-carousel .single-carousel-wrap .banner-caption h2 {
@@ -1916,7 +1916,7 @@ address b {
 	.single-carousel-wrap
 	.banner-caption
 	.btn-long-arrow:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #banner-area.banner__3 #banner-carousel .single-carousel-wrap.home_4_slide_1 {
@@ -1962,7 +1962,7 @@ address b {
 .about-content-wrap h2 {
 	font-size: 1.4rem;
 	line-height: 1.5;
-	color: #d82e2e;
+	color: #3ba66c;
 	margin-bottom: 0;
 	margin-top: -5px;
 }
@@ -2054,7 +2054,7 @@ address b {
 
 #aboutUs-area.about__2 .about-content-wrap h4.price {
 	font-size: 4.8rem;
-	color: #d82e2e;
+	color: #3ba66c;
 	margin: 40px 0;
 }
 
@@ -2138,7 +2138,7 @@ address b {
 
 .tab-menu-wrap li a:hover,
 .tab-menu-wrap li a.active {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 575px) {
@@ -2205,8 +2205,8 @@ address b {
 }
 
 .products-wrapper .single-product-item:hover .product-details .btn-add-to-cart {
-	border-color: #d82e2e;
-	color: #d82e2e;
+	border-color: #3ba66c;
+	color: #3ba66c;
 }
 
 .products-wrapper
@@ -2233,7 +2233,7 @@ address b {
 }
 
 .products-wrapper .single-product-item .product-details h2 a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .products-wrapper .single-product-item .product-details .products-desc {
@@ -2312,8 +2312,8 @@ address b {
 
 .products-wrapper .single-product-item .product-meta button:hover,
 .products-wrapper .single-product-item .product-meta a:hover {
-	background-color: #d82e2e;
-	border-bottom-color: #d82e2e;
+	background-color: #3ba66c;
+	border-bottom-color: #3ba66c;
 }
 
 .products-wrapper .single-product-item .product-meta button span,
@@ -2343,7 +2343,7 @@ address b {
 }
 
 .products-wrapper .single-product-item .product-bedge.sale {
-	background-color: #e74c3c;
+	background-color: #3ba66c;
 }
 
 .products-wrapper .owl-stage-outer {
@@ -2393,7 +2393,7 @@ address b {
 }
 
 .products-wrapper.products-gird .single-product-item:after {
-	background-color: rgba(220, 67, 67, 0.8);
+	background-color: #3ba66c;
 }
 
 .products-wrapper.products-gird .single-product-item:hover .product-details {
@@ -2626,7 +2626,7 @@ address b {
 }
 
 .small-product-list .single-product-item .product-details h2 a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .small-product-list .single-product-item .product-details .price {
@@ -2673,7 +2673,7 @@ address b {
 	.product-thumbnail-wrap
 	.owl-thumbs
 	.owl-thumb-item.active {
-	border: 2px solid #d82e2e;
+	border: 2px solid #3ba66c;
 }
 
 .single-product-page-content
@@ -2882,7 +2882,7 @@ address b {
 
 .newsletter-form-wrap input:active,
 .newsletter-form-wrap input:focus {
-	border-bottom-color: #d82e2e;
+	border-bottom-color: #3ba66c;
 }
 
 .newsletter-form-wrap button.btn-long-arrow {
@@ -2945,7 +2945,7 @@ address b {
 }
 
 #we-say-hello-area .say-hello-content-wrap .single-say-hello-item:hover h2 {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #we-say-hello-area
@@ -2994,7 +2994,7 @@ address b {
 	.single-sale-product
 	.sale-product-details
 	h3 {
-	color: #d82e2e;
+	color: #3ba66c;
 	text-transform: uppercase;
 	font-family: "Montserrat";
 	font-size: 1.8rem;
@@ -3005,7 +3005,7 @@ address b {
 	.single-sale-product
 	.sale-product-details
 	h3 {
-	color: #d82e2e;
+	color: #3ba66c;
 	font-size: 1.8rem;
 }
 
@@ -3057,7 +3057,7 @@ address b {
 	.sale-product-details
 	h2
 	a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 #sale-products-area
@@ -3310,7 +3310,7 @@ address b {
 }
 
 #sale-products-area .sale-product-wrapper .owl-carousel .owl-nav button:hover {
-	background-color: #d82e2e !important;
+	background-color: #3ba66c !important;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 575px),
@@ -3355,7 +3355,7 @@ address b {
 	.owl-carousel
 	.owl-nav
 	button:hover {
-	background-color: #d82e2e !important;
+	background-color: #3ba66c !important;
 }
 
 #products-area-wrapper .product-category-name-warp {
@@ -3498,7 +3498,7 @@ address b {
 	font-size: 2rem;
 	line-height: 1.5;
 	text-transform: uppercase;
-	color: #d82e2e;
+	color: #3ba66c;
 	font-family: "Montserrat";
 	font-weight: 400;
 	position: relative;
@@ -3711,11 +3711,11 @@ address b {
 }
 
 .color-option-select .color-item.red {
-	background-color: #e74c3c;
+	background-color: #3ba66c;
 }
 
 .color-option-select .color-item.red .color-hvr .color-fill {
-	background-color: #e74c3c;
+	background-color: #3ba66c;
 }
 
 .color-option-select .color-item .color-hvr {
@@ -3783,8 +3783,8 @@ address b {
 
 .sidebar-search form button:hover,
 .sidebar-search form button:focus {
-	background-color: #d82e2e;
-	border-color: #d82e2e;
+	background-color: #3ba66c;
+	border-color: #3ba66c;
 	color: #fff;
 }
 
@@ -3809,8 +3809,8 @@ address b {
 }
 
 .tags li a:hover {
-	background-color: #d82e2e;
-	border-color: #d82e2e;
+	background-color: #3ba66c;
+	border-color: #3ba66c;
 	color: #fff;
 }
 
@@ -3825,7 +3825,7 @@ address b {
 }
 
 .recent-post .single-product-item .product-details .btn-add-to-cart:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 /*== Sidebar Area End ==*/
@@ -3878,7 +3878,7 @@ address b {
 }
 
 .product-view li.current {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .product-view li .fa-bars {
@@ -3914,7 +3914,7 @@ address b {
 }
 
 .single-product-page-content .product-details h2 {
-	color: #d82e2e;
+	color: #3ba66c;
 	text-transform: uppercase;
 }
 
@@ -4066,7 +4066,7 @@ address b {
 
 .single-product-page-content .product-full-info-reviews nav.nav a:hover,
 .single-product-page-content .product-full-info-reviews nav.nav a.active {
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 	color: #fff;
 }
 
@@ -4134,7 +4134,7 @@ address b {
 }
 
 .ratting-list .sin-list i {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .ratting-list .sin-list span {
@@ -4172,7 +4172,7 @@ address b {
 
 .sin-rattings .ratting-author .ratting-star i,
 .sin-rattings .ratting-author .ratting-star span {
-	color: #d82e2e;
+	color: #3ba66c;
 	font-size: 1.3rem;
 	line-height: 1.5;
 	float: left;
@@ -4247,7 +4247,7 @@ address b {
 }
 
 .ratting-form input:focus {
-	border-color: #d82e2e;
+	border-color: #3ba66c;
 }
 
 .ratting-form input[type="submit"] {
@@ -4265,8 +4265,8 @@ address b {
 }
 
 .ratting-form input[type="submit"]:hover {
-	border-color: #d82e2e;
-	background-color: #d82e2e;
+	border-color: #3ba66c;
+	background-color: #3ba66c;
 	color: #fff;
 }
 
@@ -4284,7 +4284,7 @@ address b {
 }
 
 .ratting-form textarea:focus {
-	border-color: #d82e2e;
+	border-color: #3ba66c;
 }
 
 /*== Single Product End ==*/
@@ -4329,7 +4329,7 @@ address b {
 }
 
 .login-register-wrapper .login-reg-tab-menu a.active {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .login-reg-form-wrap {
@@ -4367,7 +4367,7 @@ address b {
 
 .single-input-item label.required:after {
 	content: "*";
-	color: #e74c3c;
+	color: #3ba66c;
 	font-size: 1.5rem;
 	margin-left: 3px;
 	margin-top: 5px;
@@ -4390,12 +4390,12 @@ address b {
 .single-input-item input:focus,
 .single-input-item textarea:active,
 .single-input-item textarea:focus {
-	border-color: #d82e2e;
+	border-color: #3ba66c;
 	background-color: #fff;
 }
 
 .single-input-item .forget-pwd {
-	color: #d82e2e;
+	color: #3ba66c;
 	font-size: 1.5rem;
 	line-height: 1.5;
 }
@@ -4496,7 +4496,7 @@ fieldset legend {
 }
 
 .compare-table .table tbody tr td.product-image-title .title:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .compare-table .table tbody tr td.pro-desc p {
@@ -4525,7 +4525,7 @@ fieldset legend {
 }
 
 .compare-table .table tbody tr td.pro-remove button:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .compare-table .table tbody tr td.pro-remove button i {
@@ -4546,7 +4546,7 @@ fieldset legend {
 }
 
 .cart-table .table thead {
-	background-color: #e46e6e;
+	background-color: #3ba66c;
 }
 
 .cart-table .table thead tr th {
@@ -4573,7 +4573,7 @@ fieldset legend {
 }
 
 .cart-table .table tbody tr td a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .cart-table .table tbody tr td a.btn-add-to-cart:hover {
@@ -4599,7 +4599,7 @@ fieldset legend {
 
 .cart-table .table tr .pro-quantity .pro-qty input:focus,
 .cart-table .table tr .pro-quantity .pro-qty input:active {
-	border: 1px solid #d82e2e;
+	border: 1px solid #3ba66c;
 }
 
 .cart-table .table tr .pro-remove i.fa {
@@ -4673,7 +4673,7 @@ fieldset legend {
 
 .cart-update-option .apply-coupon-wrapper form input:focus,
 .cart-update-option .apply-coupon-wrapper form input:active {
-	border-color: #d82e2e;
+	border-color: #3ba66c;
 }
 
 .cart-update-option .apply-coupon-wrapper form button {
@@ -4721,7 +4721,7 @@ fieldset legend {
 }
 
 .cart-calculator-wrapper h3 {
-	background-color: #e46e6e;
+	background-color: #3ba66c;
 	color: #fff;
 	font-family: "Montserrat";
 	font-size: 2.2rem;
@@ -4757,7 +4757,7 @@ fieldset legend {
 /* Checkout Login Coupon Accordion Start */
 .checkoutaccordion h3 {
 	background-color: #f2f2f3;
-	border-top: 3px solid #d82e2e;
+	border-top: 3px solid #3ba66c;
 	color: #202020;
 	font-size: 1.6rem;
 	line-height: 1.5;
@@ -4770,7 +4770,7 @@ fieldset legend {
 }
 
 .checkoutaccordion h3 span {
-	color: #d82e2e;
+	color: #3ba66c;
 	cursor: pointer;
 	-webkit-transition: all 0.4s ease-out;
 	-moz-transition: all 0.4s ease-out;
@@ -5075,7 +5075,7 @@ fieldset legend {
 }
 
 .single-blog-wrap .blog-details h3 a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .single-blog-wrap .blog-details .post-date {
@@ -5100,7 +5100,7 @@ fieldset legend {
 }
 
 .single-blog-wrap .blog-details .post-date:after {
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 	content: "";
 	position: absolute;
 	left: 50%;
@@ -5158,7 +5158,7 @@ fieldset legend {
 }
 
 .post-meta .post-info a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .post-meta .post-info a i.fa {
@@ -5206,8 +5206,8 @@ fieldset legend {
 }
 
 .post-share a:hover {
-	background-color: #d82e2e;
-	border-color: #d82e2e;
+	background-color: #3ba66c;
+	border-color: #3ba66c;
 	color: #fff;
 }
 
@@ -5327,7 +5327,7 @@ fieldset legend {
 
 .myaccount-tab-menu a:hover,
 .myaccount-tab-menu a.active {
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 	color: #fff;
 }
 
@@ -5365,7 +5365,7 @@ fieldset legend {
 }
 
 .myaccount-content .welcome a:hover {
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 .myaccount-table {
@@ -5392,7 +5392,7 @@ fieldset legend {
 
 .saved-message {
 	background-color: #f4f5f7;
-	border-top: 3px solid #d82e2e;
+	border-top: 3px solid #3ba66c;
 	-webkit-border-radius: 5px 5px 0 0;
 	-moz-border-radius: 5px 5px 0 0;
 	border-radius: 5px 5px 0 0;
@@ -5418,7 +5418,7 @@ fieldset legend {
 }
 
 .contact-method-wrap .contact-method-item .method-icon {
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
@@ -5435,7 +5435,7 @@ fieldset legend {
 }
 
 .contact-method-wrap .contact-method-item .method-icon:before {
-	background-color: #d82e2e;
+	background-color: #3ba66c;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
@@ -5560,7 +5560,7 @@ fieldset legend {
 	font-family: "Montserrat";
 	font-size: 3.2rem;
 	line-height: 1.5;
-	color: #d82e2e;
+	color: #3ba66c;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 575px) {
@@ -5711,8 +5711,8 @@ fieldset legend {
 }
 
 .footer-social-icons a:hover {
-	background-color: #d82e2e;
-	border-color: #d82e2e;
+	background-color: #3ba66c;
+	border-color: #3ba66c;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 575px),
@@ -5822,4 +5822,26 @@ header#header-area {
 	left: 0;
 	width: 100%;
 	z-index: 8;
+}
+.pro-qty {
+	display: flex;
+	align-items: center;
+}
+
+.pro-qty input {
+	width: 50px !important;
+	height: 34px !important;
+	margin: 0 10px;
+}
+.user-account-tabs {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	padding: 30px 0;
+}
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+	color: #3ba66c;
+}
+
+.ant-tabs-ink-bar {
+	background: #3ba66c;
 }

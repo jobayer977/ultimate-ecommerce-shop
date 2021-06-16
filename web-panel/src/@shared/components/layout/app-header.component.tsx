@@ -1,7 +1,15 @@
 import Link from "next/link"
 import React from "react"
+import { createStructuredSelector } from "reselect"
 import { routeConstant } from "@shared/constant/routes.constant"
+import { selectCartItemsQuantity } from "@modules/cart/redux/cart.selector"
+import { useSelector } from "react-redux"
 const AppHeaderComponent = () => {
+	const { cartQuantity } = useSelector(
+		createStructuredSelector({
+			cartQuantity: selectCartItemsQuantity,
+		})
+	)
 	return (
 		<header id="header-area" className="header__3">
 			<div className="ruby-container">
@@ -27,26 +35,6 @@ const AppHeaderComponent = () => {
 										<Link href={routeConstant.root}>
 											<a>Home</a>
 										</Link>
-										{/* <ul className="dropdown-nav sub-dropdown">
-											<li>
-												<a href="index.html">Home Layout 1</a>
-											</li>
-											<li>
-												<a href="index2.html">Home Layout 2</a>
-											</li>
-											<li>
-												<a href="index3.html">Home Layout 3</a>
-											</li>
-											<li>
-												<a href="index4.html">Home Layout 4</a>
-											</li>
-											<li>
-												<a href="index5.html">Home Layout 5</a>
-											</li>
-											<li>
-												<a href="index6.html">Home Layout 6</a>
-											</li>
-										</ul> */}
 									</li>
 
 									<li className="dropdown-show">
@@ -67,16 +55,24 @@ const AppHeaderComponent = () => {
 					<div className="col-6 col-lg-2 m-auto">
 						<div className="header-right-meta text-right">
 							<ul>
-								<li>
-									<a href="#" className="modal-active">
-										<i className="fa fa-search"></i>
-									</a>
-								</li>
 								<li className="shop-cart">
-									<a href="#">
-										<i className="fa fa-shopping-bag"></i>{" "}
-										<span className="count">3</span>
-									</a>
+									<Link href={routeConstant?.cart}>
+										<a>
+											<i className="fa fa-shopping-bag"></i>
+											{cartQuantity > 0 ? (
+												<span className="count">{cartQuantity}</span>
+											) : (
+												""
+											)}
+										</a>
+									</Link>
+								</li>
+								<li>
+									<Link href={routeConstant.myAccount}>
+										<a>
+											<i className="fa fa-user"></i>
+										</a>
+									</Link>
 								</li>
 							</ul>
 						</div>
