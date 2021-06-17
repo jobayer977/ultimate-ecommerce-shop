@@ -1,12 +1,12 @@
-import { CoreAxiosWithTokenInstance } from "./../../@config/axios/core-axios.config"
+import { CoreAxiosObservableInstance } from "src/@config/axios/core.axios-observable"
 import { IFUserCreate } from "./../interfaces/user.interface"
 const END_POINT = "/userInfo/"
 
 export const UserService = {
 	getCurrentUser() {
-		return CoreAxiosWithTokenInstance.get(`${END_POINT}current`)
+		return CoreAxiosObservableInstance.get(`${END_POINT}current`)
 	},
 	updateCurrentUser(payload: IFUserCreate) {
-		return CoreAxiosWithTokenInstance.put(`${END_POINT}current`, payload)
+		return CoreAxiosObservableInstance.put(`${END_POINT}current`, payload)
 	},
 }

@@ -1,37 +1,43 @@
-import { Button, Col, DatePicker, Form, Input, Radio, Row, Select } from "antd"
-import React, { useEffect, useState } from "react"
+import { Button, Col, Form, Input, Radio, Row, Select } from "antd"
 
+import React from "react"
 import { UserService } from "@shared/services/user.service"
 
 const { Option } = Select
 
-const UserUpdateComponent = () => {
-	const [useInfo, setUseInfo] = useState<any>({})
-	const getCurrentUserInfo = async () => {
-		try {
-			const res = await UserService.getCurrentUser()
+interface IFProps {
+	userInfo: any
+}
+const UserUpdateComponent: React.FC<IFProps> = ({ userInfo }) => {
+	console.log(userInfo)
+	// const updateCurrentUserService = useService(
+	// 	UserService.updateCurrentUser,
+	// 	(res: BaseResponse) => {
+	// 		notification.success({
+	// 			message: "Profile Updated",
+	// 		})
+	// 	}
+	// )
+
+	const onSubmit = (value: any) => {
+		UserService.updateCurrentUser(value).subscribe((res: any) => {
 			console.log(res)
-			return res
-		} catch (error: any) {
-			console.log(error.response)
-		}
+		})
 	}
 
-	const onSubmit = async (value: any) => {
-		console.log(value)
-		const res = await UserService.updateCurrentUser(value)
-		console.log(res)
-	}
-
-	useEffect(() => {
-		getCurrentUserInfo()
-	}, [])
 	return (
 		<Form
 			name="normal_login"
 			className="login-form"
 			layout="vertical"
-			initialValues={{ remember: true }}
+			initialValues={{
+				city: userInfo?.city,
+				country: userInfo?.country,
+				email: userInfo?.email,
+				firstName: userInfo?.firstName,
+				gender: userInfo?.gender,
+				lastName: userInfo?.lastName,
+			}}
 			onFinish={onSubmit}>
 			<Row gutter={16}>
 				<Col xxl={12} lg={12} md={24}>
@@ -75,16 +81,7 @@ const UserUpdateComponent = () => {
 						</Select>
 					</Form.Item>
 				</Col>
-				<Col xxl={12} lg={12} md={24}>
-					<Form.Item
-						name="birthDate"
-						label="BirthDate"
-						rules={[
-							{ required: true, message: "Please input your birthDate!" },
-						]}>
-						<DatePicker size="large" style={{ width: "100%" }} />
-					</Form.Item>
-				</Col>
+
 				<Col xxl={12} lg={12} md={24}>
 					<Form.Item
 						name="email"
@@ -107,6 +104,7 @@ const UserUpdateComponent = () => {
 				<Col xxl={24} lg={24} md={24}>
 					<Form.Item>
 						<Button
+							loading={false}
 							size="large"
 							type="primary"
 							htmlType="submit"

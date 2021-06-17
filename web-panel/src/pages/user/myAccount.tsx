@@ -1,7 +1,8 @@
 import { Avatar, Comment, PageHeader, Tabs, Typography } from "antd"
+import React, { useState } from "react"
 
 import AppLayoutComponent from "@shared/components/layout/app-layout.component"
-import React from "react"
+import { Purify } from "@shared/components/purify.component"
 import UserUpdateComponent from "@modules/user/components/user-update.component"
 import { routeConstant } from "@shared/constant/routes.constant"
 import withAuth from "@shared/components/withAuth.component"
@@ -21,6 +22,17 @@ const routes = [
 ]
 
 const MyAccount = () => {
+	const [useInfo, setUseInfo] = useState<any>({})
+
+	// const getCurrentUseInfoService = useService(
+	// 	UserService.getCurrentUser,
+	// 	(res: BaseResponse) => {
+	// 		setUseInfo(res.data)
+	// 	}
+	// )
+	// useEffect(() => {
+	// 	getCurrentUseInfoService.query({})
+	// }, [])
 	return (
 		<AppLayoutComponent>
 			<div className="ruby-container">
@@ -29,30 +41,33 @@ const MyAccount = () => {
 					title="My Account"
 					breadcrumb={{ routes }}
 				/>
-				<Comment
-					author={<h1>Jobayer Hossain </h1>}
-					avatar={
-						<Avatar
-							// src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-							alt="Han Solo"
-						/>
-					}
-					content={<p>jobayerhossain@Gmail.com</p>}
-				/>
-				<Tabs
-					className="user-account-tabs"
-					defaultActiveKey="1"
-					tabPosition="left">
-					<TabPane tab="Basic Information" key="1">
-						<Title style={{ marginBottom: 50 }} level={5}>
-							Basic Information
-						</Title>
-						<UserUpdateComponent />
-					</TabPane>
-					<TabPane tab="Orders" key="2">
-						Orders
-					</TabPane>
-				</Tabs>
+
+				<Purify loading={false} empty={false}>
+					<Comment
+						author={<h1>Jobayer Hossain </h1>}
+						avatar={
+							<Avatar
+								// src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+								alt="Han Solo"
+							/>
+						}
+						content={<p>jobayerhossain@Gmail.com</p>}
+					/>
+					<Tabs
+						className="user-account-tabs"
+						defaultActiveKey="1"
+						tabPosition="left">
+						<TabPane tab="Basic Information" key="1">
+							<Title style={{ marginBottom: 50 }} level={5}>
+								Basic Information
+							</Title>
+							<UserUpdateComponent userInfo={useInfo} />
+						</TabPane>
+						<TabPane tab="Orders" key="2">
+							Orders
+						</TabPane>
+					</Tabs>
+				</Purify>
 			</div>
 		</AppLayoutComponent>
 	)
