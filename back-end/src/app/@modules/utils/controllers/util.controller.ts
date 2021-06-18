@@ -9,7 +9,7 @@ export class UtilsController {
 
 	@Post("/uploadImage")
 	uploadImage(@UploadedFile("image", { options: storageOptions }) file: any) {
-		console.log(file)
+		file
 		return this.utilsService.uploadFile(file)
 	}
 }

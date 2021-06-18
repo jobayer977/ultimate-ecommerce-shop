@@ -29,7 +29,6 @@ export class UserService {
 	async findById(id: string) {
 		try {
 			const user = await this.userRepository.findOne({ id })
-			console.log(user)
 			delete user.password
 			if (!user) {
 				throw new NotFoundError(`User Not Exist`)

@@ -39,11 +39,8 @@ cloudinary.config({
 	static_file_support: ENV.CN_STATIC_FILE_SUPPORT,
 })
 
-console.log(ENV)
-
 //*  Database Connection
 const connectDB = async () => {
-	console.log(ormConfig)
 	await createConnection(ormConfig)
 }
 

@@ -32,7 +32,6 @@ export class AuthRegisterService {
 				phoneNumber,
 				type: UserTypes.ADMIN,
 			})
-			console.log(user)
 			//* Verify User
 			if (_.isEmpty(user) === false) {
 				throw new NotFoundError(`User Already Exist with ${phoneNumber} number`)

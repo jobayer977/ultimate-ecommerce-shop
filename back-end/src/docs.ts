@@ -8,6 +8,7 @@ import { BrandController } from "./app/@modules/ecommarce/controllers/brand.cont
 import { CategoryController } from "./app/@modules/ecommarce/controllers/category.controller"
 import { DepartmentController } from "./app/@modules/ecommarce/controllers/department.controller"
 import { ENV } from "./ENV"
+import { OrderController } from "./app/@modules/ecommarce/controllers/order.controller"
 import { ProductController } from "./app/@modules/ecommarce/controllers/product.controller"
 import { UserController } from "./app/@modules/user/controllers/user.controller"
 import { UserInfoController } from "./app/@modules/user/controllers/user-info.controller"
@@ -35,6 +36,7 @@ const _controllers = [
 	ProductController,
 	UserInfoController,
 	UtilsController,
+	OrderController,
 ]
 export const spec: any = routingControllersToSpec(
 	storage,

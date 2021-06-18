@@ -20,7 +20,6 @@ export class AuthLoginService {
 	//! Admin
 	async admin(credential: AuthCredentialDto) {
 		const { password, phoneNumber } = credential
-		console.log(credential)
 		try {
 			//* Get User From DB
 			const user: any = await this.userRepository.findOne({

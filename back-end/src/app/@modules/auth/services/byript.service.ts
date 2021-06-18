@@ -11,7 +11,7 @@ export class BcryptService {
 	}
 
 	public async compareHash(str: string, hashStr: string) {
-		console.log(hashStr)
+		hashStr
 		return await bcryptjs.compare(str, hashStr)
 	}
 }
