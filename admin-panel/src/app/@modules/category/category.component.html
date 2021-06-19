@@ -45,9 +45,9 @@
     <tbody>
       <tr *ngFor="let data of basicTable.data">
         <td><img style="height: 45px" [src]="data.image || 'N/A'" alt="" /></td>
-        <td>{{ data.name || "N/A" }}</td>
+        <td>{{ data.name }}</td>
         <td style="text-align: right; width: 200px">
-          {{ data.createdAt || "N/A" | date }}
+          {{ data.createdAt | date }}
         </td>
         <td style="text-align: right; width: 200px">
           <app-category-update [data]="data"></app-category-update>

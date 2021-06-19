@@ -36,10 +36,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.code || "N/A" }}</td>
-        <td>{{ data.approved || "N/A" }}</td>
-        <td>{{ data.createdAt || "N/A" }}</td>
-        <td>{{ data.totalAmount || "N/A" }} TK</td>
+        <td>{{ data.code }}</td>
+        <td>{{ data.approved }}</td>
+        <td>{{ data.createdAt }}</td>
+        <td>{{ data.totalAmount }} TK</td>
       </tr>
     </tbody>
   </nz-table>

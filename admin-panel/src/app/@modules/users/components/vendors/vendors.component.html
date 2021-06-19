@@ -40,15 +40,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.phoneNumber || "N/A" }}</td>
-        <td>
-          {{ data.userInfo.firstName }} {{ data.userInfo.lastName || "N/A" }}
-        </td>
-        <td>{{ data.userInfo.email || "N/A" }}</td>
-        <td>{{ data.userInfo.city || "N/A" }}</td>
-        <td>{{ data.userInfo.country || "N/A" }}</td>
-        <td>{{ data.userInfo.gender || "N/A" }}</td>
-        <td>{{ data.userInfo.birthDate || "N/A" | date }}</td>
+        <td>{{ data.phoneNumber }}</td>
+        <td>{{ data.userInfo.firstName }} {{ data.userInfo.lastName }}</td>
+        <td>{{ data.userInfo.email }}</td>
+        <td>{{ data.userInfo.city }}</td>
+        <td>{{ data.userInfo.country }}</td>
+        <td>{{ data.userInfo.gender }}</td>
+        <td>{{ data.userInfo.birthDate | date }}</td>
       </tr>
     </tbody>
   </nz-table>
