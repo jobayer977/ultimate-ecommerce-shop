@@ -21,7 +21,7 @@ export class ProductPageComponent {
   };
 
   ngOnInit() {
-    this.filterData({ page: 1, take: 10 });
+    this.filterData({ page: 1, take: 12 });
     this.productQuery.select().subscribe((res: any) => {
       this.products = res;
     });

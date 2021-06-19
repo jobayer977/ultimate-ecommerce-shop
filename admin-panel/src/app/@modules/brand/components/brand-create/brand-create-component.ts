@@ -67,6 +67,8 @@ export class BrandCreateComponent {
         .subscribe((res: any) => {
           this.notificationService.success('Created', '');
           this.onClose.emit();
+          this.brandForm.reset();
+          this.imageUrl = '';
         });
     }
   }

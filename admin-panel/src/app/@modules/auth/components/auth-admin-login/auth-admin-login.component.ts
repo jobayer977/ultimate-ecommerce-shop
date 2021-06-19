@@ -22,8 +22,8 @@ export class AuthAdminLoginComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      phoneNumber: [null, [Validators.required]],
-      password: [null, [Validators.required]],
+      phoneNumber: ['01200000000', [Validators.required]],
+      password: ['123456', [Validators.required]],
       remember: [true],
     });
   }
@@ -34,19 +34,15 @@ export class AuthAdminLoginComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    this.authService.adminLogin({ phoneNumber, password }).subscribe(
-      (res: any) => {
+    this.authService
+      .adminLogin({ phoneNumber, password })
+      .subscribe((res: any) => {
         if (res?.token?.token.length) {
-          this.isLoading = false;
           localStorage.setItem('token', String(res.token.token));
           this.notification.success('Authentication Success', '');
           this.router.navigate([routesConstant.adminDashboard]);
         }
-      },
-      (error: any) => {
-        this.isLoading = false;
-        this.notification.error(String(error?.error?.message), '');
-      }
-    );
+      });
+    this.isLoading = false;
   }
 }

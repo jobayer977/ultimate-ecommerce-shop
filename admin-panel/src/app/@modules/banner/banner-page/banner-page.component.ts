@@ -22,7 +22,7 @@ export class BannerPageComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.filterData({ page: 1, take: 10 });
+    this.filterData({ page: 1, take: 12 });
     this.bannerQuery.select().subscribe((res: any) => {
       this.banners = res;
     });

@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const content: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard/default',
+    redirectTo: 'products',
     pathMatch: 'full',
   },
   {

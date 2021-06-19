@@ -2,25 +2,18 @@
   <div class="app-page-header">
     <nz-page-header nzBackIcon [nzGhost]="false">
       <nz-page-header-title>User Profile</nz-page-header-title>
-      <nz-page-header-subtitle
-        >{{ userInfo.firstName }}'s Profile Info.
-      </nz-page-header-subtitle>
       <nz-page-header-extra>
         <a [routerLink]="[routesConstant.userProfileUpdate]">
           <button nz-button nzType="default">
             <i nz-icon nzType="edit" nzTheme="outline"></i>Update
           </button></a
         >
-
-        <button nz-button nzType="primary">
-          <i nz-icon nzType="file-pdf" nzTheme="outline"></i> Save As PDF
-        </button>
       </nz-page-header-extra>
     </nz-page-header>
   </div>
   <ng-container>
-    <nz-descriptions [nzColumn]="2" nzTitle="Personal">
-      <nz-descriptions-item nzTitle="First Name" [nzSpan]="1">
+    <nz-descriptions [nzColumn]="1" nzTitle="Personal">
+      <nz-descriptions-item nzTitle="First Name">
         {{ userInfo.firstName }}</nz-descriptions-item
       >
       <nz-descriptions-item nzTitle="Last Name" [nzSpan]="1">{{
@@ -34,7 +27,7 @@
       >
     </nz-descriptions>
     <nz-divider></nz-divider>
-    <nz-descriptions [nzColumn]="2" nzTitle="Address">
+    <nz-descriptions [nzColumn]="1" nzTitle="Address">
       <nz-descriptions-item nzTitle="Country" [nzSpan]="1">{{
         userInfo?.country
       }}</nz-descriptions-item>
@@ -43,7 +36,7 @@
       }}</nz-descriptions-item>
     </nz-descriptions>
     <nz-divider></nz-divider>
-    <nz-descriptions [nzColumn]="2" nzTitle="Contacts">
+    <nz-descriptions [nzColumn]="1" nzTitle="Contacts">
       <nz-descriptions-item nzTitle="Email" [nzSpan]="1">{{
         userInfo.email
       }}</nz-descriptions-item>

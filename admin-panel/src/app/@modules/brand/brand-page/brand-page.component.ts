@@ -21,7 +21,7 @@ export class BrandPageComponent {
   };
 
   ngOnInit() {
-    this.filterData({ page: 1, take: 10 });
+    this.filterData({ page: 1, take: 12 });
     this.brandQuery.select().subscribe((res: any) => {
       this.banners = res;
     });

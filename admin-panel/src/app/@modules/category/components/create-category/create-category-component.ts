@@ -72,6 +72,8 @@ export class CreateCategoryComponent implements OnInit {
         })
         .subscribe((res: any) => {
           this.onClose.emit();
+          this.categoryForm.reset();
+          this.imageUrl = '';
         });
     }
   }

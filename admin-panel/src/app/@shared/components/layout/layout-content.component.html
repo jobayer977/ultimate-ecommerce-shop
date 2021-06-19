@@ -2,13 +2,13 @@
   <nz-sider
     class="menu-sidebar"
     nzCollapsible
-    nzWidth="256px"
-    nzBreakpoint="md"
+    nzWidth="200px"
+    nzBreakpoint="lg"
     [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null"
   >
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
+      <a [routerLink]="[routesConstant.ordersList]">
         <img src="../assets/logo-icon.png" alt="logo" />
         <h1>IShop</h1>
       </a>
@@ -19,12 +19,6 @@
       nzMode="inline"
       [nzInlineCollapsed]="isCollapsed"
     >
-      <li nz-menu-item nzMatchRouter>
-        <a [routerLink]="[routesConstant.defaultDashboard]">
-          <i nz-icon nzType="rise"></i>
-          <span>Dashboard</span>
-        </a>
-      </li>
       <li nz-menu-item nzMatchRouter>
         <a [routerLink]="[routesConstant.productsList]">
           <i nz-icon nzType="code-sandbox" nzTheme="outline"></i>
@@ -77,20 +71,6 @@
         <a [routerLink]="[routesConstant.ordersList]">
           <i nz-icon nzType="fund" nzTheme="outline"></i> <span>Orders</span></a
         >
-      </li>
-
-      <li nz-submenu nzTitle="Settings" nzIcon="setting">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Shipping Charge</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Delivery Timing</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Payment Methods</a>
-          </li>
-        </ul>
       </li>
     </ul>
   </nz-sider>

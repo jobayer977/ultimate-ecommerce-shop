@@ -70,6 +70,8 @@ export class BannerCreateComponent {
         .subscribe((res: any) => {
           this.notificationService.success('Created', '');
           this.onClose.emit();
+          this.bannerForm.reset();
+          this.imageUrl = '';
         });
     }
   }

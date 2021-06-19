@@ -8,7 +8,6 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ProductService } from '../../../../@shared/services/product.service';
 import { UtilsService } from 'src/app/@shared/services/utils.service';
-
 @Component({
   selector: 'app-products-create',
   templateUrl: './products-create-component.html',
@@ -16,7 +15,6 @@ import { UtilsService } from 'src/app/@shared/services/utils.service';
 export class ProductsCreateComponent {
   @Input() isOpen: boolean = false;
   @Output() onClose = new EventEmitter<void>();
-
   constructor(
     private productService: ProductService,
     private fb: FormBuilder,
@@ -26,13 +24,11 @@ export class ProductsCreateComponent {
     private categoryService: CategoryService,
     private brandService: BrandService
   ) {}
-
   ngOnInit(): void {
     this.loadMoreDepartment();
     this.loadMoreCategory();
     this.loadMoreBrands();
   }
-
   //*Image update
   imageUploadLoading: boolean = false;
   imageUploadEndPoint = this.utilsService.uploadImageEndPoint;
@@ -48,11 +44,9 @@ export class ProductsCreateComponent {
         break;
       case 'error':
         this.imageUploadLoading = false;
-
         break;
     }
   }
-
   //*Create
   productForm = this.fb.group({
     name: [''],
@@ -61,11 +55,9 @@ export class ProductsCreateComponent {
     stock: [''],
     mrp: [''],
     mrpVat: [''],
-
     brand: [''],
     category: [''],
     department: [''],
-
     productCode: [''],
     isAvailable: [false],
     isNewArrival: [false],
@@ -90,10 +82,11 @@ export class ProductsCreateComponent {
         .subscribe((res: any) => {
           this.notificationService.success('Created', '');
           this.onClose.emit();
+          this.productForm.reset();
+          this.imageUrl = '';
         });
     }
   }
-
   //*Department
   departmentOptionList: any[] = [];
   isLoading = false;

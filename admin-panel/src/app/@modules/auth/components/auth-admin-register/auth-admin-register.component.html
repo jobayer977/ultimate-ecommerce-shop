@@ -44,13 +44,10 @@
             <span>Remember me</span>
           </label>
         </div>
-        <div nz-col [nzSpan]="12">
-          <a class="login-form-forgot">Forgot password</a>
-        </div>
+        <div nz-col [nzSpan]="12"></div>
       </div>
       <button
         [disabled]="validateForm.status === 'INVALID'"
-        [nzLoading]="isLoading"
         nz-button
         class="login-form-button login-form-margin"
         [nzType]="'primary'"
