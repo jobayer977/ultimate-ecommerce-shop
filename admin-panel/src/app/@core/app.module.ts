@@ -1,3 +1,6 @@
+import * as Sentry from '@sentry/angular';
+
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 
@@ -11,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpConfigInterceptor } from '../@shared/interceptor/httpconfig.interceptor';
 import { IconsProviderModule } from './icons-provider.module';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
-import { NgModule } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedModule } from './../@shared/shared.module';
 import en from '@angular/common/locales/en';
 import { registerLocaleData } from '@angular/common';
@@ -41,6 +44,22 @@ registerLocaleData(en);
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpConfigInterceptor,
+      multi: true,
+    },
+    {
+      provide: ErrorHandler,
+      useValue: Sentry.createErrorHandler({
+        showDialog: true,
+      }),
+    },
+    {
+      provide: Sentry.TraceService,
+      deps: [Router],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => () => {},
+      deps: [Sentry.TraceService],
       multi: true,
     },
   ],
