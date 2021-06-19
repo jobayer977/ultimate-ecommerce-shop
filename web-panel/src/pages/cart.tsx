@@ -134,7 +134,8 @@ const CartPage = () => {
 													</td>
 													<td className="pro-quantity">
 														<div className="pro-qty">
-															<Button onClick={onClickRemoveItemFromCart}>
+															<Button
+																onClick={() => onClickRemoveItemFromCart(pd)}>
 																-
 															</Button>
 															<input type="text" value={pd?.quantity} />

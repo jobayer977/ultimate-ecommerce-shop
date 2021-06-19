@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 
 import AppLayoutComponent from "@shared/components/layout/app-layout.component"
 import { BaseResponse } from "@shared/interfaces/base.interface"
+import OrdersComponent from "@modules/user/components/orders.component"
 import { Purify } from "@shared/components/purify.component"
 import { UserService } from "@shared/services/user.service"
 import UserUpdateComponent from "@modules/user/components/user-update.component"
@@ -20,7 +21,7 @@ const routes = [
 		breadcrumbName: "Home",
 	},
 	{
-		path: routeConstant.cart,
+		path: routeConstant.myAccount,
 		breadcrumbName: "My account",
 	},
 ]
@@ -78,7 +79,7 @@ const MyAccount = () => {
 							<UserUpdateComponent userInfo={useInfo} />
 						</TabPane>
 						<TabPane tab="Orders" key="2">
-							Orders
+							<OrdersComponent />
 						</TabPane>
 					</Tabs>
 				</Purify>
