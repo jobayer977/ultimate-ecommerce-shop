@@ -1,16 +1,15 @@
-import { Avatar, Button, Comment, PageHeader, Tabs, Typography } from "antd"
-import React, { useEffect, useState } from "react"
-
-import AppLayoutComponent from "@shared/components/layout/app-layout.component"
-import { BaseResponse } from "@shared/interfaces/base.interface"
 import OrdersComponent from "@modules/user/components/orders.component"
-import { Purify } from "@shared/components/purify.component"
-import { UserService } from "@shared/services/user.service"
 import UserUpdateComponent from "@modules/user/components/user-update.component"
-import { routeConstant } from "@shared/constant/routes.constant"
-import { useRouter } from "next/router"
-import useService from "@shared/hooks/useService"
+import AppLayoutComponent from "@shared/components/layout/app-layout.component"
+import { Purify } from "@shared/components/purify.component"
 import withAuth from "@shared/components/withAuth.component"
+import { routeConstant } from "@shared/constant/routes.constant"
+import useService from "@shared/hooks/useService"
+import { BaseResponse } from "@shared/interfaces/base.interface"
+import { UserService } from "@shared/services/user.service"
+import { Avatar, Button, Comment, PageHeader, Tabs, Typography } from "antd"
+import { useRouter } from "next/router"
+import React, { useEffect, useState } from "react"
 
 const { Title } = Typography
 
@@ -36,7 +35,7 @@ const MyAccount = () => {
 			setUseInfo(res.data)
 		}
 	)
-	console.log(useInfo)
+
 	useEffect(() => {
 		getCurrentUseInfoService.query({})
 	}, [])

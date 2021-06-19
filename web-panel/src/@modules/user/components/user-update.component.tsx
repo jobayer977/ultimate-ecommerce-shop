@@ -1,7 +1,6 @@
-import { Button, Col, Form, Input, Radio, Row, Select } from "antd"
-
-import React from "react"
 import { UserService } from "@shared/services/user.service"
+import { Button, Col, Form, Input, Radio, Row, Select } from "antd"
+import React from "react"
 
 const { Option } = Select
 
@@ -9,7 +8,6 @@ interface IFProps {
 	userInfo: any
 }
 const UserUpdateComponent: React.FC<IFProps> = ({ userInfo }) => {
-	console.log(userInfo)
 	// const updateCurrentUserService = useService(
 	// 	UserService.updateCurrentUser,
 	// 	(res: BaseResponse) => {
@@ -20,9 +18,7 @@ const UserUpdateComponent: React.FC<IFProps> = ({ userInfo }) => {
 	// )
 
 	const onSubmit = (value: any) => {
-		UserService.updateCurrentUser(value).subscribe((res: any) => {
-			console.log(res)
-		})
+		UserService.updateCurrentUser(value).subscribe((res: any) => {})
 	}
 
 	return (

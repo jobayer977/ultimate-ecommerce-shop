@@ -1,12 +1,11 @@
-import { Button, Table } from "antd"
-import React, { useEffect, useState } from "react"
-
+import { takaCurrencySing } from "@shared/constant/preferance"
+import useService from "@shared/hooks/useService"
 import { BaseFilterResponse } from "@shared/interfaces/base.interface"
 import { OrderService } from "@shared/services/order.service"
 import { getSession } from "@shared/utils/jwttoken"
+import { Button, Table } from "antd"
 import moment from "moment"
-import { takaCurrencySing } from "@shared/constant/preferance"
-import useService from "@shared/hooks/useService"
+import React, { useEffect, useState } from "react"
 
 const OrdersComponent = () => {
 	const user: any = getSession()
@@ -20,7 +19,6 @@ const OrdersComponent = () => {
 	const filterOrderService = useService(
 		OrderService.filter,
 		(res: BaseFilterResponse) => {
-			console.log(res)
 			setOrdersResponse(res)
 		}
 	)
