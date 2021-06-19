@@ -41,6 +41,7 @@ cloudinary.config({
 
 //*  Database Connection
 const connectDB = async () => {
+	console.log(ormConfig)
 	await createConnection(ormConfig)
 }
 

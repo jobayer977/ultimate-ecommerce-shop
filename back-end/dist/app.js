@@ -31,7 +31,9 @@ cloudinary.config({
 var connectDB = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
     return tslib_1.__generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, typeorm_1.createConnection(ENV_1.ormConfig)];
+            case 0:
+                console.log(ENV_1.ormConfig);
+                return [4 /*yield*/, typeorm_1.createConnection(ENV_1.ormConfig)];
             case 1:
                 _a.sent();
                 return [2 /*return*/];

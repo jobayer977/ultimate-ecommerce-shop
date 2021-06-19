@@ -7,6 +7,7 @@ var typedi_1 = require("typedi");
 var typeorm_typedi_extensions_1 = require("typeorm-typedi-extensions");
 var responsePlaceholder_util_1 = require("../../../@utils/responsePlaceholder.util");
 var userType_enum_1 = require("../../user/enums/userType.enum");
+var order_enums_1 = require("../enums/order.enums");
 var util_function_1 = require("./../../../@utils/util.function");
 var user_repository_1 = require("./../../user/repository/user.repository");
 var order_product_repository_1 = require("./../repository/order-product.repository");
@@ -19,6 +20,7 @@ var OrderService = /** @class */ (function () {
         this.orderRepository = orderRepository;
         this.orderProductRepository = orderProductRepository;
     }
+    //!Place order
     OrderService.prototype.placeOrder = function (placeOrderDto) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             var user, products, findUser, orderProducts_1, codeGenerate_1, generatedCode, order_1, createdOrder_1, responsePayload, error_1;
@@ -154,6 +156,69 @@ var OrderService = /** @class */ (function () {
                         error_1 = _a.sent();
                         throw new Error(error_1);
                     case 10: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    //!Filter
+    OrderService.prototype.filter = function (baseFilterDto) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            return tslib_1.__generator(this, function (_a) {
+                return [2 /*return*/, this.orderRepository.filter(baseFilterDto)];
+            });
+        });
+    };
+    //! Get one
+    OrderService.prototype.findById = function (id) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var data, error_2;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.orderRepository.findOne({ id: id }, { relations: ["products"] })];
+                    case 1:
+                        data = _a.sent();
+                        if (!data) {
+                            throw new routing_controllers_1.NotFoundError("Not Found");
+                        }
+                        return [2 /*return*/, responsePlaceholder_util_1.getSingleDataPlaceholder(data)];
+                    case 2:
+                        error_2 = _a.sent();
+                        throw new routing_controllers_1.NotFoundError("Not Found");
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    OrderService.prototype.approved = function (approveOrderDto) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var code, order, payload, error_3;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        code = approveOrderDto.code;
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 4, , 5]);
+                        return [4 /*yield*/, this.orderRepository.find({ code: code })];
+                    case 2:
+                        order = _a.sent();
+                        if (!order.length) {
+                            throw new routing_controllers_1.NotFoundError("Order Not Found");
+                        }
+                        payload = {
+                            approved: true,
+                            deliveryStatus: order_enums_1.OrderDeliveryStatus.PENDING,
+                        };
+                        return [4 /*yield*/, this.orderRepository.update({ code: code }, payload)];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/, responsePlaceholder_util_1.successPlaceholder("Approved")];
+                    case 4:
+                        error_3 = _a.sent();
+                        throw new Error(error_3.message);
+                    case 5: return [2 /*return*/];
                 }
             });
         });

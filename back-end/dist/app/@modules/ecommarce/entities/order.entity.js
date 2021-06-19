@@ -44,11 +44,11 @@ var Order = /** @class */ (function (_super) {
         tslib_1.__metadata("design:type", Number)
     ], Order.prototype, "deliveryCharge", void 0);
     tslib_1.__decorate([
-        typeorm_1.Column({ nullable: true, type: "jsonb" }),
+        typeorm_1.Column({ nullable: true }),
         tslib_1.__metadata("design:type", String)
     ], Order.prototype, "billingAddress", void 0);
     tslib_1.__decorate([
-        typeorm_1.Column({ nullable: true, type: "jsonb" }),
+        typeorm_1.Column({ nullable: true }),
         tslib_1.__metadata("design:type", String)
     ], Order.prototype, "shippingAddress", void 0);
     tslib_1.__decorate([
