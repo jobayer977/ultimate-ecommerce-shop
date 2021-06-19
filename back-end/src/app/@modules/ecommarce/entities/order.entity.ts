@@ -1,8 +1,9 @@
-import { Column, Entity, OneToMany } from "typeorm"
+import { Column, Entity, ManyToOne, OneToMany } from "typeorm"
 
 import { BaseEntity } from "../../../@base/entities/base.entity"
 import { OrderDeliveryStatus } from "../enums/order.enums"
 import { OrderProduct } from "./order-products.entity"
+import { User } from "./../../user/entities/user.entity"
 
 @Entity("orders")
 export class Order extends BaseEntity {
@@ -41,4 +42,7 @@ export class Order extends BaseEntity {
 		onDelete: "CASCADE",
 	})
 	public products?: OrderProduct[]
+
+	@ManyToOne(() => User, (user) => user.orders)
+	user: User
 }

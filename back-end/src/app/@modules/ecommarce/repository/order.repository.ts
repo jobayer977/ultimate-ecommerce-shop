@@ -2,19 +2,20 @@ import { EntityRepository, Repository } from "typeorm"
 import { paginate, paginationOptions } from "../../../@utils/paginate.util"
 
 import { BadRequestError } from "routing-controllers"
-import { BaseFilterDto } from "./../../../@base/dto/base-filter.dto"
 import { Order } from "./../entities/order.entity"
+import { OrderFilterDto } from "../dtos/orderFilter.dto"
 
 @EntityRepository(Order)
 export class OrderRepository extends Repository<Order> {
-	async filter(baseFilterDto: BaseFilterDto) {
-		const { searchTerm, page } = baseFilterDto
-		console.log(searchTerm)
-		const pOption: any = paginationOptions(baseFilterDto)
-		const query = this.createQueryBuilder("orders").leftJoinAndSelect(
-			"orders.products",
-			"products"
-		)
+	async filter(orderFilterDto: OrderFilterDto) {
+		const { searchTerm, page, user } = orderFilterDto
+		const pOption: any = paginationOptions(orderFilterDto)
+		const query = this.createQueryBuilder("orders")
+			.leftJoinAndSelect("orders.products", "products")
+			.leftJoinAndSelect("orders.user", "user")
+		if (user) {
+			query.where("orders.user = :userId", { userId: user })
+		}
 		try {
 			if (searchTerm) {
 				query.where(`orders.code ILIKE :searchTerm `, {

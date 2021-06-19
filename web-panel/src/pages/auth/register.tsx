@@ -6,6 +6,7 @@ import Link from "next/link"
 import { notification } from "antd"
 import { routeConstant } from "@shared/constant/routes.constant"
 import { useRouter } from "next/router"
+import useService from "@shared/hooks/useService"
 
 const AuthLoginComponent = () => {
 	const router = useRouter()
@@ -15,6 +16,14 @@ const AuthLoginComponent = () => {
 	})
 	const { phoneNumber, password } = formData
 
+	const authRegisterService = useService(
+		AuthService.register,
+		(response: any) => {
+			localStorage.setItem("token", response?.token?.token)
+			router.back()
+			notification.success({ message: "Registration Success" })
+		}
+	)
 	const onChange = (e: any) => {
 		const { name, value } = e.target
 		setFormData({
@@ -34,18 +43,7 @@ const AuthLoginComponent = () => {
 				message: "Invalid Password",
 			})
 		} else {
-			try {
-				const response = await AuthService.register(formData)
-				console.log(response)
-				if (response.data) {
-					localStorage.setItem("token", response?.data?.token?.token)
-					router.push(routeConstant.root)
-				}
-			} catch (error: any) {
-				notification.error({
-					message: String(error?.response.data?.message?.message),
-				})
-			}
+			authRegisterService.query({ phoneNumber, password })
 		}
 	}
 	return (
@@ -99,7 +97,7 @@ const AuthLoginComponent = () => {
 
 								<div className="single-input-item">
 									<button className="btn-login" type="submit">
-										Register
+										{authRegisterService.loading ? "loading..." : "Register"}
 									</button>
 								</div>
 							</form>

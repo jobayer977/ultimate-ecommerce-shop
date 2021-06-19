@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, OneToOne } from "typeorm"
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from "typeorm"
 
 import { BaseEntity } from "../../../@base/entities/base.entity"
+import { Order } from "../../ecommarce/entities/order.entity"
 import { UserInfo } from "./user-info.entity"
 import { UserTypes } from "./../enums/userType.enum"
 
@@ -18,4 +19,7 @@ export class User extends BaseEntity {
 	@OneToOne(() => UserInfo, (userInfo) => userInfo.user)
 	@JoinColumn()
 	userInfo: UserInfo
+
+	@OneToMany(() => Order, (order) => order.user)
+	orders: Order[]
 }

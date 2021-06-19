@@ -7,7 +7,7 @@ import {
 	QueryParams,
 } from "routing-controllers"
 import { Container } from "typedi"
-import { BaseFilterDto } from "../../../@base/dto/base-filter.dto"
+import { OrderFilterDto } from "../dtos/orderFilter.dto"
 import { PlaceOrderDto } from "../dtos/placeorder.dto"
 import { ApproveOrderDto } from "./../dtos/approveOrder.dto"
 import { OrderService } from "./../services/order.service"
@@ -22,8 +22,8 @@ export class OrderController {
 	}
 
 	@Get("filter")
-	filter(@QueryParams() baseFilterDto: BaseFilterDto) {
-		return this.orderService.filter(baseFilterDto)
+	filter(@QueryParams() orderFilterDto: OrderFilterDto) {
+		return this.orderService.filter(orderFilterDto)
 	}
 	@Get(":id")
 	async findById(@Param("id") id: string) {

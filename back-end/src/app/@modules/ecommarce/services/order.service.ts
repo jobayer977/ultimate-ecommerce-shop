@@ -7,12 +7,11 @@ import {
 } from "../../../@utils/responsePlaceholder.util"
 import { UserTypes } from "../../user/enums/userType.enum"
 import { ApproveOrderDto } from "../dtos/approveOrder.dto"
+import { OrderFilterDto } from "../dtos/orderFilter.dto"
 import { PlaceOrderDto } from "../dtos/placeorder.dto"
 import { OrderDeliveryStatus } from "../enums/order.enums"
-import { BaseFilterDto } from "./../../../@base/dto/base-filter.dto"
 import { asyncForEach, getRandomString } from "./../../../@utils/util.function"
 import { UserRepository } from "./../../user/repository/user.repository"
-import { Order } from "./../entities/order.entity"
 import { OrderProductRepository } from "./../repository/order-product.repository"
 import { OrderRepository } from "./../repository/order.repository"
 import { ProductRepository } from "./../repository/product.repository"
@@ -90,11 +89,12 @@ export class OrderService {
 			const generatedCode = await codeGenerate()
 
 			//Insert order in order entity
-			let order: Order = {
+			let order: any = {
 				totalSubAmount: 0,
 				totalAmount: 0,
 				totalVat: 0,
 				deliveryCharge: 0,
+				user: user,
 			}
 			order.code = generatedCode
 			order.approved = false
@@ -130,8 +130,8 @@ export class OrderService {
 	}
 
 	//!Filter
-	async filter(baseFilterDto: BaseFilterDto) {
-		return this.orderRepository.filter(baseFilterDto)
+	async filter(orderFilterDto: OrderFilterDto) {
+		return this.orderRepository.filter(orderFilterDto)
 	}
 
 	//! Get one
