@@ -1,4 +1,4 @@
-import { Button, Card } from "antd"
+import { Button, Card, notification } from "antd"
 
 import { IFProduct } from "@shared/interfaces/product.interface"
 import Image from "next/image"
@@ -18,6 +18,7 @@ const ProductComponent: React.FC<IFProps> = ({ product }) => {
 
 	const onClickAddToCart = () => {
 		dispatch(addItemToCart(product))
+		notification.success({ message: "Added into cart" })
 	}
 	return (
 		<Card

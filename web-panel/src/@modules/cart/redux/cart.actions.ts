@@ -1,5 +1,6 @@
 import {
 	ADD_ITEM_TO_CART,
+	CLEAR_CART_REDUCER,
 	CLEAR_ITEM_FROM_CART,
 	REMOVE_ITEM_FROM_CART,
 } from "./cart.types"
@@ -17,4 +18,8 @@ export const removeItemFromCart = (item: any) => ({
 export const clearItemFromCart = (item: any) => ({
 	type: CLEAR_ITEM_FROM_CART,
 	payload: item,
+})
+
+export const clearCartReducer = () => ({
+	type: CLEAR_CART_REDUCER,
 })

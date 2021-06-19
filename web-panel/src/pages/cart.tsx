@@ -1,6 +1,7 @@
-import { Button, Empty, PageHeader } from "antd"
+import { Button, Empty, PageHeader, notification } from "antd"
 import {
 	addItemToCart,
+	clearCartReducer,
 	clearItemFromCart,
 	removeItemFromCart,
 } from "@modules/cart/redux/cart.actions"
@@ -8,11 +9,17 @@ import { selectCartItems, selectTotal } from "@modules/cart/redux/cart.selector"
 import { useDispatch, useSelector } from "react-redux"
 
 import AppLayoutComponent from "@shared/components/layout/app-layout.component"
+import { BaseResponse } from "@shared/interfaces/base.interface"
 import Link from "next/link"
+import { OrderService } from "@shared/services/order.service"
 import React from "react"
 import { createStructuredSelector } from "reselect"
+import { getSession } from "@shared/utils/jwttoken"
 import { routeConstant } from "@shared/constant/routes.constant"
 import { takaCurrencySing } from "@shared/constant/preferance"
+import { useRouter } from "next/router"
+import useService from "@shared/hooks/useService"
+import withAuth from "@shared/components/withAuth.component"
 
 const routes = [
 	{
@@ -25,6 +32,8 @@ const routes = [
 	},
 ]
 const CartPage = () => {
+	const routers = useRouter()
+	const user: any = getSession()
 	const { cartItems, totalSum } = useSelector(
 		createStructuredSelector({
 			cartItems: selectCartItems,
@@ -32,7 +41,6 @@ const CartPage = () => {
 		})
 	)
 	const dispatch = useDispatch()
-	console.log(cartItems)
 
 	const onClickRemoveItemFromCart = (item: any) => {
 		dispatch(removeItemFromCart(item))
@@ -40,6 +48,29 @@ const CartPage = () => {
 	const onClickClearItemFromCart = (item: any) => {
 		dispatch(clearItemFromCart(item))
 	}
+
+	const placeOrderService = useService(
+		OrderService.placeOrder,
+		(response: BaseResponse) => {
+			console.log(response)
+			dispatch(clearCartReducer())
+			notification.success({
+				message: "Order Created",
+			})
+			routers.push(routeConstant.myAccount)
+		}
+	)
+	const proceedToCheckOut = () => {
+		const payload = {
+			user: user?.id,
+			products: cartItems?.map((x: any) => ({
+				id: x?.id,
+				quantity: x?.quantity,
+			})),
+		}
+		placeOrderService.query(payload)
+	}
+
 	return (
 		<AppLayoutComponent>
 			<div className="ruby-container">
@@ -103,10 +134,7 @@ const CartPage = () => {
 													</td>
 													<td className="pro-quantity">
 														<div className="pro-qty">
-															<Button
-																onClick={() =>
-																	dispatch(removeItemFromCart(pd))
-																}>
+															<Button onClick={onClickRemoveItemFromCart}>
 																-
 															</Button>
 															<input type="text" value={pd?.quantity} />
@@ -162,9 +190,13 @@ const CartPage = () => {
 										</div>
 									</div>
 									<div className="d-flex justify-content-end">
-										<a href="checkout.html" className="btn-add-to-cart">
-											Proceed To Checkout
-										</a>
+										<button
+											className="btn-add-to-cart"
+											onClick={proceedToCheckOut}>
+											{placeOrderService.loading
+												? "loading..."
+												: "Proceed To Checkout"}
+										</button>
 									</div>
 								</div>
 							</div>
@@ -184,4 +216,4 @@ const CartPage = () => {
 	)
 }
 
-export default CartPage
+export default withAuth(CartPage)

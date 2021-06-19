@@ -2,5 +2,9 @@
 @import "./vendor/bootstrap.min.css";
 @import "./vendor/font-awesome.css";
 @import "./plugins.css";
-@import "~antd/dist/antd.css";
+@import "../customize/ant-result.css";
 @import "./style.css";
+
+button {
+	cursor: pointer;
+}

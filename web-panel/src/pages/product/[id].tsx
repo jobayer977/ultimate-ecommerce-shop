@@ -1,9 +1,13 @@
+import { Spin, notification } from "antd"
+
 import AppLayoutComponent from "@shared/components/layout/app-layout.component"
 import { GetStaticPathsContext } from "next"
 import { IFProduct } from "@shared/interfaces/product.interface"
 import Image from "next/image"
 import { ProductsService } from "@shared/services/products.service"
 import React from "react"
+import { addItemToCart } from "@modules/cart/redux/cart.actions"
+import { useDispatch } from "react-redux"
 import { useRouter } from "next/dist/client/router"
 
 interface IFProps {
@@ -11,11 +15,15 @@ interface IFProps {
 }
 const ProductSinglePage: React.FC<IFProps> = ({ product }) => {
 	const { isFallback } = useRouter()
-
+	const dispatch = useDispatch()
+	const addToCart = () => {
+		dispatch(addItemToCart(product))
+		notification.success({ message: "Added into cart" })
+	}
 	return (
 		<AppLayoutComponent>
 			{isFallback ? (
-				"Loading"
+				<Spin />
 			) : (
 				<div id="page-content-wrapper" className="p-9">
 					<div className="ruby-container">
@@ -51,7 +59,9 @@ const ProductSinglePage: React.FC<IFProps> = ({ product }) => {
 												</div>
 												<p className="products-desc">{product.description}</p>
 												<div className="product-quantity d-flex align-items-center">
-													<button className="btn btn-add-to-cart">
+													<button
+														className="btn btn-add-to-cart"
+														onClick={addToCart}>
 														<i className="fa fa-shopping-cart"></i> Buy Now
 													</button>
 												</div>
@@ -72,7 +82,6 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
 }
 export async function getStaticProps(context: any) {
 	const { id } = context.params
-	console.log(id)
 	const fetchProduct = await ProductsService.findById(id)
 	if (!fetchProduct.data?.data) {
 		return {
