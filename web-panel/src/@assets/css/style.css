@@ -5799,15 +5799,7 @@ header#header-area {
 .logo-itm-bx:hover {
 	box-shadow: 0 0 10px #dddddd5c;
 }
-.ant-btn-primary {
-	background: #3ba66c !important;
-	border: 1px solid #3ba66c !important;
-}
 
-.ant-btn-primary:hover {
-	background: #3ba66c !important;
-	border: 1px solid #3ba66c !important;
-}
 .inner-page-header {
 	padding-top: 50px !important;
 	padding-bottom: 50px !important;
