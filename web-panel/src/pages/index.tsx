@@ -1,9 +1,10 @@
+import { Button, Spin } from "antd"
+
 import AppLayoutComponent from "@shared/components/layout/app-layout.component"
 import { BannerService } from "@shared/services/banners.service"
 import { BannerType } from "@shared/enums"
 import { BaseFilterResponse } from "@shared/interfaces/base.interface"
 import { BrandService } from "@shared/services/brand.service"
-import { Button } from "antd"
 import { DepartmentService } from "@shared/services/departments.service"
 import { GetStaticProps } from "next"
 import Link from "next/link"
@@ -13,28 +14,32 @@ import dynamic from "next/dynamic"
 import { routeConstant } from "@shared/constant/routes.constant"
 
 const HomeBrandsComponent = dynamic(
-	() => import("@modules/home/components/home-brands/home-brands.component")
+	() => import("@modules/home/components/home-brands/home-brands.component"),
+	{ loading: () => <Spin tip="Loading..."></Spin> }
 )
 const HomeDepartmentsComponent = dynamic(
 	() =>
 		import(
 			"@modules/home/components/home-departments/home-departments.component"
-		)
+		),
+	{ loading: () => <Spin tip="Loading..."></Spin> }
 )
 const HomeProductsComponent = dynamic(
 	() =>
 		import("@modules/home/components/home-products/home-products.component"),
-	{ loading: () => <h1>...</h1> }
+	{ loading: () => <Spin tip="Loading..."></Spin> }
 )
 
 const HomeBannerComponent = dynamic(
-	() => import("@modules/home/components/home-banner/home-banner.component")
+	() => import("@modules/home/components/home-banner/home-banner.component"),
+	{ loading: () => <Spin tip="Loading..."></Spin> }
 )
 const HomeThreeBannerComponent = dynamic(
 	() =>
 		import(
 			"@modules/home/components/home-three-banner/home-three-banner.component"
-		)
+		),
+	{ loading: () => <Spin tip="Loading..."></Spin> }
 )
 interface IFProps {
 	bannersResponse: BaseFilterResponse

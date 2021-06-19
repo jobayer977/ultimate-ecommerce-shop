@@ -20,8 +20,8 @@ const AuthLoginComponent = () => {
 		AuthService.register,
 		(response: any) => {
 			localStorage.setItem("token", response?.token?.token)
-			router.back()
-			notification.success({ message: "Registration Success" })
+			router.push(routeConstant.cart)
+			notification.success({ message: "Registration Success", duration: 0.5 })
 		}
 	)
 	const onChange = (e: any) => {
@@ -37,10 +37,12 @@ const AuthLoginComponent = () => {
 		if (!phoneNumber) {
 			notification.error({
 				message: "Invalid Phone Number",
+				duration: 0.5,
 			})
 		} else if (!password) {
 			notification.error({
 				message: "Invalid Password",
+				duration: 0.5,
 			})
 		} else {
 			authRegisterService.query({ phoneNumber, password })

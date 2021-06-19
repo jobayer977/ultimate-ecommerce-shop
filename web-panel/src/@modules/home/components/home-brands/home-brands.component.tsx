@@ -24,30 +24,30 @@ const HomeBrandsComponent: React.FC<IFProps> = ({ brands }) => {
 				<PageHeader
 					className="site-page-header"
 					title="Shop By Brand"
-					extra={[
-						<Search
-							placeholder="Search..."
-							allowClear
-							enterButton="Search"
-							size="large"
-							onKeyUp={(e: any) => {
-								e.preventDefault()
+					// extra={[
+					// 	<Search
+					// 		placeholder="Search..."
+					// 		allowClear
+					// 		enterButton="Search"
+					// 		size="large"
+					// 		onKeyUp={(e: any) => {
+					// 			e.preventDefault()
 
-								if (e.key === "Enter") {
-									const q = e.currentTarget.value
+					// 			if (e.key === "Enter") {
+					// 				const q = e.currentTarget.value
 
-									router.push(
-										{
-											pathname: `/search`,
-											query: q ? { q } : {},
-										},
-										undefined,
-										{ shallow: true }
-									)
-								}
-							}}
-						/>,
-					]}
+					// 				router.push(
+					// 					{
+					// 						pathname: `/search`,
+					// 						query: q ? { q } : {},
+					// 					},
+					// 					undefined,
+					// 					{ shallow: true }
+					// 				)
+					// 			}
+					// 		}}
+					// 	/>,
+					// ]}
 				/>
 
 				<Row gutter={16} style={{ padding: 10, paddingBottom: 0 }}>

@@ -1718,6 +1718,7 @@ address b {
 	position: relative;
 	padding: 200px 0;
 	z-index: 1;
+	min-height: 500px;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 575px),
@@ -5836,4 +5837,10 @@ header#header-area {
 
 .ant-tabs-ink-bar {
 	background: #3ba66c;
+}
+.pro-remove i {
+	cursor: pointer;
+}
+.pro-remove i:hover {
+	color: #3ba66c;
 }

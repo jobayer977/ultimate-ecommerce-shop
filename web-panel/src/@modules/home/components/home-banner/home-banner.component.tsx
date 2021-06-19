@@ -40,40 +40,12 @@ const HomeBannerComponent: React.FC<IFProps> = ({ banners }) => {
 												style={{
 													backgroundImage: `url(${x.image})`,
 													cursor: "pointer",
-												}}>
-												<div
-													className="banner-caption text-center text-lg-left"
-													style={{ visibility: "hidden" }}>
-													<h4>Rubby Store</h4>
-													<h2>Ring Solitaire Princess</h2>
-													<p>
-														Eodem modo typi, qui nunc nobis videntur parum
-														clari, fiant sollemnes in futurum.
-													</p>
-													<a href="#" className="btn-long-arrow">
-														Shop Now
-													</a>
-												</div>
-											</div>
+												}}></div>
 										))}
 									</Swiper>
 								) : (
 									""
 								)}
-
-								{/* <div className="single-carousel-wrap slide-item-2">
-									<div className="banner-caption text-center text-lg-left">
-										<h4>New Collection 2017</h4>
-										<h2>Beautiful Earrings</h2>
-										<p>
-											Eodem modo typi, qui nunc nobis videntur parum clari,
-											fiant sollemnes in futurum.
-										</p>
-										<a href="#" className="btn-long-arrow">
-											Shop Now
-										</a>
-									</div>
-								</div> */}
 							</div>
 						</div>
 					</div>

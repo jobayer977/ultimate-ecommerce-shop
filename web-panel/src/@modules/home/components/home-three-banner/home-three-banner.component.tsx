@@ -1,5 +1,6 @@
 import { IFBanner } from "@shared/interfaces/banner.interface"
 import Image from "next/image"
+import Link from "next/link"
 import React from "react"
 
 interface IFProps {
@@ -13,14 +14,16 @@ const HomeThreeBannerComponent: React.FC<IFProps> = ({ banners }) => {
 					{banners?.map((banner: IFBanner) => (
 						<div className="col-lg-4" key={String(banner?.id)}>
 							<div className="single-featured-product">
-								<a href="#">
-									<Image
-										src={String(banner?.image)}
-										alt="Picture of the author"
-										width={500}
-										height={310}
-									/>
-								</a>
+								<Link href={String(banner.url)}>
+									<a>
+										<Image
+											src={String(banner?.image)}
+											alt="Picture of the author"
+											width={500}
+											height={310}
+										/>
+									</a>
+								</Link>
 							</div>
 						</div>
 					))}

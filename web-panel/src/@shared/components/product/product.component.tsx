@@ -18,7 +18,7 @@ const ProductComponent: React.FC<IFProps> = ({ product }) => {
 
 	const onClickAddToCart = () => {
 		dispatch(addItemToCart(product))
-		notification.success({ message: "Added into cart" })
+		notification.success({ message: "Added into cart", duration: 0.5 })
 	}
 	return (
 		<Card

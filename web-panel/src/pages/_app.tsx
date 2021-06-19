@@ -1,13 +1,50 @@
 import "@assets/css/app.scss"
 
+import React, { useEffect, useState } from "react"
 import { persistor, store } from "src/@config/redux/store"
 
 import type { AppProps } from "next/app"
 import Head from "next/head"
+import Loading from "@shared/components/loading.component"
 import { PersistGate } from "redux-persist/integration/react"
 import { Provider } from "react-redux"
+import { useRouter } from "next/router"
 
 function MyApp({ Component, pageProps }: AppProps) {
+	const router = useRouter()
+
+	const [state, setState] = useState({
+		isRouteChanging: false,
+		loadingKey: 0,
+	})
+
+	useEffect(() => {
+		const handleRouteChangeStart = () => {
+			setState((prevState) => ({
+				...prevState,
+				isRouteChanging: true,
+				loadingKey: prevState.loadingKey ^ 1,
+			}))
+		}
+
+		const handleRouteChangeEnd = () => {
+			setState((prevState) => ({
+				...prevState,
+				isRouteChanging: false,
+			}))
+		}
+
+		router.events.on("routeChangeStart", handleRouteChangeStart)
+		router.events.on("routeChangeComplete", handleRouteChangeEnd)
+		router.events.on("routeChangeError", handleRouteChangeEnd)
+
+		return () => {
+			router.events.off("routeChangeStart", handleRouteChangeStart)
+			router.events.off("routeChangeComplete", handleRouteChangeEnd)
+			router.events.off("routeChangeError", handleRouteChangeEnd)
+		}
+	}, [router.events])
+
 	return (
 		<>
 			<Head>
@@ -33,6 +70,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 			<Provider store={store}>
 				<PersistGate persistor={persistor}>
+					<Loading
+						isRouteChanging={state.isRouteChanging}
+						key={state.loadingKey}
+					/>
+
 					<Component {...pageProps} />
 				</PersistGate>
 			</Provider>

@@ -1,3 +1,4 @@
+import { Button, Empty, PageHeader, notification } from "antd"
 import {
 	addItemToCart,
 	clearCartReducer,
@@ -5,20 +6,20 @@ import {
 	removeItemFromCart,
 } from "@modules/cart/redux/cart.actions"
 import { selectCartItems, selectTotal } from "@modules/cart/redux/cart.selector"
-import AppLayoutComponent from "@shared/components/layout/app-layout.component"
-import withAuth from "@shared/components/withAuth.component"
-import { takaCurrencySing } from "@shared/constant/preferance"
-import { routeConstant } from "@shared/constant/routes.constant"
-import useService from "@shared/hooks/useService"
-import { BaseResponse } from "@shared/interfaces/base.interface"
-import { OrderService } from "@shared/services/order.service"
-import { getSession } from "@shared/utils/jwttoken"
-import { Button, Empty, notification, PageHeader } from "antd"
-import Link from "next/link"
-import { useRouter } from "next/router"
-import React from "react"
 import { useDispatch, useSelector } from "react-redux"
+
+import AppLayoutComponent from "@shared/components/layout/app-layout.component"
+import { BaseResponse } from "@shared/interfaces/base.interface"
+import Link from "next/link"
+import { OrderService } from "@shared/services/order.service"
+import React from "react"
 import { createStructuredSelector } from "reselect"
+import { getSession } from "@shared/utils/jwttoken"
+import { routeConstant } from "@shared/constant/routes.constant"
+import { takaCurrencySing } from "@shared/constant/preferance"
+import { useRouter } from "next/router"
+import useService from "@shared/hooks/useService"
+import withAuth from "@shared/components/withAuth.component"
 
 const routes = [
 	{
@@ -54,6 +55,7 @@ const CartPage = () => {
 			dispatch(clearCartReducer())
 			notification.success({
 				message: "Order Created",
+				duration: 0.5,
 			})
 			routers.push(routeConstant.myAccount)
 		}

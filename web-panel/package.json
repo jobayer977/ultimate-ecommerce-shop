@@ -9,6 +9,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
+		"@tanem/react-nprogress": "^3.0.70",
 		"antd": "^4.16.2",
 		"axios": "^0.21.1",
 		"axios-observable": "^1.1.6",

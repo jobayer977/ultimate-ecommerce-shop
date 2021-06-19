@@ -1,10 +1,11 @@
+import React, { useState } from "react"
+
 import AppLayoutComponent from "@shared/components/layout/app-layout.component"
+import { AuthService } from "@shared/services/auth.service"
+import Link from "next/link"
+import { notification } from "antd"
 import { routeConstant } from "@shared/constant/routes.constant"
 import useService from "@shared/hooks/useService"
-import { AuthService } from "@shared/services/auth.service"
-import { notification } from "antd"
-import Link from "next/link"
-import React, { useState } from "react"
 
 const AuthLoginComponent = () => {
 	const [formData, setFormData] = useState<any>({

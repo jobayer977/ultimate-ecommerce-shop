@@ -1,15 +1,16 @@
-import OrdersComponent from "@modules/user/components/orders.component"
-import UserUpdateComponent from "@modules/user/components/user-update.component"
-import AppLayoutComponent from "@shared/components/layout/app-layout.component"
-import { Purify } from "@shared/components/purify.component"
-import withAuth from "@shared/components/withAuth.component"
-import { routeConstant } from "@shared/constant/routes.constant"
-import useService from "@shared/hooks/useService"
-import { BaseResponse } from "@shared/interfaces/base.interface"
-import { UserService } from "@shared/services/user.service"
-import { Avatar, Button, Comment, PageHeader, Tabs, Typography } from "antd"
-import { useRouter } from "next/router"
+import { Button, Comment, PageHeader, Tabs, Typography } from "antd"
 import React, { useEffect, useState } from "react"
+
+import AppLayoutComponent from "@shared/components/layout/app-layout.component"
+import { BaseResponse } from "@shared/interfaces/base.interface"
+import OrdersComponent from "@modules/user/components/orders.component"
+import { Purify } from "@shared/components/purify.component"
+import { UserService } from "@shared/services/user.service"
+import UserUpdateComponent from "@modules/user/components/user-update.component"
+import { routeConstant } from "@shared/constant/routes.constant"
+import { useRouter } from "next/router"
+import useService from "@shared/hooks/useService"
+import withAuth from "@shared/components/withAuth.component"
 
 const { Title } = Typography
 
@@ -55,14 +56,8 @@ const MyAccount = () => {
 
 				<Purify loading={getCurrentUseInfoService.loading} empty={false}>
 					<Comment
-						author={<h1>Jobayer Hossain </h1>}
-						avatar={
-							<Avatar
-								// src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-								alt="Han Solo"
-							/>
-						}
-						content={<p>jobayerhossain@Gmail.com</p>}
+						author={<h1>Howdy, {useInfo?.firstName} </h1>}
+						content={<p>{useInfo?.email}</p>}
 					/>
 					<Button type="primary" onClick={logout}>
 						Logout

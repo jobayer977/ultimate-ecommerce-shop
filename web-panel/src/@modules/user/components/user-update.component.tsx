@@ -1,6 +1,18 @@
-import { UserService } from "@shared/services/user.service"
-import { Button, Col, Form, Input, Radio, Row, Select } from "antd"
+import {
+	Button,
+	Col,
+	Form,
+	Input,
+	Radio,
+	Row,
+	Select,
+	notification,
+} from "antd"
+
+import { BaseResponse } from "@shared/interfaces/base.interface"
 import React from "react"
+import { UserService } from "@shared/services/user.service"
+import useService from "@shared/hooks/useService"
 
 const { Option } = Select
 
@@ -8,17 +20,18 @@ interface IFProps {
 	userInfo: any
 }
 const UserUpdateComponent: React.FC<IFProps> = ({ userInfo }) => {
-	// const updateCurrentUserService = useService(
-	// 	UserService.updateCurrentUser,
-	// 	(res: BaseResponse) => {
-	// 		notification.success({
-	// 			message: "Profile Updated",
-	// 		})
-	// 	}
-	// )
+	const updateCurrentUserService = useService(
+		UserService.updateCurrentUser,
+		(res: BaseResponse) => {
+			notification.success({
+				duration: 0.5,
+				message: "Profile Updated",
+			})
+		}
+	)
 
 	const onSubmit = (value: any) => {
-		UserService.updateCurrentUser(value).subscribe((res: any) => {})
+		updateCurrentUserService.query(value)
 	}
 
 	return (
@@ -100,7 +113,7 @@ const UserUpdateComponent: React.FC<IFProps> = ({ userInfo }) => {
 				<Col xxl={24} lg={24} md={24}>
 					<Form.Item>
 						<Button
-							loading={false}
+							loading={updateCurrentUserService.loading}
 							size="large"
 							type="primary"
 							htmlType="submit"
