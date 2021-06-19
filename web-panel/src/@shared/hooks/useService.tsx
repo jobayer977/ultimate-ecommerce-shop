@@ -21,18 +21,18 @@ const useService = (service: any, onSuccess: any) => {
 					) {
 						res?.response?.data?.errors.map((x: any) => {
 							notification.error({
-								duration: 0.5,
+								duration: 1,
 								message: String(x?.constraints?.matches),
 							})
 						})
 					} else if (errType === "string") {
 						notification.error({
-							duration: 0.5,
+							duration: 1,
 							message: String(res?.response?.data?.message),
 						})
 					} else if (errType === "object") {
 						notification.error({
-							duration: 0.5,
+							duration: 1,
 							message: String(res?.response?.data?.message?.message),
 						})
 					}
@@ -43,19 +43,19 @@ const useService = (service: any, onSuccess: any) => {
 			(error: any) => {
 				if (error?.errorMessage) {
 					notification.error({
-						duration: 0.5,
+						duration: 1,
 
 						message: error?.errorMessage,
 					})
 				} else if (error?.response) {
 					notification.error({
-						duration: 0.5,
+						duration: 1,
 
 						message: error?.response?.data?.errorMessage,
 					})
 				} else {
 					notification.error({
-						duration: 0.5,
+						duration: 1,
 
 						message: error?.message,
 					})

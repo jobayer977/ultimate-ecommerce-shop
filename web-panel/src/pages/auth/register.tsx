@@ -20,7 +20,7 @@ const AuthLoginComponent = () => {
 		AuthService.register,
 		(response: any) => {
 			localStorage.setItem("token", response?.token?.token)
-			router.push(routeConstant.cart)
+			router.push(routeConstant.myAccount)
 			notification.success({ message: "Registration Success", duration: 0.5 })
 		}
 	)

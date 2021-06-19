@@ -18,7 +18,7 @@ const AuthLoginComponent = () => {
 
 	const authLoginService = useService(AuthService.login, (response: any) => {
 		localStorage.setItem("token", response?.token?.token)
-		router.push(routeConstant.cart)
+		router.push(routeConstant.myAccount)
 		notification.success({ message: "Registration Success", duration: 0.5 })
 	})
 	const onChange = (e: any) => {

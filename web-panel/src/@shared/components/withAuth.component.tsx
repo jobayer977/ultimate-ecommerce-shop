@@ -5,12 +5,11 @@ const withAuth = (WrappedComponent: any) => {
 		// checks whether we are on client / browser or server.
 		if (typeof window !== "undefined") {
 			const Router = useRouter()
-
 			const token = localStorage.getItem("token")
 
 			// If there is no access token we redirect to "/" page.
 			if (!token) {
-				Router.replace(routeConstant.authLogin)
+				window.location.replace(routeConstant.authLogin)
 			}
 
 			// If this is an token we just render the component that was passed with all its props

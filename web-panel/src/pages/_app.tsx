@@ -1,6 +1,6 @@
 import "@assets/css/app.scss"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { persistor, store } from "src/@config/redux/store"
 
 import type { AppProps } from "next/app"
@@ -11,29 +11,34 @@ import { Provider } from "react-redux"
 import { useRouter } from "next/router"
 
 function MyApp({ Component, pageProps }: AppProps) {
-	const router = useRouter()
+	const router: any = useRouter()
 
 	const [state, setState] = useState({
 		isRouteChanging: false,
 		loadingKey: 0,
 	})
 
-	useEffect(() => {
-		const handleRouteChangeStart = () => {
+	const handleRouteChangeStart = useMemo(
+		() => () => {
 			setState((prevState) => ({
 				...prevState,
 				isRouteChanging: true,
 				loadingKey: prevState.loadingKey ^ 1,
 			}))
-		}
+		},
+		[state.isRouteChanging, state.loadingKey]
+	)
 
-		const handleRouteChangeEnd = () => {
+	const handleRouteChangeEnd = useMemo(
+		() => () => {
 			setState((prevState) => ({
 				...prevState,
 				isRouteChanging: false,
 			}))
-		}
-
+		},
+		[state.isRouteChanging, state.loadingKey]
+	)
+	useEffect(() => {
 		router.events.on("routeChangeStart", handleRouteChangeStart)
 		router.events.on("routeChangeComplete", handleRouteChangeEnd)
 		router.events.on("routeChangeError", handleRouteChangeEnd)
