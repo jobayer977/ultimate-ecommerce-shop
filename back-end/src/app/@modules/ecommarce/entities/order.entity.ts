@@ -31,10 +31,10 @@ export class Order extends BaseEntity {
 	@Column({ nullable: true, type: "float", default: 0 })
 	deliveryCharge?: number
 
-	@Column({ nullable: true, type: "jsonb" })
+	@Column({ nullable: true })
 	billingAddress?: string
 
-	@Column({ nullable: true, type: "jsonb" })
+	@Column({ nullable: true })
 	shippingAddress?: string
 
 	@OneToMany((type) => OrderProduct, (orderProduct) => orderProduct.order, {

@@ -32,7 +32,6 @@ var UserService = /** @class */ (function () {
                         return [4 /*yield*/, this.userRepository.findOne({ id: id })];
                     case 1:
                         user = _a.sent();
-                        console.log(user);
                         delete user.password;
                         if (!user) {
                             throw new routing_controllers_1.NotFoundError("User Not Exist");

@@ -11,7 +11,7 @@ var UtilsController = /** @class */ (function () {
         this.utilsService = typedi_1.Container.get(utils_services_1.UtilsService);
     }
     UtilsController.prototype.uploadImage = function (file) {
-        console.log(file);
+        file;
         return this.utilsService.uploadFile(file);
     };
     tslib_1.__decorate([

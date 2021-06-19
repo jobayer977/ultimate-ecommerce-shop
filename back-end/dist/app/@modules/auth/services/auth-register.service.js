@@ -33,10 +33,11 @@ var AuthRegisterService = /** @class */ (function () {
                         return [4 /*yield*/, this.userRepository.findOne({
                                 phoneNumber: phoneNumber,
                                 type: userType_enum_1.UserTypes.ADMIN,
-                            })];
+                            })
+                            //* Verify User
+                        ];
                     case 2:
                         user_1 = _a.sent();
-                        console.log(user_1);
                         //* Verify User
                         if (_.isEmpty(user_1) === false) {
                             throw new routing_controllers_1.NotFoundError("User Already Exist with " + phoneNumber + " number");

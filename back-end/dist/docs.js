@@ -10,6 +10,7 @@ var brand_controller_1 = require("./app/@modules/ecommarce/controllers/brand.con
 var category_controller_1 = require("./app/@modules/ecommarce/controllers/category.controller");
 var department_controller_1 = require("./app/@modules/ecommarce/controllers/department.controller");
 var ENV_1 = require("./ENV");
+var order_controller_1 = require("./app/@modules/ecommarce/controllers/order.controller");
 var product_controller_1 = require("./app/@modules/ecommarce/controllers/product.controller");
 var user_controller_1 = require("./app/@modules/user/controllers/user.controller");
 var user_info_controller_1 = require("./app/@modules/user/controllers/user-info.controller");
@@ -36,6 +37,7 @@ var _controllers = [
     product_controller_1.ProductController,
     user_info_controller_1.UserInfoController,
     util_controller_1.UtilsController,
+    order_controller_1.OrderController,
 ];
 exports.spec = routing_controllers_openapi_1.routingControllersToSpec(storage, {
     controllers: _controllers,

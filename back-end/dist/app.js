@@ -27,14 +27,11 @@ cloudinary.config({
     enhance_image_tag: ENV_1.ENV.CN_ENHANCE_IMAGE_TAG,
     static_file_support: ENV_1.ENV.CN_STATIC_FILE_SUPPORT,
 });
-console.log(ENV_1.ENV);
 //*  Database Connection
 var connectDB = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
     return tslib_1.__generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                console.log(ENV_1.ormConfig);
-                return [4 /*yield*/, typeorm_1.createConnection(ENV_1.ormConfig)];
+            case 0: return [4 /*yield*/, typeorm_1.createConnection(ENV_1.ormConfig)];
             case 1:
                 _a.sent();
                 return [2 /*return*/];

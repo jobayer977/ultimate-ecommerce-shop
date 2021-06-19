@@ -24,7 +24,6 @@ var AuthLoginService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         password = credential.password, phoneNumber = credential.phoneNumber;
-                        console.log(credential);
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 5, , 6]);
