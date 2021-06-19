@@ -1,5 +1,7 @@
 import "@assets/css/app.scss"
 
+import * as Sentry from "@sentry/nextjs"
+
 import React, { useEffect, useMemo, useState } from "react"
 import { persistor, store } from "src/@config/redux/store"
 
@@ -10,6 +12,14 @@ import { PersistGate } from "redux-persist/integration/react"
 import { Provider } from "react-redux"
 import { useRouter } from "next/router"
 
+Sentry.init({
+	dsn: "https://85a433d1612847afa11956f1f5c826e6@o871183.ingest.sentry.io/5824654",
+
+	// Set tracesSampleRate to 1.0 to capture 100%
+	// of transactions for performance monitoring.
+	// We recommend adjusting this value in production
+	tracesSampleRate: 1.0,
+})
 function MyApp({ Component, pageProps }: AppProps) {
 	const router: any = useRouter()
 
@@ -70,6 +80,20 @@ function MyApp({ Component, pageProps }: AppProps) {
 					rel="stylesheet"
 					type="text/css"
 					href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
+				/>
+
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+						(function(h,o,t,j,a,r){
+							h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+							h._hjSettings={hjid:2462647,hjsv:6};
+							a=o.getElementsByTagName('head')[0];
+							r=o.createElement('script');r.async=1;
+							r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+							a.appendChild(r);
+						})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
+					}}
 				/>
 			</Head>
 
