@@ -5,15 +5,22 @@ import { AuthService } from "@shared/services/auth.service"
 import Link from "next/link"
 import { notification } from "antd"
 import { routeConstant } from "@shared/constant/routes.constant"
+import { useRouter } from "next/router"
 import useService from "@shared/hooks/useService"
 
 const AuthLoginComponent = () => {
+	const router = useRouter()
 	const [formData, setFormData] = useState<any>({
 		phoneNumber: "",
 		password: "",
 	})
 	const { phoneNumber, password } = formData
 
+	const authLoginService = useService(AuthService.login, (response: any) => {
+		localStorage.setItem("token", response?.token?.token)
+		router.push(routeConstant.cart)
+		notification.success({ message: "Registration Success", duration: 0.5 })
+	})
 	const onChange = (e: any) => {
 		const { name, value } = e.target
 		setFormData({
@@ -22,20 +29,20 @@ const AuthLoginComponent = () => {
 		})
 	}
 
-	const authLoginService = useService(AuthService.login, (res: any) => {})
-
 	const onSubmit = async (e: any) => {
 		e.preventDefault()
 		if (!phoneNumber) {
 			notification.error({
 				message: "Invalid Phone Number",
+				duration: 0.5,
 			})
 		} else if (!password) {
 			notification.error({
 				message: "Invalid Password",
+				duration: 0.5,
 			})
 		} else {
-			await authLoginService.query(formData)
+			authLoginService.query({ phoneNumber, password })
 		}
 	}
 	return (
