@@ -6,6 +6,7 @@ var typeorm_1 = require("typeorm");
 var base_entity_1 = require("../../../@base/entities/base.entity");
 var order_enums_1 = require("../enums/order.enums");
 var order_products_entity_1 = require("./order-products.entity");
+var user_entity_1 = require("./../../user/entities/user.entity");
 var Order = /** @class */ (function (_super) {
     tslib_1.__extends(Order, _super);
     function Order() {
@@ -57,6 +58,10 @@ var Order = /** @class */ (function (_super) {
         }),
         tslib_1.__metadata("design:type", Array)
     ], Order.prototype, "products", void 0);
+    tslib_1.__decorate([
+        typeorm_1.ManyToOne(function () { return user_entity_1.User; }, function (user) { return user.orders; }),
+        tslib_1.__metadata("design:type", user_entity_1.User)
+    ], Order.prototype, "user", void 0);
     Order = tslib_1.__decorate([
         typeorm_1.Entity("orders")
     ], Order);

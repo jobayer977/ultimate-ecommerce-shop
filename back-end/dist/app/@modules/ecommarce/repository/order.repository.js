@@ -11,16 +11,20 @@ var OrderRepository = /** @class */ (function (_super) {
     function OrderRepository() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    OrderRepository.prototype.filter = function (baseFilterDto) {
+    OrderRepository.prototype.filter = function (orderFilterDto) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var searchTerm, page, pOption, query, result, error_1;
+            var searchTerm, page, user, pOption, query, result, error_1;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        searchTerm = baseFilterDto.searchTerm, page = baseFilterDto.page;
-                        console.log(searchTerm);
-                        pOption = paginate_util_1.paginationOptions(baseFilterDto);
-                        query = this.createQueryBuilder("orders").leftJoinAndSelect("orders.products", "products");
+                        searchTerm = orderFilterDto.searchTerm, page = orderFilterDto.page, user = orderFilterDto.user;
+                        pOption = paginate_util_1.paginationOptions(orderFilterDto);
+                        query = this.createQueryBuilder("orders")
+                            .leftJoinAndSelect("orders.products", "products")
+                            .leftJoinAndSelect("orders.user", "user");
+                        if (user) {
+                            query.where("orders.user = :userId", { userId: user });
+                        }
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);

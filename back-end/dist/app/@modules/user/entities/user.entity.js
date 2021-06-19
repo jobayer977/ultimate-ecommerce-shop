@@ -4,6 +4,7 @@ exports.User = void 0;
 var tslib_1 = require("tslib");
 var typeorm_1 = require("typeorm");
 var base_entity_1 = require("../../../@base/entities/base.entity");
+var order_entity_1 = require("../../ecommarce/entities/order.entity");
 var user_info_entity_1 = require("./user-info.entity");
 var userType_enum_1 = require("./../enums/userType.enum");
 var User = /** @class */ (function (_super) {
@@ -28,6 +29,10 @@ var User = /** @class */ (function (_super) {
         typeorm_1.JoinColumn(),
         tslib_1.__metadata("design:type", user_info_entity_1.UserInfo)
     ], User.prototype, "userInfo", void 0);
+    tslib_1.__decorate([
+        typeorm_1.OneToMany(function () { return order_entity_1.Order; }, function (order) { return order.user; }),
+        tslib_1.__metadata("design:type", Array)
+    ], User.prototype, "orders", void 0);
     User = tslib_1.__decorate([
         typeorm_1.Entity("users")
     ], User);

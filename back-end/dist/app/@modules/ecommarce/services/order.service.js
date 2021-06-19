@@ -123,6 +123,7 @@ var OrderService = /** @class */ (function () {
                             totalAmount: 0,
                             totalVat: 0,
                             deliveryCharge: 0,
+                            user: user,
                         };
                         order_1.code = generatedCode;
                         order_1.approved = false;
@@ -161,10 +162,10 @@ var OrderService = /** @class */ (function () {
         });
     };
     //!Filter
-    OrderService.prototype.filter = function (baseFilterDto) {
+    OrderService.prototype.filter = function (orderFilterDto) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             return tslib_1.__generator(this, function (_a) {
-                return [2 /*return*/, this.orderRepository.filter(baseFilterDto)];
+                return [2 /*return*/, this.orderRepository.filter(orderFilterDto)];
             });
         });
     };
