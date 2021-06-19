@@ -20,8 +20,10 @@
       [nzInlineCollapsed]="isCollapsed"
     >
       <li nz-menu-item nzMatchRouter>
-        <i nz-icon nzType="rise"></i>
-        <span>Dashboard</span>
+        <a [routerLink]="[routesConstant.defaultDashboard]">
+          <i nz-icon nzType="rise"></i>
+          <span>Dashboard</span>
+        </a>
       </li>
       <li nz-menu-item nzMatchRouter>
         <a [routerLink]="[routesConstant.productsList]">
@@ -71,24 +73,12 @@
           <span>Brands</span></a
         >
       </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="[routesConstant.ordersList]">
+          <i nz-icon nzType="fund" nzTheme="outline"></i> <span>Orders</span></a
+        >
+      </li>
 
-      <!-- <li nz-submenu nzTitle="User List" nzIcon="user">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a [routerLink]="[routesConstant.admins]">Admins</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a [routerLink]="[routesConstant.customers]">Customers</a>
-          </li>
-          <li
-            nz-menu-item
-            nzMatchRouter
-            [routerLink]="[routesConstant.vendors]"
-          >
-            <a>Vendors</a>
-          </li>
-        </ul>
-      </li> -->
       <li nz-submenu nzTitle="Settings" nzIcon="setting">
         <ul>
           <li nz-menu-item nzMatchRouter>
@@ -132,11 +122,6 @@
       </div>
     </nz-header>
     <nz-content>
-      <!-- <nz-breadcrumb style="margin-bottom: 18px">
-        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
-        <nz-breadcrumb-item>List</nz-breadcrumb-item>
-        <nz-breadcrumb-item>App</nz-breadcrumb-item>
-      </nz-breadcrumb> -->
       <div class="inner-content">
         <main [@fadeInAnimation]="getRouterOutletState(o)">
           <router-outlet #o="outlet"></router-outlet>

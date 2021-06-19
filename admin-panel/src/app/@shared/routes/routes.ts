@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const content: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'dashboard/default',
     pathMatch: 'full',
   },
   {
@@ -41,5 +41,17 @@ export const content: Routes = [
       import('../../@modules/product/product.module').then(
         (m) => m.ProductModule
       ),
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('../../@modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+  },
+  {
+    path: 'orders',
+    loadChildren: () =>
+      import('../../@modules/order/order.module').then((m) => m.OrderModule),
   },
 ];

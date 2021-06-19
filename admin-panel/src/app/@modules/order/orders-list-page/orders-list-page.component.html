@@ -1,0 +1,46 @@
+<nz-page-header nzBackIcon [nzGhost]="false">
+  <nz-page-header-title>Orders</nz-page-header-title>
+  <nz-page-header-extra>
+    <nz-input-group nzSize="large" nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input
+        type="text"
+        (keyup)="onChangeSearch($event)"
+        nz-input
+        placeholder="Search..."
+      />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch>Search</button>
+    </ng-template>
+  </nz-page-header-extra>
+</nz-page-header>
+<ng-container>
+  <nz-table
+    #basicTable
+    [nzData]="orders.data"
+    [nzBordered]="true"
+    [nzFrontPagination]="false"
+    nzShowPagination
+    [nzTotal]="orders.total"
+    [nzPageSize]="orders.take"
+    [nzLoading]="loading"
+    (nzPageIndexChange)="onChangePage($event)"
+  >
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Approved</th>
+        <th>CreatedAt</th>
+        <th>TotalAmount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.code || "N/A" }}</td>
+        <td>{{ data.approved || "N/A" }}</td>
+        <td>{{ data.createdAt || "N/A" }}</td>
+        <td>{{ data.totalAmount || "N/A" }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</ng-container>
