@@ -48,7 +48,7 @@ const OrdersComponent = () => {
 				loading={filterOrderService.loading}
 				columns={columns}
 				dataSource={dataSource}
-				scroll={{ y: 640 }}
+				scroll={{ y: 840 }}
 				pagination={{
 					onChange: (e: any) => {
 						filterOrderService.query({

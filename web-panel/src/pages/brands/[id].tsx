@@ -58,7 +58,8 @@ const BrandPage: React.FC<IFProps> = ({ productsResponse }) => {
 							xl={4}
 							lg={8}
 							md={12}
-							sm={24}
+							sm={12}
+							xs={12}
 							style={{ marginBottom: 10 }}
 							key={String(pd.id)}>
 							<ProductComponent product={pd} />

@@ -36,7 +36,7 @@ const Departments: React.FC<IFProps> = ({ brandsResponse }) => {
 				/>
 				<Row gutter={16}>
 					{brandsResponse?.data?.map((brand: IFBrand) => (
-						<Col span={4} key={brand?.id}>
+						<Col xxl={4} xl={6} md={6} sm={12} xs={12} key={brand?.id}>
 							<Link
 								href={{
 									pathname: routeConstant.brandId,

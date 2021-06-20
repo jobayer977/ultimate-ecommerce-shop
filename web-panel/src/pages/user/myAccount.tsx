@@ -65,7 +65,7 @@ const MyAccount = () => {
 					<Tabs
 						className="user-account-tabs"
 						defaultActiveKey="1"
-						tabPosition="left">
+						tabPosition="top">
 						<TabPane tab="Basic Information" key="1">
 							<Title style={{ marginBottom: 50 }} level={5}>
 								Basic Information

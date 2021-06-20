@@ -12,9 +12,9 @@ const HomeDepartmentsComponent: React.FC<IFProps> = ({ departments }) => {
 			<div id="product-categories-area">
 				<div className="ruby-container">
 					<div className="small-size-cate">
-						<div className="row">
+						<div className="row no-gutters">
 							{departments.map((x: IFDepartment) => (
-								<div className="col-sm-3" key={x?.id}>
+								<div className="col-sm-3 col-6" key={x?.id}>
 									<WideCardComponent
 										link={{
 											pathname: routeConstant.departmentsId,

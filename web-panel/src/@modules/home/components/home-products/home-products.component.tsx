@@ -25,7 +25,15 @@ const HomeProductsComponent: React.FC<IFProps> = ({ products }) => {
 					</div>
 					<Row gutter={10}>
 						{products?.map((pd: IFProduct) => (
-							<Col span={4} style={{ marginBottom: 10 }} key={String(pd.id)}>
+							<Col
+								xxl={4}
+								xl={6}
+								lg={6}
+								md={6}
+								sm={12}
+								xs={12}
+								style={{ marginBottom: 10 }}
+								key={String(pd.id)}>
 								<ProductComponent product={pd} />
 							</Col>
 						))}

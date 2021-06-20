@@ -31,8 +31,7 @@ const ProductsPage: React.FC<IFProps> = ({ productsResponse }) => {
 					title="Popular Products"
 					breadcrumb={{ routes }}
 				/>
-				<Row gutter={30}>
-					{/* <Col xxl={5} xl={6} lg={6} md={24} sm={24}>
+				{/* <Col xxl={5} xl={6} lg={6} md={24} sm={24}>
 						<div id="sidebar-area-wrap">
 							<div className="single-sidebar-wrap">
 								<div className="sidebar-body">
@@ -66,22 +65,19 @@ const ProductsPage: React.FC<IFProps> = ({ productsResponse }) => {
 							</div>
 						</div>
 					</Col> */}
-					<Col xxl={24} xl={24} lg={18} md={24} sm={24}>
-						<Row gutter={10}>
-							{productsResponse?.data?.map((pd: IFProduct) => (
-								<Col
-									xxl={4}
-									xl={6}
-									lg={8}
-									md={12}
-									sm={24}
-									style={{ marginBottom: 10 }}
-									key={String(pd.id)}>
-									<ProductComponent product={pd} />
-								</Col>
-							))}
-						</Row>
-					</Col>
+				<Row gutter={10}>
+					{productsResponse?.data?.map((pd: IFProduct) => (
+						<Col
+							xxl={4}
+							xl={6}
+							lg={6}
+							md={12}
+							sm={24}
+							style={{ marginBottom: 10 }}
+							key={String(pd.id)}>
+							<ProductComponent product={pd} />
+						</Col>
+					))}
 				</Row>
 			</div>
 		</AppLayoutComponent>

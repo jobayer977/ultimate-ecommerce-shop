@@ -1082,13 +1082,6 @@ address b {
 }
 
 /*== Navigation Area Start ==*/
-@media only screen and (min-width: 320px) and (max-width: 575px),
-	only screen and (min-width: 576px) and (max-width: 767px),
-	only screen and (min-width: 768px) and (max-width: 991px) {
-	#mainmenu {
-		display: none;
-	}
-}
 
 #mainmenu ul {
 	text-align: center;
@@ -2734,7 +2727,6 @@ address b {
 }
 
 .single-cat-item .category-thumb {
-	height: 220px;
 	position: relative;
 	overflow: hidden;
 	border: 1px solid #dddddda3;
@@ -3548,7 +3540,6 @@ address b {
 #category-feature-product .single-featured-product {
 	position: relative;
 	overflow: hidden;
-	height: 230px;
 }
 
 #category-feature-product .single-featured-product:hover:after {
@@ -5782,13 +5773,11 @@ header#header-area {
 .logo-itm-bx {
 	margin: 0px;
 	border: 1px solid #c7bcbc63;
-	height: 250px;
 	cursor: pointer;
 	box-shadow: 0 0 10px #ddddddab;
 }
 
 .logo-itm-bx .ant-card-cover {
-	height: 180px;
 	padding: 2px;
 }
 

@@ -59,8 +59,9 @@ const DepartmentsPage: React.FC<IFProps> = ({ productsResponse }) => {
 							xxl={4}
 							xl={4}
 							lg={8}
-							md={12}
-							sm={24}
+							md={8}
+							sm={12}
+							xs={12}
 							style={{ marginBottom: 10 }}
 							key={String(pd.id)}>
 							<ProductComponent product={pd} />

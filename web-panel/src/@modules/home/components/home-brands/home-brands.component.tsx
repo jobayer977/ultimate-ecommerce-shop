@@ -21,38 +21,11 @@ const HomeBrandsComponent: React.FC<IFProps> = ({ brands }) => {
 	return (
 		<div className="ruby-container ">
 			<div className="border-section">
-				<PageHeader
-					className="site-page-header"
-					title="Shop By Brand"
-					// extra={[
-					// 	<Search
-					// 		placeholder="Search..."
-					// 		allowClear
-					// 		enterButton="Search"
-					// 		size="large"
-					// 		onKeyUp={(e: any) => {
-					// 			e.preventDefault()
-
-					// 			if (e.key === "Enter") {
-					// 				const q = e.currentTarget.value
-
-					// 				router.push(
-					// 					{
-					// 						pathname: `/search`,
-					// 						query: q ? { q } : {},
-					// 					},
-					// 					undefined,
-					// 					{ shallow: true }
-					// 				)
-					// 			}
-					// 		}}
-					// 	/>,
-					// ]}
-				/>
+				<PageHeader className="site-page-header" title="Shop By Brand" />
 
 				<Row gutter={16} style={{ padding: 10, paddingBottom: 0 }}>
 					{brands?.map((brand: IFBrand) => (
-						<Col span={4} key={brand?.id}>
+						<Col span={4} xxl={4} xl={4} md={6} sm={12} xs={12} key={brand?.id}>
 							<Link
 								href={{
 									pathname: routeConstant.brandId,

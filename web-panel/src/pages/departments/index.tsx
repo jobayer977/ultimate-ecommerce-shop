@@ -33,7 +33,14 @@ const Departments: React.FC<IFProps> = ({ departmentsResponse }) => {
 				/>
 				<Row gutter={16}>
 					{departmentsResponse?.data?.map((x: IFDepartment) => (
-						<Col span={4} key={x.id} style={{ marginBottom: 16 }}>
+						<Col
+							xxl={4}
+							xl={6}
+							md={6}
+							sm={12}
+							xs={12}
+							key={x.id}
+							style={{ marginBottom: 16 }}>
 							<WideCardComponent
 								link={{
 									pathname: routeConstant.departmentsId,
