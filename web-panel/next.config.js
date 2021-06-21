@@ -1,4 +1,8 @@
-module.exports = {
+const path = require("path")
+const withPWA = require("next-pwa")
+const runtimeCaching = require("next-pwa/cache")
+
+module.exports = withPWA({
 	images: {
 		domains: ["res.cloudinary.com"],
 	},
@@ -13,4 +17,13 @@ module.exports = {
 		// should handle (these are only required when setting up domain routing)
 		// Note: subdomains must be included in the domain value to be matched e.g. "fr.example.com".
 	},
-}
+	pwa: {
+		dest: "public",
+		runtimeCaching,
+	},
+	// This is not required to make it into a PWA, but is a nice way to clean up your imports
+	webpack: (config) => {
+		config.resolve.modules.push(path.resolve("./"))
+		return config
+	},
+})
