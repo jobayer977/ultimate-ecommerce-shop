@@ -1,1 +1,128 @@
-if(!self.define){const e=e=>{"require"!==e&&(e+=".js");let i=Promise.resolve();return s[e]||(i=new Promise((async i=>{if("document"in self){const s=document.createElement("script");s.src=e,document.head.appendChild(s),s.onload=i}else importScripts(e),i()}))),i.then((()=>{if(!s[e])throw new Error(`Module ${e} didn’t register its module`);return s[e]}))},i=(i,s)=>{Promise.all(i.map(e)).then((e=>s(1===e.length?e[0]:e)))},s={require:Promise.resolve(i)};self.define=(i,a,c)=>{s[i]||(s[i]=Promise.resolve().then((()=>{let s={};const n={uri:location.origin+i.slice(1)};return Promise.all(a.map((i=>{switch(i){case"exports":return s;case"module":return n;default:return e(i)}}))).then((e=>{const i=c(...e);return s.default||(s.default=i),s}))})))}}define("./sw.js",["./workbox-ea903bce"],(function(e){"use strict";importScripts(),self.skipWaiting(),e.clientsClaim(),e.precacheAndRoute([{url:"/_next/static/7sLYO7bjOuJ9EHV4Renyv/_buildManifest.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/7sLYO7bjOuJ9EHV4Renyv/_ssgManifest.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/29107295.53ce9cf8ba7cd72e7b3f.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/32.16f473ec4464f083266c.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/33.00fe53b20f4c3749b3ba.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/34.76461ed8850cebdefac1.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/35.250e00ee01bd2295b2f6.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/36.663c31d02e0d806b2dec.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/47ba979f544802a7b6d251389be5bcbd9f220a0e.e89f7da261ef9a0cdb6a.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/564c54f20187ee61a03d9cfe8c189363363b5ca1.e39307fbe9f2e796426b.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/5b8d2494cbe8ef774b99d672d3166c4c20f623ab.7a5a32eafe26ba925c9d.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/6634dbef054cc87e9ff5724cf9ee3787fd18d859.de000f173dbd47f98450.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/6f892f59bc681edef714e6f067284f63122d5f23.6fade404012e75d5dca3.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/703ce33fb2a09e6bdcd5069012f0100190fad48a.e8a418695d385119f4da.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/75fc9c18.f1b4cb0bfd40d9f72df1.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/93f6fc9ac6e3815dd3f6ff912c6b198608f6e7f6.40c16f5eda545f53a498.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/af5e8fac7215b298afff2528b51c63e807d6a5a6.b3d538aee77a31757563.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/cc926870391bf43c98f9ac279d2f70e7b26cfa95.5d828b3ca1938e1a306b.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/commons.755626fb841bd2715c21.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/framework.039958a83d97e873fd7b.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/main-f34d4d79f86bd96e5846.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/404-48faa99c7d9305482735.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/500-bd7c2e73508bd243fe2d.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/_app-1ec206c4453af6bf56a2.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/_error-e8ac36ca649097e722cb.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/auth/login-beb48204f213af158003.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/auth/register-f22e98ae0a0f73ae8075.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/brands-0924cb9364c0f0f62033.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/brands/%5Bid%5D-4ecb81400163270eb37a.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/cart-572aa0fd2738145f14a1.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/departments-3d3957b405de39825cdb.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/departments/%5Bid%5D-b824d78cb537c9864b84.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/index-cbea92fd91b92d0947e6.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/product-59da94fb81fadeaf3782.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/product/%5Bid%5D-4a90e62ef0c0ab090ca7.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/search-7eb995f6bc92e71916ea.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/pages/user/myAccount-76fe10d47ed40b1b2deb.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/polyfills-6fd4f9914f74d4eb3cb0.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/chunks/webpack-f459101f1bafaec51adb.js",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/css/143419deb7acc307a00e.css",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/media/fontawesome-webfont3e6e.1e59d2330b4c6deb84b340635ed36249.ttf",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/media/fontawesome-webfont3e6e.20fd1704ea223900efa9fd4e869efb08.woff2",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/media/fontawesome-webfont3e6e.8b43027f47b20503057dfbbaa9401fef.eot",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/media/fontawesome-webfont3e6e.c1e38fd9e0e74ba58f7a2b77ef29fdd3.svg",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/media/fontawesome-webfont3e6e.f691f37e57f04c152e2315ab7dbad881.woff",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/media/fontawesome-webfontd41d.8b43027f47b20503057dfbbaa9401fef.eot",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/_next/static/media/owl.video.play.ebd5ab1cc9a13b71a4515efaca8b2b26.png",revision:"7sLYO7bjOuJ9EHV4Renyv"},{url:"/favicon.ico",revision:"1fcc4cd84b2e85dfc86a04ab8a0a8ae1"},{url:"/icons/apple-icon-180.png",revision:"da3a4f480f3fc182182d0ab966af191e"},{url:"/icons/apple-splash-1125-2436.jpg",revision:"2274e3d42d033f53636c57c0107fac07"},{url:"/icons/apple-splash-1136-640.jpg",revision:"1087e6253d70c928a72c28ef6fd52131"},{url:"/icons/apple-splash-1170-2532.jpg",revision:"76db4f59d9cdc2e7d6aa39be7d2fc579"},{url:"/icons/apple-splash-1242-2208.jpg",revision:"8cf65f1586aaaff0063eb2d42dbf1582"},{url:"/icons/apple-splash-1242-2688.jpg",revision:"c45b1ddb62026f0eef2e5401a9ff9c3c"},{url:"/icons/apple-splash-1284-2778.jpg",revision:"f6a177450fbfe259ca921e5c34368540"},{url:"/icons/apple-splash-1334-750.jpg",revision:"32a0001edd9d1fbbb74600ab5c5aefd2"},{url:"/icons/apple-splash-1536-2048.jpg",revision:"2e82da28bfa2302ecc93e65cb8f42918"},{url:"/icons/apple-splash-1620-2160.jpg",revision:"5fe070ca9680a081da49d5e7596cc40c"},{url:"/icons/apple-splash-1668-2224.jpg",revision:"daa67e46b3adc65c2a6d142890d6f032"},{url:"/icons/apple-splash-1668-2388.jpg",revision:"a087d43f84154e1a4dcf3ca7a0879d77"},{url:"/icons/apple-splash-1792-828.jpg",revision:"22eefcbeee7d595c2e88a53e35a82888"},{url:"/icons/apple-splash-2048-1536.jpg",revision:"3264e7195bba29517265f374af07c9e7"},{url:"/icons/apple-splash-2048-2732.jpg",revision:"74e89dba87ebe9c0131d176fcb959f38"},{url:"/icons/apple-splash-2160-1620.jpg",revision:"df0d227baab05820e3f9954a9e363754"},{url:"/icons/apple-splash-2208-1242.jpg",revision:"09021c7a5a1106207a7eb582964fcb48"},{url:"/icons/apple-splash-2224-1668.jpg",revision:"bf5cc135417de3ff990c411787bc88ae"},{url:"/icons/apple-splash-2388-1668.jpg",revision:"3ace85b85edb57d86aac63f06795370c"},{url:"/icons/apple-splash-2436-1125.jpg",revision:"8c06808283d071a34a4a302f9f2c692a"},{url:"/icons/apple-splash-2532-1170.jpg",revision:"dbe0939d6acb47644ea8bc52787e4286"},{url:"/icons/apple-splash-2688-1242.jpg",revision:"2732aceeb6d384c00aaa1c521018e892"},{url:"/icons/apple-splash-2732-2048.jpg",revision:"059a54394b152d6697b0b483b085da29"},{url:"/icons/apple-splash-2778-1284.jpg",revision:"7237f8b7efb419431d04f6e29c2ffb5d"},{url:"/icons/apple-splash-640-1136.jpg",revision:"b7b50a172f51ddcf4831ed505239777a"},{url:"/icons/apple-splash-750-1334.jpg",revision:"292e4f99442eef1605cd6d32af84b4f9"},{url:"/icons/apple-splash-828-1792.jpg",revision:"92eeb18fbdb51be5f790dc2a6c5f2480"},{url:"/icons/manifest-icon-192.png",revision:"a4a07e2aee1caebf72790e8f16077ad0"},{url:"/icons/manifest-icon-512.png",revision:"4ea6e6c1a44c3daabf0874e7ad108f30"},{url:"/img/about-img-2.jpg",revision:"f69b6db24797b8e21678158eb9391f37"},{url:"/img/about-img.png",revision:"94948a0a0d4f8bef0a2903f881f0aac9"},{url:"/img/air-plane.png",revision:"56bd78f98996e09fc9bb4369044bf2fc"},{url:"/img/arrow.png",revision:"705115eb34571c6034fac93dc287ea2a"},{url:"/img/author-1.jpg",revision:"17032ea597c6158c58a379897ecbb152"},{url:"/img/author-2.jpg",revision:"9861c4db60ef04bb1f74aeb65f991354"},{url:"/img/author-3.jpg",revision:"014cdeb4c5cb5e7972f049b9598480c2"},{url:"/img/blog-thumb-2.jpg",revision:"3023bc214a50086787d89c4338f06cd2"},{url:"/img/blog-thumb-3.jpg",revision:"ad83ac7344953d6b4457548d96021470"},{url:"/img/blog-thumb.jpg",revision:"9c1ee8ce208bff4f81d0f6c3608c4708"},{url:"/img/cancel.png",revision:"49bbb96ab59c6849fea059e40088310c"},{url:"/img/clothing.jpg",revision:"919db2a2ed621fdd4db3c48b801eda75"},{url:"/img/cog.png",revision:"11cac4664d8b2e8001157d435eabbc50"},{url:"/img/daimond.png",revision:"1a0ae73aec8fb821b475654c3509c181"},{url:"/img/favicon.ico",revision:"9c9a750812bab056b475fb9cc078f51e"},{url:"/img/footer-bg.jpg",revision:"e1c50184c1c059393f6140afd0dba6cf"},{url:"/img/gallery-img-1.jpg",revision:"be2508386cb702c640b58debd38d6327"},{url:"/img/gallery-img-2.jpg",revision:"de01401dde5c362d019bd81e73d18ba2"},{url:"/img/gallery-img-3.jpg",revision:"4651b9e34137fd2e684b23c4875178b4"},{url:"/img/gallery-img-4.jpg",revision:"e665fd1125e8e01286e9c90f324bd6dd"},{url:"/img/home_4_slide_1.jpg",revision:"f679d5c9d6427d0638a774c317c46e74"},{url:"/img/home_4_slide_2.jpg",revision:"94f15fea09198051432a006654bc2811"},{url:"/img/home_6_cat_1.jpg",revision:"a69252a99cc08d52c51c72f0c19ee78d"},{url:"/img/home_6_cat_2.jpg",revision:"73b7565c516ad32f732cf5ce29936616"},{url:"/img/home_6_cat_3.jpg",revision:"07dc8eda7b2ff3f1a033119f52c3232e"},{url:"/img/home_6_cat_4.jpg",revision:"859fc94f4a0bd6d3b92709de0330f6c6"},{url:"/img/home_6_slide_1.jpg",revision:"e975d4c7901c4b1b7c133c00cafaf835"},{url:"/img/home_6_slide_2.jpg",revision:"6094006bf276577b76a3fc1da50c9925"},{url:"/img/jewellery-cat.jpg",revision:"1609015962aaf24185351be985e9c0dc"},{url:"/img/jewelry.jpg",revision:"3f88ab9ca1da62089ebe0a19075463ba"},{url:"/img/logo-black.png",revision:"65cc4b4ba5af83613ca87fb7e35e89fc"},{url:"/img/logo-icon.png",revision:"c93c198969bd70c6a3b4dafc476eaa0a"},{url:"/img/logo-r.png",revision:"4ce4d19044843b9e754f5a6431d0525f"},{url:"/img/logo.jpg",revision:"09456f45bfca5f6f67eee875cc931d49"},{url:"/img/logo.png",revision:"329223adb9cc581ffc4b83a7fe59657a"},{url:"/img/men-cat.jpg",revision:"d39b0f2266d99e3726e79b91f02f97b8"},{url:"/img/men-pro.jpg",revision:"d449042f6054602a527cd18124087156"},{url:"/img/money-back.png",revision:"161727c0c3b353feefe5339e29c5f5d4"},{url:"/img/new-product-1.jpg",revision:"5d50f43ccc06605611874c58cd5a7eb6"},{url:"/img/new-product-2.jpg",revision:"6656daeac42f3ff2e5d6f583e72e7f32"},{url:"/img/new-product-3.jpg",revision:"dc200d0c18a4f8ecf664e000ba5767fe"},{url:"/img/new-product-4.jpg",revision:"bd3c0da2849563323693e1105153ec5b"},{url:"/img/new-product-gallery-1.jpg",revision:"b5a17b57e9d0a3dd3d4949e7f96cf152"},{url:"/img/new-product-gallery-2.jpg",revision:"28244dccf4491e6616962b339152cd7a"},{url:"/img/page-banner.jpg",revision:"37fd88bd331ddf13fc821224a63ac1e8"},{url:"/img/page-title-bg.jpg",revision:"ee1528e285d76bf63271b8c17e1bdf63"},{url:"/img/payment.png",revision:"661ed37bff81b304dc7eb0d6b22d9847"},{url:"/img/paypal-card.jpg",revision:"3661b2746bf03051a7b5b1c417cee625"},{url:"/img/product-1.jpg",revision:"1637a6aa2c809fdb4612af748853442c"},{url:"/img/product-2.jpg",revision:"c6168cbc33243bdbb496482d9a1c703a"},{url:"/img/product-3.jpg",revision:"7f2aa8051c008ecfbc2035305eeaf4b1"},{url:"/img/product-4.jpg",revision:"b2ff6ec1e6ccc00971c5bb7bb3fa79c7"},{url:"/img/sale-product-1.jpg",revision:"18146c2df4c119084b9354a08e397fb5"},{url:"/img/sale-product-2.jpg",revision:"7f2aa8051c008ecfbc2035305eeaf4b1"},{url:"/img/single-blog.jpg",revision:"9f42f87a284e2fa9082e881fa727b1fd"},{url:"/img/single-pro-thumb-2.jpg",revision:"fa6e114a75d402448a4aa61e8ac9d425"},{url:"/img/single-pro-thumb-3.jpg",revision:"70a2fcfc4993095d58ad3a68b681e91b"},{url:"/img/single-pro-thumb-4.jpg",revision:"e91f79de0e2f11f1a4134944e73a5ad9"},{url:"/img/single-pro-thumb-5.jpg",revision:"20893439cce56cbf226b12b54a936c88"},{url:"/img/single-pro-thumb.jpg",revision:"c68c84740446a3547c862cbac41a325a"},{url:"/img/slide-img-1.jpg",revision:"f05da082eb2fd93028e7cda06f7d388b"},{url:"/img/slide-img-2.jpg",revision:"27769647ec8333398cf4e5c8698bd0ad"},{url:"/img/slide-img-3.jpg",revision:"b9c20562d94b9f044959c562c98bc7b9"},{url:"/img/slide-img-4.jpg",revision:"3007da7bf284568db16933d80cfe7ccb"},{url:"/img/slide-img-5.jpg",revision:"9bad3169d2bf8752dcbb72ff4d917b4b"},{url:"/img/suit-cat.jpg",revision:"1a4aedb08725dcdb9bfc31b5b74775d4"},{url:"/img/support.png",revision:"63a8c82883b72dc45dc0553a161517ef"},{url:"/img/testi_bg.jpg",revision:"80d954b2f3880644afcaa83f1fabe806"},{url:"/img/title-line.png",revision:"4b8d07c93d1147e17515132d73cacfdd"},{url:"/img/watch-cat.jpg",revision:"54a0950b7fc85a653f8e164369ccb455"},{url:"/img/women-cat.jpg",revision:"26199dc97107a6538cabe3dfe18268cf"},{url:"/img/women-cat2.jpg",revision:"9fc8d9b81666228f239a40932df845f1"},{url:"/img/women.jpg",revision:"9520aa26161a5c8d5d9680b9200cc427"},{url:"/manifest.json",revision:"689f63a7554d04524473f3f795af94ca"},{url:"/vercel.svg",revision:"4b4f1876502eb6721764637fe5c41702"}],{ignoreURLParametersMatching:[]}),e.cleanupOutdatedCaches(),e.registerRoute("/",new e.NetworkFirst({cacheName:"start-url",plugins:[{cacheWillUpdate:async({request:e,response:i,event:s,state:a})=>i&&"opaqueredirect"===i.type?new Response(i.body,{status:200,statusText:"OK",headers:i.headers}):i}]}),"GET"),e.registerRoute(/^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,new e.CacheFirst({cacheName:"google-fonts",plugins:[new e.ExpirationPlugin({maxEntries:4,maxAgeSeconds:31536e3,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute(/\.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,new e.StaleWhileRevalidate({cacheName:"static-font-assets",plugins:[new e.ExpirationPlugin({maxEntries:4,maxAgeSeconds:604800,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute(/\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,new e.StaleWhileRevalidate({cacheName:"static-image-assets",plugins:[new e.ExpirationPlugin({maxEntries:64,maxAgeSeconds:86400,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute(/\/_next\/image\?url=.+$/i,new e.StaleWhileRevalidate({cacheName:"next-image",plugins:[new e.ExpirationPlugin({maxEntries:64,maxAgeSeconds:86400,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute(/\.(?:mp3|mp4)$/i,new e.StaleWhileRevalidate({cacheName:"static-media-assets",plugins:[new e.ExpirationPlugin({maxEntries:32,maxAgeSeconds:86400,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute(/\.(?:js)$/i,new e.StaleWhileRevalidate({cacheName:"static-js-assets",plugins:[new e.ExpirationPlugin({maxEntries:32,maxAgeSeconds:86400,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute(/\.(?:css|less)$/i,new e.StaleWhileRevalidate({cacheName:"static-style-assets",plugins:[new e.ExpirationPlugin({maxEntries:32,maxAgeSeconds:86400,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute(/\/_next\/data\/.+\/.+\.json$/i,new e.StaleWhileRevalidate({cacheName:"next-data",plugins:[new e.ExpirationPlugin({maxEntries:32,maxAgeSeconds:86400,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute(/\.(?:json|xml|csv)$/i,new e.NetworkFirst({cacheName:"static-data-assets",plugins:[new e.ExpirationPlugin({maxEntries:32,maxAgeSeconds:86400,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute((({url:e})=>{if(!(self.origin===e.origin))return!1;const i=e.pathname;return!i.startsWith("/api/auth/")&&!!i.startsWith("/api/")}),new e.NetworkFirst({cacheName:"apis",networkTimeoutSeconds:10,plugins:[new e.ExpirationPlugin({maxEntries:16,maxAgeSeconds:86400,purgeOnQuotaError:!0})]}),"GET"),e.registerRoute((({url:e})=>{if(!(self.origin===e.origin))return!1;return!e.pathname.startsWith("/api/")}),new e.NetworkFirst({cacheName:"others",networkTimeoutSeconds:10,plugins:[new e.ExpirationPlugin({maxEntries:32,maxAgeSeconds:86400,purgeOnQuotaError:!0})]}),"GET")}));
+/**
+ * Copyright 2018 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// If the loader is already loaded, just stop.
+if (!self.define) {
+  const singleRequire = name => {
+    if (name !== 'require') {
+      name = name + '.js';
+    }
+    let promise = Promise.resolve();
+    if (!registry[name]) {
+      
+        promise = new Promise(async resolve => {
+          if ("document" in self) {
+            const script = document.createElement("script");
+            script.src = name;
+            document.head.appendChild(script);
+            script.onload = resolve;
+          } else {
+            importScripts(name);
+            resolve();
+          }
+        });
+      
+    }
+    return promise.then(() => {
+      if (!registry[name]) {
+        throw new Error(`Module ${name} didn’t register its module`);
+      }
+      return registry[name];
+    });
+  };
+
+  const require = (names, resolve) => {
+    Promise.all(names.map(singleRequire))
+      .then(modules => resolve(modules.length === 1 ? modules[0] : modules));
+  };
+  
+  const registry = {
+    require: Promise.resolve(require)
+  };
+
+  self.define = (moduleName, depsNames, factory) => {
+    if (registry[moduleName]) {
+      // Module is already loading or loaded.
+      return;
+    }
+    registry[moduleName] = Promise.resolve().then(() => {
+      let exports = {};
+      const module = {
+        uri: location.origin + moduleName.slice(1)
+      };
+      return Promise.all(
+        depsNames.map(depName => {
+          switch(depName) {
+            case "exports":
+              return exports;
+            case "module":
+              return module;
+            default:
+              return singleRequire(depName);
+          }
+        })
+      ).then(deps => {
+        const facValue = factory(...deps);
+        if(!exports.default) {
+          exports.default = facValue;
+        }
+        return exports;
+      });
+    });
+  };
+}
+define("./sw.js",['./workbox-6b19f60b'], function (workbox) { 'use strict';
+
+  /**
+  * Welcome to your Workbox-powered service worker!
+  *
+  * You'll need to register this file in your web app.
+  * See https://goo.gl/nhQhGp
+  *
+  * The rest of the code is auto-generated. Please don't update this file
+  * directly; instead, make changes to your Workbox build configuration
+  * and re-run your build process.
+  * See https://goo.gl/2aRDsh
+  */
+
+  importScripts();
+  self.skipWaiting();
+  workbox.clientsClaim();
+  workbox.registerRoute("/", new workbox.NetworkFirst({
+    "cacheName": "start-url",
+    plugins: [{
+      cacheWillUpdate: async ({
+        request,
+        response,
+        event,
+        state
+      }) => {
+        if (response && response.type === 'opaqueredirect') {
+          return new Response(response.body, {
+            status: 200,
+            statusText: 'OK',
+            headers: response.headers
+          });
+        }
+
+        return response;
+      }
+    }]
+  }), 'GET');
+  workbox.registerRoute(/.*/i, new workbox.NetworkOnly({
+    "cacheName": "dev",
+    plugins: []
+  }), 'GET');
+
+});
+//# sourceMappingURL=sw.js.map
