@@ -13,7 +13,14 @@
 | Admin Panel     | https://admin-ishop.vercel.app           |
 | Web Panel       | https://web-ishop.vercel.app             |
 
-![screenshot](https://github.com/bradtraversy/proshop_mern/blob/master/uploads/Screen%20Shot%202020-09-29%20at%205.50.52%20PM.png)
+
+![screenshot](https://github.com/Jobayerdev/ishop/blob/master/screenshot/web.png?raw=true)
+![screenshot](https://raw.githubusercontent.com/Jobayerdev/ishop/master/screenshot/admin-2.png)
+![screenshot](https://github.com/Jobayerdev/ishop/blob/master/screenshot/admin.png?raw=true)
+![screenshot](https://github.com/Jobayerdev/ishop/blob/master/screenshot/swagger.png?raw=true)
+
+
+
 
 <br />
 
