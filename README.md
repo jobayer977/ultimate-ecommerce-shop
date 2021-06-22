@@ -4,6 +4,7 @@
 
 <br /><br /><br />
 
+
 ## Demo LINKS
 
 | Panel           | README                                   |
@@ -29,6 +30,40 @@
 - PWA
 - Typeorm
   <br /><br /><br />
+  
+  
+## Installation
+
+Dillinger requires Node.js(https://nodejs.org/) v10+ and typescript to run.
+
+Install the dependencies and devDependencies and start the server.
+
+<span style="color: MediumAquamarine;">Start Core API</span>
+
+```sh
+cd back-end
+npm i
+npm start
+```
+
+<span style="color: MediumAquamarine;">Start Core Admin</span>
+
+```sh
+cd admin-panel
+npm i
+ng serve
+```
+
+<span style="color: MediumAquamarine;">Start web-panel</span>
+
+```sh
+cd web-panel
+npm i
+npm run dev
+```
+
+<br /><br />
+
 
 ## Admin Features
 
@@ -164,38 +199,6 @@ CN_API_KEY =  xxxxx
 CN_API_SECRET =  xxxxx-xxxxx
 CN_ENHANCE_IMAGE_TAG =  true
 CN_STATIC_FILE_SUPPORT =  false
-```
-
-<br /><br />
-
-## Installation
-
-Dillinger requires Node.js(https://nodejs.org/) v10+ and typescript to run.
-
-Install the dependencies and devDependencies and start the server.
-
-<span style="color: MediumAquamarine;">Start Core API</span>
-
-```sh
-cd back-end
-npm i
-npm start
-```
-
-<span style="color: MediumAquamarine;">Start Core Admin</span>
-
-```sh
-cd admin-panel
-npm i
-ng serve
-```
-
-<span style="color: MediumAquamarine;">Start web-panel</span>
-
-```sh
-cd web-panel
-npm i
-npm run dev
 ```
 
 <br /><br />
