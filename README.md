@@ -1,4 +1,4 @@
-# Full Stack e-commerce Application with PWA
+# Production Ready e-commerce Application with PWA
 
 ### iShop eCommerce is implemented based on NextJS, Angular, and Nodejs. It entirely REST API & And automatically image optimize plus delivers by Cloudinary. On the frontend, I have used React, NextJS TypeScript & Ant Design. The full source code is open. It’s very easy to install and deploy. It’s very fast and PWA supported. I have added good documentation useing swagger and I tried to make everything extendable and reusable so you can edit as your own need. It has full admin support too to maintain and manage your order. Here full source code, Frontend, Admin Panel, and Backend.
 
