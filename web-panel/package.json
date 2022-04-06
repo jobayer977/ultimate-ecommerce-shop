@@ -16,7 +16,7 @@
 		"axios-observable": "^1.1.6",
 		"jwt-decode": "^3.1.2",
 		"lodash": "^4.17.21",
-		"moment": "^2.29.1",
+		"moment": "^2.29.2",
 		"next": "10.2.3",
 		"next-pwa": "^5.2.21",
 		"next-redux-wrapper": "^7.0.2",
