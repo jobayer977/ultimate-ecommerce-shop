@@ -34,7 +34,7 @@
 		"swagger-ui-express": "^4.1.6",
 		"tslib": "^2.2.0",
 		"typedi": "^0.10.0",
-		"typeorm": "^0.2.32",
+		"typeorm": "^0.3.10",
 		"typeorm-typedi-extensions": "^0.4.1"
 	},
 	"devDependencies": {
